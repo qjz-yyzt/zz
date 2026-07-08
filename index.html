@@ -45,6 +45,9 @@
           <button class="nav-item" data-view="team">
             <span class="nav-icon icon-indigo">☷</span><span>权限管理</span>
           </button>
+          <button class="nav-item" data-view="release">
+            <span class="nav-icon icon-teal">版</span><span>版本发布</span>
+          </button>
         </nav>
 
         <div class="sidebar-card">
@@ -57,6 +60,7 @@
         <header class="topbar">
           <div class="topbar-copy">
             <div class="page-title-block">
+              <div class="header-date">2026-07-07 · 周二</div>
               <h1 id="pageTitle">工作台首页</h1>
             </div>
             <div class="module-position">
@@ -65,7 +69,6 @@
             </div>
           </div>
           <div class="top-actions">
-            <div class="header-date">2026-07-07 · 周二</div>
             <div class="top-action-row">
               <div class="search-box">搜索产品 / 活动 / 任务</div>
               <button class="icon-button" aria-label="消息">✉<span class="dot"></span></button>
@@ -635,6 +638,89 @@
               <div><span class="avatar green">数</span><b>数据角色</b><p>维护日报、周报、月报和数据口径。</p></div>
               <div><span class="avatar orange">投</span><b>投放角色</b><p>维护广告计划、执行记录和素材路径。</p></div>
               <div><span class="avatar purple">内</span><b>内容角色</b><p>维护热点、社群内容、产品和公司知识库。</p></div>
+            </div>
+          </section>
+        </section>
+
+        <section id="view-release" class="view">
+          <div class="section-grid two">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>发布控制</h3>
+                  <p>本地更新先确认，再同步到长期外链。</p>
+                </div>
+                <button class="primary-button" id="approveRelease" type="button">同意对外展示</button>
+              </div>
+              <div class="release-control">
+                <div class="release-status-card">
+                  <span class="release-state wait" id="releaseGateState">待确认</span>
+                  <strong>长期展示链接</strong>
+                  <a href="https://qjz-yyzt.github.io/zz/" target="_blank" rel="noopener noreferrer">https://qjz-yyzt.github.io/zz/</a>
+                  <p id="releaseGateText">本地改动完成后，需要你点击同意，我再发布到长期链接。</p>
+                </div>
+                <div class="release-actions">
+                  <button class="text-button" id="copyReleaseLink" type="button">复制外链</button>
+                  <button class="text-button" id="resetReleaseApproval" type="button">撤回同意</button>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>本次已发布内容</h3>
+                  <p>用于记录这次同步给外部人员看到的更新。</p>
+                </div>
+                <span class="release-pill">正式发布版</span>
+              </div>
+              <div class="release-checklist">
+                <div><span class="status-dot blue"></span><strong>头部时间位置优化</strong><p>将日期从右上角移动到左侧标题区，符合当前工作台阅读动线。</p></div>
+                <div><span class="status-dot green"></span><strong>版本发布模块上线</strong><p>新增发布审批、长期链接记录和更新记录展示。</p></div>
+                <div><span class="status-dot orange"></span><strong>发布前确认机制</strong><p>本地更新完成后，必须获得确认才会同步到长期链接。</p></div>
+              </div>
+            </section>
+          </div>
+
+          <section class="panel">
+            <div class="panel-header">
+              <div>
+                <h3>更新记录</h3>
+                <p>记录平台搭建和每次可对外展示的版本。</p>
+              </div>
+              <button class="text-button">导出记录</button>
+            </div>
+            <div class="release-timeline">
+              <article>
+                <time>2026-07-08</time>
+                <span class="release-state ok">已发布</span>
+                <h4>v0.6 头部时间位置优化</h4>
+                <p>将日期移动到左上角标题区域，右侧操作区仅保留搜索、消息、提醒和账号。</p>
+              </article>
+              <article>
+                <time>2026-07-08</time>
+                <span class="release-state ok">已发布</span>
+                <h4>v0.5 版本发布模块</h4>
+                <p>新增发布审批、长期链接记录、外部展示确认和更新记录模块。</p>
+              </article>
+              <article>
+                <time>2026-07-08</time>
+                <span class="release-state ok">已发布</span>
+                <h4>v0.4 正式外链上线</h4>
+                <p>创建 GitHub 组织仓库 qjz-yyzt/zz，并发布长期链接。</p>
+              </article>
+              <article>
+                <time>2026-07-08</time>
+                <span class="release-state ok">已发布</span>
+                <h4>v0.3 数据总览完善</h4>
+                <p>补充 9 个项目的数据口径、运营驾驶舱和项目展示。</p>
+              </article>
+              <article>
+                <time>2026-07-07</time>
+                <span class="release-state ok">已归档</span>
+                <h4>v0.1 工作台框架</h4>
+                <p>搭建运营总监视角的工作台首页、内容创作、数据中心、广告执行、风控和权限模块。</p>
+              </article>
             </div>
           </section>
         </section>
