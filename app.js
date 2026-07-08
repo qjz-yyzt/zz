@@ -8,6 +8,7 @@
   report: "数据中心",
   workflow: "风控监测",
   team: "权限管理",
+  release: "版本发布",
 };
 
 const heroCopy = {
@@ -46,6 +47,10 @@ const heroCopy = {
   team: {
     title: "按角色管理权限、职责和协作边界",
     description: "清晰区分查看、编辑、审批和执行权限，方便团队协作时既能提效，也能保留关键操作留痕。",
+  },
+  release: {
+    title: "每次更新先留痕，再由你确认是否对外展示",
+    description: "集中记录平台版本变化、长期链接状态和发布确认动作，避免本地改动未经同意就同步给外部人员。",
   },
 };
 
@@ -113,6 +118,13 @@ const workflowCopy = {
     ["同步成员", "成员变更后及时更新权限状态"],
     ["审计复盘", "定期检查越权、离职账号和异常操作"],
   ],
+  release: [
+    ["记录更新", "把本地新增、调整和修复写入版本记录"],
+    ["本地确认", "先在本机预览并检查页面是否正常"],
+    ["等待同意", "你点击同意后，才进入对外发布流程"],
+    ["同步外链", "确认发布后更新长期链接给外部人员查看"],
+    ["归档留痕", "记录发布时间、内容和当前展示状态"],
+  ],
 };
 
 const navButtons = document.querySelectorAll(".nav-item");
@@ -172,6 +184,70 @@ document.querySelectorAll(".quick-grid button").forEach((button) => {
     if (match === "campaign") switchCampaignTab("execution");
   });
 });
+
+function initReleaseModule() {
+  const approvalKey = "operation-director-release-approval";
+  const publicUrl = "https://qjz-yyzt.github.io/zz/";
+  const approveButton = document.querySelector("#approveRelease");
+  const resetButton = document.querySelector("#resetReleaseApproval");
+  const copyButton = document.querySelector("#copyReleaseLink");
+  const stateEl = document.querySelector("#releaseGateState");
+  const textEl = document.querySelector("#releaseGateText");
+
+  if (!approveButton || !stateEl || !textEl) return;
+
+  function formatTime(value) {
+    if (!value) return "";
+    return new Intl.DateTimeFormat("zh-CN", {
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+    }).format(new Date(value));
+  }
+
+  function renderReleaseState() {
+    const approvedAt = localStorage.getItem(approvalKey);
+    const isApproved = Boolean(approvedAt);
+    stateEl.textContent = isApproved ? "已同意" : "待确认";
+    stateEl.classList.toggle("ok", isApproved);
+    stateEl.classList.toggle("wait", !isApproved);
+    approveButton.textContent = isApproved ? "已同意对外展示" : "同意对外展示";
+    approveButton.disabled = isApproved;
+    textEl.textContent = isApproved
+      ? `你已在 ${formatTime(approvedAt)} 同意本次更新可对外展示。实际发布长期链接前，仍会再次向你确认。`
+      : "本地改动完成后，需要你点击同意，我再发布到长期链接。";
+  }
+
+  approveButton.addEventListener("click", () => {
+    localStorage.setItem(approvalKey, new Date().toISOString());
+    renderReleaseState();
+  });
+
+  resetButton?.addEventListener("click", () => {
+    localStorage.removeItem(approvalKey);
+    renderReleaseState();
+  });
+
+  copyButton?.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard?.writeText(publicUrl);
+      copyButton.textContent = "已复制";
+      window.setTimeout(() => {
+        copyButton.textContent = "复制外链";
+      }, 1400);
+    } catch (error) {
+      copyButton.textContent = "复制失败";
+      window.setTimeout(() => {
+        copyButton.textContent = "复制外链";
+      }, 1400);
+    }
+  });
+
+  renderReleaseState();
+}
+
+initReleaseModule();
 
 function switchCampaignTab(tabName = "schedule") {
   document.querySelectorAll("[data-campaign-tab]").forEach((button) => {
