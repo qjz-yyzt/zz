@@ -1,0 +1,645 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>运营工作台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="主导航">
+        <div class="brand">
+          <div class="brand-mark">JZ</div>
+          <div>
+            <div class="brand-name">运营工作台</div>
+            <div class="brand-subtitle">Operation Center</div>
+          </div>
+        </div>
+
+        <nav class="nav-list" id="navList">
+          <button class="nav-item active" data-view="overview">
+            <span class="nav-icon icon-blue">⌂</span><span>工作台首页</span>
+          </button>
+          <button class="nav-item" data-view="project">
+            <span class="nav-icon icon-indigo">▦</span><span>项目管理</span>
+          </button>
+          <button class="nav-item" data-view="activity">
+            <span class="nav-icon icon-orange">◉</span><span>营销活动</span>
+          </button>
+          <button class="nav-item" data-view="knowledge">
+            <span class="nav-icon icon-cyan">▧</span><span>知识库</span>
+          </button>
+          <button class="nav-item" data-view="content">
+            <span class="nav-icon icon-orange">✎</span><span>内容创作</span>
+          </button>
+          <button class="nav-item" data-view="campaign">
+            <span class="nav-icon icon-purple">◆</span><span>广告计划/执行</span>
+          </button>
+          <button class="nav-item" data-view="report">
+            <span class="nav-icon icon-green">▤</span><span>数据中心</span>
+          </button>
+          <button class="nav-item" data-view="workflow">
+            <span class="nav-icon icon-pink">⚠</span><span>风控监测</span>
+          </button>
+          <button class="nav-item" data-view="team">
+            <span class="nav-icon icon-indigo">☷</span><span>权限管理</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-card">
+          <div class="sidebar-card-title">今日主线</div>
+          <div class="sidebar-card-text">业绩数据、内容生产、日报复盘、广告执行、风控权限</div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="topbar-copy">
+            <div class="page-title-block">
+              <h1 id="pageTitle">工作台首页</h1>
+            </div>
+            <div class="module-position">
+              <h2 id="heroTitle">把每日运营动作串成一条可追踪链路</h2>
+              <p id="heroDescription">业绩数据、项目数据、工作任务、内容生产、效果优化、广告执行、风控权限统一看。</p>
+            </div>
+          </div>
+          <div class="top-actions">
+            <div class="header-date">2026-07-07 · 周二</div>
+            <div class="top-action-row">
+              <div class="search-box">搜索产品 / 活动 / 任务</div>
+              <button class="icon-button" aria-label="消息">✉<span class="dot"></span></button>
+              <button class="icon-button" aria-label="提醒">◔</button>
+              <button class="profile-button">qiao</button>
+            </div>
+          </div>
+        </header>
+
+        <section class="workflow-strip" aria-label="当前模块工作流">
+          <div class="workflow-strip-head">
+            <span>工作流</span>
+            <strong id="workflowTitle">工作台首页</strong>
+          </div>
+          <div class="workflow-steps" id="workflowSteps"></div>
+        </section>
+
+        <section id="view-overview" class="view active">
+          <section class="panel overview-data">
+            <div class="panel-header">
+              <div>
+                <h3>数据总览</h3>
+                <p>业绩、单量、广告展示点击、社群文案转发统一看</p>
+              </div>
+              <button class="text-button">同步数据</button>
+            </div>
+            <div class="overview-matrix">
+              <article class="overview-card primary combined-card">
+                <div class="mini-chart" data-mini-chart="revenue" aria-label="今日业绩单量近7天趋势"></div>
+                <div class="overview-card-head">
+                  <span class="overview-icon icon-blue">￥</span>
+                  <div>
+                    <h4>今日业绩 / 单量</h4>
+                    <p>总业绩、总单量与项目拆分</p>
+                  </div>
+                </div>
+                <div class="overview-total split-total">
+                  <strong>128.6w <small>/ 176</small></strong>
+                  <span class="good">业绩 +14.2w</span>
+                  <span class="good">单量 +18 单</span>
+                </div>
+                <div class="overview-breakdown compact">
+                  <div class="ad-row"><span>短线王新开</span><b>18.4w / 31 <em class="up">+2.1w</em><em class="up">+5</em></b></div>
+                  <div class="ad-row"><span>短线王续费</span><b>22.6w / 39 <em class="up">+2.8w</em><em class="up">+6</em></b></div>
+                  <div class="ad-row"><span>新开升级</span><b>15.8w / 36 <em class="down">-1.1w</em><em class="down">-2</em></b></div>
+                  <div class="ad-row"><span>选股王</span><b>9.7w / 12 <em class="up">+0.8w</em><em class="up">+2</em></b></div>
+                  <div class="ad-row"><span>中高端续费</span><b>24.3w / 42 <em class="up">+3.7w</em><em class="up">+6</em></b></div>
+                  <div class="ad-row"><span>猎手活动</span><b>13.2w / 18 <em class="up">+1.6w</em><em class="up">+3</em></b></div>
+                  <div class="ad-row"><span>基金</span><b>8.6w / 14 <em class="up">+0.9w</em><em class="up">+2</em></b></div>
+                  <div class="ad-row"><span>转介绍</span><b>6.1w / 9 <em class="up">+0.5w</em><em class="up">+1</em></b></div>
+                  <div class="ad-row"><span>加企微活动</span><b>9.9w / 15 <em class="up">+2.9w</em><em class="up">+5</em></b></div>
+                </div>
+              </article>
+
+              <article class="overview-card">
+                <div class="mini-chart" data-mini-chart="ads" aria-label="广告展示点击近7天趋势"></div>
+                <div class="overview-card-head">
+                  <span class="overview-icon icon-orange">点</span>
+                  <div>
+                    <h4>广告展示量 / 点击率</h4>
+                    <p>总展示 / 点击率与项目拆分</p>
+                  </div>
+                </div>
+                <div class="overview-total split-total">
+                  <strong>28.4w <small>/ 2.86%</small></strong>
+                  <span class="good">展示 +18,600</span>
+                  <span class="good">点击率 +0.18%</span>
+                </div>
+                <div class="overview-breakdown compact">
+                  <div class="ad-row"><span>短线王新开</span><b>4.1w / 2.43% <em class="down">-2,400</em><em class="down">-0.16%</em></b></div>
+                  <div class="ad-row"><span>短线王续费</span><b>5.4w / 3.05% <em class="up">+3,800</em><em class="up">+0.31%</em></b></div>
+                  <div class="ad-row"><span>新开升级</span><b>7.2w / 2.91% <em class="up">+5,300</em><em class="up">+0.14%</em></b></div>
+                  <div class="ad-row"><span>选股王</span><b>2.6w / 2.68% <em class="up">+900</em><em class="up">+0.06%</em></b></div>
+                  <div class="ad-row"><span>中高端续费</span><b>6.8w / 3.12% <em class="up">+4,200</em><em class="up">+0.22%</em></b></div>
+                  <div class="ad-row"><span>猎手活动</span><b>4.9w / 2.74% <em class="down">-1,100</em><em class="down">-0.08%</em></b></div>
+                  <div class="ad-row"><span>基金</span><b>2.4w / 2.38% <em class="up">+800</em><em class="up">+0.05%</em></b></div>
+                  <div class="ad-row"><span>转介绍</span><b>1.8w / 2.16% <em class="up">+600</em><em class="up">+0.03%</em></b></div>
+                  <div class="ad-row"><span>加企微活动</span><b>3.2w / 3.28% <em class="up">+1,500</em><em class="up">+0.18%</em></b></div>
+                </div>
+              </article>
+
+              <article class="overview-card">
+                <div class="mini-chart" data-mini-chart="community" aria-label="社群文案近7天趋势"></div>
+                <div class="overview-card-head">
+                  <span class="overview-icon icon-purple">文</span>
+                  <div>
+                    <h4>社群文案数 / 日均转发</h4>
+                    <p>总文案数 / 日均转发与项目拆分</p>
+                  </div>
+                </div>
+                <div class="overview-total"><strong>42 / 318</strong><span class="warn">环比 +6 篇 / +42 次</span></div>
+                <div class="overview-breakdown compact">
+                  <div><span>短线王新开</span><b>5 / 39 <em class="up">+5</em></b></div>
+                  <div><span>短线王续费</span><b>6 / 44 <em class="up">+7</em></b></div>
+                  <div><span>新开升级</span><b>5 / 41 <em class="up">+8</em></b></div>
+                  <div><span>选股王</span><b>4 / 27 <em class="up">+3</em></b></div>
+                  <div><span>中高端续费</span><b>6 / 48 <em class="up">+12</em></b></div>
+                  <div><span>猎手活动</span><b>4 / 31 <em class="down">-4</em></b></div>
+                  <div><span>基金</span><b>4 / 28 <em class="up">+5</em></b></div>
+                  <div><span>转介绍</span><b>3 / 21 <em class="up">+2</em></b></div>
+                  <div><span>加企微活动</span><b>5 / 39 <em class="up">+4</em></b></div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <div class="dashboard-grid">
+            <section class="panel wide">
+              <div class="panel-header">
+                <div>
+                  <h3>运营驾驶舱</h3>
+                  <p>项目业绩、内容生产、广告执行、风险事项合并看进度</p>
+                </div>
+                <button class="text-button">查看全部</button>
+              </div>
+              <div class="operations-row">
+                <div class="operation-tile">
+                  <span class="tile-icon icon-blue">新</span>
+                  <strong>短线王新开</strong>
+                  <p>新客投放跟进，素材与转化链路待复盘</p>
+                  <div class="progress"><span style="width: 72%"></span></div>
+                </div>
+                <div class="operation-tile">
+                  <span class="tile-icon icon-cyan">续</span>
+                  <strong>短线王续费</strong>
+                  <p>日报已更新，社群文案待接入</p>
+                  <div class="progress"><span style="width: 78%"></span></div>
+                </div>
+                <div class="operation-tile">
+                  <span class="tile-icon icon-purple">升</span>
+                  <strong>新开升级</strong>
+                  <p>投放策略待复盘，低效素材 3 张</p>
+                  <div class="progress"><span style="width: 47%"></span></div>
+                </div>
+                <div class="operation-tile">
+                  <span class="tile-icon icon-indigo">选</span>
+                  <strong>选股王</strong>
+                  <p>内容承接正常，转化话术待优化</p>
+                  <div class="progress"><span style="width: 69%"></span></div>
+                </div>
+                <div class="operation-tile">
+                  <span class="tile-icon icon-orange">高</span>
+                  <strong>中高端续费</strong>
+                  <p>福利话术待确认，广告计划待排期</p>
+                  <div class="progress"><span style="width: 52%"></span></div>
+                </div>
+                <div class="operation-tile">
+                  <span class="tile-icon icon-pink">猎</span>
+                  <strong>猎手活动</strong>
+                  <p>活动节奏跟进，复购人群待二次触达</p>
+                  <div class="progress"><span style="width: 61%"></span></div>
+                </div>
+                <div class="operation-tile">
+                  <span class="tile-icon icon-green">基</span>
+                  <strong>基金</strong>
+                  <p>今日内容已生成，盘后播报待补行情</p>
+                  <div class="progress"><span style="width: 64%"></span></div>
+                </div>
+                <div class="operation-tile">
+                  <span class="tile-icon icon-slate">转</span>
+                  <strong>转介绍</strong>
+                  <p>老客推荐线索待跟进，奖励口径待确认</p>
+                  <div class="progress"><span style="width: 44%"></span></div>
+                </div>
+                <div class="operation-tile">
+                  <span class="tile-icon icon-teal">企</span>
+                  <strong>加企微活动</strong>
+                  <p>加微入口正常，欢迎语与承接话术待复核</p>
+                  <div class="progress"><span style="width: 58%"></span></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header compact">
+                <h3>今日待办</h3>
+                <button class="text-button">全部待办</button>
+              </div>
+              <div class="timeline">
+                <div class="timeline-item active"><time>08:50</time><span>早盘续费文案确认</span></div>
+                <div class="timeline-item"><time>10:30</time><span>短线王续费日报问题素材复盘</span></div>
+                <div class="timeline-item"><time>14:00</time><span>投放计划 T01-T04 确认</span></div>
+                <div class="timeline-item"><time>16:30</time><span>基金盘后社群播报</span></div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header compact">
+                <h3>常用功能</h3>
+                <button class="text-button">管理</button>
+              </div>
+              <div class="quick-grid">
+                <button><span class="icon-purple">◍</span>首页总览</button>
+                <button><span class="icon-indigo">▦</span>项目管理</button>
+                <button><span class="icon-orange">◉</span>营销活动</button>
+                <button><span class="icon-green">✎</span>内容创作</button>
+                <button><span class="icon-blue">▤</span>数据中心</button>
+                <button><span class="icon-orange">▣</span>广告执行</button>
+                <button><span class="icon-pink">⚠</span>风控监测</button>
+                <button><span class="icon-cyan">☷</span>权限管理</button>
+              </div>
+            </section>
+
+            <section class="panel wide">
+              <div class="panel-header">
+                <div>
+                  <h3>本周趋势</h3>
+                  <p>用轻量图表先占位，后续接真实数据源</p>
+                </div>
+                <div class="segmented" id="chartPeriod">
+                  <button class="active" data-period="week">本周</button>
+                  <button data-period="month">本月</button>
+                </div>
+              </div>
+              <div class="chart-board">
+                <div class="bar-chart" id="operationBarChart" aria-label="运营动作柱状图"></div>
+                <div class="trend-list">
+                  <div><strong id="trendMainTitle">续费承接</strong><span id="trendMainText">稳定提升</span></div>
+                  <div><strong id="trendSecondTitle">社群触达</strong><span id="trendSecondText">盘后内容待补齐</span></div>
+                  <div><strong id="trendThirdTitle">投放效率</strong><span id="trendThirdText">App/PC 弹窗需换图策略</span></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header compact">
+                <h3>各项目业绩趋势</h3>
+                <button class="text-button" id="shuffleLineChart">切换口径</button>
+              </div>
+              <div class="line-chart-card">
+                <svg id="productLineChart" viewBox="0 0 520 210" role="img" aria-label="项目业绩趋势折线图"></svg>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header compact">
+                <h3>异常中心</h3>
+                <button class="text-button">处理</button>
+              </div>
+              <div class="notice-list">
+                <div><span class="status-dot red"></span>素材管理接口待跑通</div>
+                <div><span class="status-dot orange"></span>PC 弹窗来源日需复核</div>
+                <div><span class="status-dot blue"></span>日报社群文案模块待接入</div>
+                <div><span class="status-dot green"></span>早报生成链路正常</div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-project" class="view">
+          <div class="section-grid two">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>项目总览</h3>
+                  <p>按项目统一看目标、当前进度、负责人、待推进事项和风险状态</p>
+                </div>
+                <button class="text-button">新增项目</button>
+              </div>
+              <div class="content-flow">
+                <div class="done"><span>短线王新开</span><strong>新客转化</strong><p>关注体验路径、首单转化、素材点击率和新客教育。</p></div>
+                <div class="done"><span>短线王续费</span><strong>老客承接</strong><p>关注到期用户、续费权益、触达频次和支付完成率。</p></div>
+                <div><span>中高端续费</span><strong>服务承接</strong><p>关注服务权益、持仓复盘、专属口径和续费确认。</p></div>
+                <div><span>猎手活动</span><strong>活动转化</strong><p>关注训练营权益、活动节奏、案例承接和复购线索。</p></div>
+                <div><span>基金</span><strong>内容陪伴</strong><p>关注盘后播报、组合跟踪、风险提示和社群触达。</p></div>
+                <div><span>加企微活动</span><strong>私域沉淀</strong><p>关注添加路径、资料领取、企微承接和后续转化。</p></div>
+              </div>
+            </section>
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>项目推进看板</h3>
+                  <p>把项目目标拆到今日动作，便于跟进和复盘</p>
+                </div>
+                <button class="text-button">同步进度</button>
+              </div>
+              <div class="report-stack">
+                <div><span>1</span><strong>目标确认</strong><p>确认项目本周核心目标、成交口径和重点人群。</p></div>
+                <div><span>2</span><strong>资源匹配</strong><p>匹配内容、广告位、社群触达和数据复盘资源。</p></div>
+                <div><span>3</span><strong>执行跟踪</strong><p>跟踪投放、文案、订单、成交和异常处理进度。</p></div>
+                <div><span>4</span><strong>复盘沉淀</strong><p>把有效素材、问题原因和优化动作回写到知识库。</p></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-activity" class="view">
+          <div class="section-grid two">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>营销活动排期</h3>
+                  <p>统一管理活动主题、项目归属、目标人群、资源位和执行状态</p>
+                </div>
+                <button class="text-button">新增活动</button>
+              </div>
+              <div class="content-flow">
+                <div class="done"><span>短线王续费</span><strong>续费权益提醒</strong><p>老用户到期承接，重点看权益确认和支付完成。</p></div>
+                <div class="done"><span>加企微活动</span><strong>企微服务承接</strong><p>通过资料领取和服务提醒沉淀私域线索。</p></div>
+                <div><span>转介绍</span><strong>老带新权益</strong><p>明确邀请路径、权益发放和转介绍追踪口径。</p></div>
+                <div><span>基金</span><strong>盘后内容陪伴</strong><p>围绕盘后播报、风险提示和组合跟踪做社群触达。</p></div>
+              </div>
+            </section>
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>活动执行闭环</h3>
+                  <p>从策划到上线、承接、复盘形成完整链路</p>
+                </div>
+                <button class="text-button">查看日历</button>
+              </div>
+              <div class="report-stack">
+                <div><span>1</span><strong>活动策划</strong><p>确定主题、目标、适用项目、利益点和合规边界。</p></div>
+                <div><span>2</span><strong>素材准备</strong><p>准备广告图、社群文案、直播口播和落地页链接。</p></div>
+                <div><span>3</span><strong>资源上线</strong><p>同步广告排期、社群触达、企微承接和待办提醒。</p></div>
+                <div><span>4</span><strong>效果复盘</strong><p>按曝光、点击、订单、成交和社群反馈复盘优化。</p></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-knowledge" class="view">
+          <div class="section-grid two">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>知识库</h3>
+                  <p>统一维护产品、公司、SOP 和素材口径，供内容创作与数据复盘调用</p>
+                </div>
+                <button class="text-button">新增资料</button>
+              </div>
+              <div class="content-flow">
+                <div class="done"><span>产品知识库</span><strong>产品卖点 / FAQ</strong><p>续费福利、产品权益、常见问题、活动链接。</p></div>
+                <div class="done"><span>公司知识库</span><strong>资质 / 品牌</strong><p>品牌介绍、资质说明、合规边界、标准话术。</p></div>
+                <div><span>SOP 知识库</span><strong>流程 / 检查项</strong><p>日报、社群、广告执行、风控检查的操作口径。</p></div>
+                <div><span>素材知识库</span><strong>图片 / 文案 / 案例</strong><p>可复用素材、历史高效文案、问题素材复盘记录。</p></div>
+              </div>
+            </section>
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>资料更新状态</h3>
+                  <p>对外演示版先展示维护节奏，后续接入真实资料库</p>
+                </div>
+                <button class="text-button">同步资料</button>
+              </div>
+              <div class="report-stack">
+                <div><strong>本周新增</strong><p>续费福利口径 4 条、产品 FAQ 8 条、社群素材 12 条。</p></div>
+                <div><strong>待复核</strong><p>投放素材来源、免责声明、活动链接有效期。</p></div>
+                <div><strong>可调用模块</strong><p>内容创作、日报复盘、广告计划、风控监测。</p></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-content" class="view">
+          <div class="section-grid two">
+            <section class="panel">
+              <div class="panel-header"><h3>热点追踪与社群内容</h3><button class="text-button">生成今日内容</button></div>
+              <div class="content-flow">
+                <div class="done"><span>热点追踪</span><strong>盘前 / 盘中 / 盘后</strong><p>市场热点、政策消息、行业异动</p></div>
+                <div class="done"><span>社群内容</span><strong>08:30-18:00</strong><p>早报、纪律、话题、盘后播报</p></div>
+                <div><span>产品知识库</span><strong>持续维护</strong><p>产品卖点、福利口径、FAQ、链接</p></div>
+                <div><span>公司知识库</span><strong>持续维护</strong><p>资质、品牌介绍、合规说明、标准话术</p></div>
+              </div>
+            </section>
+            <section class="panel">
+              <div class="panel-header"><h3>内容创作工作台</h3><button class="text-button">复制草稿</button></div>
+              <div class="copy-card">
+                <b>从热点追踪中挑选可用信息，结合产品知识库生成可复制内容。</b>
+                <p>文案只生成，不自动发送；投资类内容保留风险提示和合规边界。</p>
+                <textarea readonly>大家上午好，今天先给大家补充一份早盘重点信息...</textarea>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section id="view-campaign" class="view">
+          <section class="panel campaign-automation">
+            <div class="panel-header">
+              <div>
+                <h3>广告计划 / 执行</h3>
+                <p>按“配置 - 校验 - 入队 - 执行 - 记录 - 记忆”管理广告自动化任务</p>
+              </div>
+              <span class="helper-state" id="automationHelperState">演示模式</span>
+            </div>
+
+            <div class="campaign-tabs" role="tablist" aria-label="广告模块切换">
+              <button class="active" type="button" data-campaign-tab="schedule">广告资源排期</button>
+              <button type="button" data-campaign-tab="execution">广告计划/执行</button>
+            </div>
+
+            <div class="campaign-tab-panel active" data-campaign-panel="schedule">
+              <section class="campaign-card schedule-card">
+                <div class="campaign-card-title"><span class="tile-icon icon-blue">▥</span><div><h4>资源排期总览</h4><p>按资源位、项目、日期和素材状态统一看占用与冲突。</p></div></div>
+                <div class="schedule-summary">
+                  <div><span>今日排期</span><strong>18</strong><em>已确认 14</em></div>
+                  <div><span>待校验</span><strong>4</strong><em>素材/人群待复核</em></div>
+                  <div><span>冲突提醒</span><strong>2</strong><em>同资源位重叠</em></div>
+                  <div><span>空闲资源</span><strong>6</strong><em>可补投时段</em></div>
+                </div>
+              </section>
+
+              <section class="campaign-card schedule-card">
+                <div class="campaign-card-title"><span class="tile-icon icon-purple">◷</span><div><h4>资源位占用</h4><p>先看 APP、PC、普通广告的日内排期状态。</p></div></div>
+                <div class="schedule-lanes">
+                  <div class="schedule-lane"><strong>APP 弹窗</strong><span>09:00 短线王续费</span><span>15:01 短线王新开</span><em class="badge ok">正常</em></div>
+                  <div class="schedule-lane"><strong>PC 弹窗</strong><span>10:01 中高端续费</span><span>19:00 加企微活动</span><em class="badge warn">需复核</em></div>
+                  <div class="schedule-lane"><strong>普通广告</strong><span>短线王续费素材 A/B</span><span>新开升级低效素材替换</span><em class="badge wait">待确认</em></div>
+                </div>
+              </section>
+
+              <section class="campaign-card schedule-card wide">
+                <div class="campaign-card-title"><span class="tile-icon icon-orange">▤</span><div><h4>排期明细</h4><p>资源、项目、素材、校验状态和后续动作。</p></div></div>
+                <div class="schedule-table">
+                  <div class="schedule-row head"><span>资源位</span><span>项目</span><span>时间</span><span>状态</span><span>动作</span></div>
+                  <div class="schedule-row"><span>APP 弹窗</span><span>短线王续费</span><span>09:00-13:00</span><span><em class="badge ok">已确认</em></span><span>等待执行</span></div>
+                  <div class="schedule-row"><span>PC 弹窗</span><span>中高端续费</span><span>10:01-14:00</span><span><em class="badge warn">人群复核</em></span><span>查看规则</span></div>
+                  <div class="schedule-row"><span>普通广告</span><span>短线王新开</span><span>全天</span><span><em class="badge wait">素材待换</em></span><span>转执行任务</span></div>
+                </div>
+              </section>
+            </div>
+
+            <div class="campaign-tab-panel" data-campaign-panel="execution">
+            <div class="campaign-grid">
+              <section class="campaign-card">
+                <div class="campaign-card-title"><span class="tile-icon icon-blue">▣</span><div><h4>任务配置</h4><p>复刻广告自动化参数口径，先保存或入队，再执行。</p></div></div>
+                <div class="campaign-form">
+                  <label>项目<select id="autoProject"><optgroup label="续费 / 活动"><option value="中高端续费" data-group="48">中高端续费</option><option value="猎手活动" data-group="92">猎手活动</option></optgroup><optgroup label="选股 / 升级"><option value="选股王" data-group="81">选股王</option><option value="新开升级" data-group="63">新开升级</option></optgroup><optgroup label="短线王"><option value="短线王新开" data-group="7">短线王新开</option><option value="短线王续费" data-group="27">短线王续费</option></optgroup><optgroup label="私域 / 增长"><option value="基金" data-group="64">基金</option><option value="转介绍" data-group="73">转介绍</option><option value="加企微活动" data-group="88">加企微活动</option></optgroup></select></label>
+                  <label>广告类型<select id="autoAdType"><option value="normal">普通广告</option><option value="appPopup">APP 弹窗广告</option><option value="pcPopup">PC 客户端弹窗</option></select></label>
+                  <label>执行动作<select id="autoAction"><option value="copyAndReplace">复制并换图</option><option value="replaceOnly">只换图不复制</option><option value="copyOnly">只复制不换图</option></select></label>
+                  <label>广告分组ID<input id="autoGroupId" type="number" value="27" /></label>
+                  <label>来源日期<input id="autoSourceDate" type="date" /></label>
+                  <label>目标日期<input id="autoTargetDate" type="date" /></label>
+                  <label class="wide">素材文件夹<input id="autoAssetDir" placeholder="需要换图时填写共享盘或本地素材路径" /></label>
+                  <label class="wide">排除广告ID<textarea id="autoExcludeIds" placeholder="多个ID用逗号、分号、空格或换行分隔"></textarea></label>
+                  <label class="wide">备注<textarea id="autoNote" placeholder="记录本次任务口径，例如素材批次、只复制原因、特殊人群规则等"></textarea></label>
+                </div>
+                <div class="campaign-actions">
+                  <button id="autoSaveConfig" type="button">保存配置</button>
+                  <button id="autoCreateTask" type="button">创建任务</button>
+                  <button class="primary-button" id="autoRunTask" type="button">执行任务</button>
+                </div>
+                <div class="automation-status" id="autoStatus">当前为演示模式：会完整模拟校验、入队、执行、记录和操作记忆，不会触发真实后台。</div>
+              </section>
+
+              <section class="campaign-card">
+                <div class="campaign-card-title"><span class="tile-icon icon-purple">✦</span><div><h4>快捷模板</h4><p>常用投放动作一键载入，保留来源日和目标日可改。</p></div></div>
+                <div class="template-list" id="autoTemplates"></div>
+                <div class="automation-note">固定规则：复制只创建目标日期副本，不修改来源广告；换图按原图文件名匹配素材文件名；匹配不到的广告位进入“未匹配”提示。</div>
+                <div class="campaign-card-title compact-title"><span class="tile-icon icon-green">✓</span><div><h4>运行记录</h4><p>最近执行结果、复制数量、换图数量和异常提示。</p></div></div>
+                <div class="run-list" id="autoRuns"></div>
+              </section>
+
+              <section class="campaign-card task-card">
+                <div class="task-head">
+                  <div class="campaign-card-title"><span class="tile-icon icon-orange">▤</span><div><h4>任务列表</h4><p>可一次添加多条任务，再按顺序批量执行。</p></div></div>
+                  <div class="campaign-actions inline">
+                    <button id="autoRunTaskQueue" type="button">执行任务列表</button>
+                    <button id="autoClearDoneTasks" type="button">清除已完成</button>
+                  </div>
+                </div>
+                <div class="task-list" id="autoTaskList"></div>
+              </section>
+
+              <section class="campaign-card memory-card">
+                <div class="campaign-card-title"><span class="tile-icon icon-cyan">◒</span><div><h4>操作记忆</h4><p>保存带备注的配置后沉淀为可复用口径。</p></div></div>
+                <div class="memory-list" id="autoMemories"></div>
+              </section>
+            </div>
+            </div>
+          </section>
+        </section>
+
+        <section id="view-report" class="view">
+          <section class="panel data-center-panel">
+            <div class="panel-header data-center-head">
+              <div>
+                <h3>数据中心</h3>
+                <p>按日报逻辑汇总核心指标、转化漏斗、渠道/人群拆分、问题素材和自动复盘建议</p>
+              </div>
+              <div class="data-controls">
+                <label>项目<select id="analysisProject"></select></label>
+                <label>日期<select id="analysisDate"></select></label>
+                <label>对比<select id="analysisCompareDate"></select></label>
+                <label>口径<select id="analysisChannel"><option value="ALL">APP+PC全部</option><option value="APP">APP</option><option value="PC">PC</option></select></label>
+                <label>问题阈值<input id="analysisPopupThreshold" type="number" min="0" step="100" value="1000" /></label>
+              </div>
+            </div>
+
+            <div class="analysis-update-panel">
+              <div>
+                <strong>数据抓取入口</strong>
+                <p>数据不实时更新；先启动本地抓取助手，选择上方项目后点击更新数据，本地助手会从广告统计页抓取并写回当前数据中心。</p>
+                <a href="https://zt.jingzhuan.cn/#/operation/circle/sheet/operate/adstat" target="_blank" rel="noopener noreferrer">打开后台数据源</a>
+              </div>
+              <div class="analysis-update-actions" id="analysisUpdateActions"></div>
+              <div class="analysis-update-status" id="analysisUpdateStatus">等待手动更新。</div>
+            </div>
+
+            <div class="analysis-grid">
+              <section class="analysis-block span-8">
+                <div class="analysis-section-title"><h4>核心指标</h4><span id="analysisDateNote">默认取最新日期</span></div>
+                <div class="analysis-kpis" id="analysisMetrics"></div>
+              </section>
+
+              <section class="analysis-block span-4">
+                <div class="analysis-section-title"><h4>行情简述</h4><span>辅助判断素材承接</span></div>
+                <div class="analysis-market" id="analysisMarket"></div>
+              </section>
+
+              <section class="analysis-block span-5">
+                <div class="analysis-section-title"><h4>成交漏斗</h4><span>弹出 → 点击 → 订单 → 成交</span></div>
+                <div class="analysis-funnel" id="analysisFunnel"></div>
+              </section>
+
+              <section class="analysis-block span-7">
+                <div class="analysis-section-title"><h4>渠道拆分</h4><span>按渠道看效率</span></div>
+                <div class="analysis-table-wrap"><table id="analysisChannelTable"></table></div>
+              </section>
+
+              <section class="analysis-block span-12">
+                <div class="analysis-section-title"><h4>命中人群拆分</h4><span>按人群定位投放问题</span></div>
+                <div class="analysis-table-wrap"><table id="analysisAudienceTable"></table></div>
+              </section>
+
+              <section class="analysis-block span-12">
+                <div class="analysis-section-title"><h4>问题素材 TOP</h4><span id="analysisProblemCount"></span></div>
+                <div class="analysis-table-wrap"><table id="analysisProblemTable"></table></div>
+              </section>
+
+              <section class="analysis-block span-6">
+                <div class="analysis-section-title"><h4>社群文案分析</h4><span>承接质量参考</span></div>
+                <div id="analysisCommunity"></div>
+              </section>
+
+              <section class="analysis-block span-6">
+                <div class="analysis-section-title"><h4>系统自动复盘</h4><span>异常 → 动作 → 闭环</span></div>
+                <div class="analysis-review" id="analysisReview"></div>
+              </section>
+
+              <section class="analysis-block span-12">
+                <div class="analysis-section-title"><h4>可复制日报摘要</h4><button class="text-button" id="copyAnalysisSummary" type="button">复制</button></div>
+                <textarea class="analysis-summary" id="analysisSummary" readonly></textarea>
+              </section>
+            </div>
+          </section>
+        </section>
+
+        <section id="view-workflow" class="view">
+          <section class="panel">
+            <div class="panel-header"><h3>风控监测</h3><button class="primary-button">新增监测项</button></div>
+            <div class="workflow-lanes">
+              <div><h4>内容合规</h4><p>收益承诺、买卖指令、个股推荐、投顾边界。</p></div>
+              <div><h4>广告执行风险</h4><p>重复铺设、日期错配、素材过期、审核状态异常。</p></div>
+              <div><h4>数据异常</h4><p>日报缺数、接口失败、字段变更、转化漏斗异常。</p></div>
+              <div><h4>权限风险</h4><p>账号离职未关、越权访问、关键操作未留痕。</p></div>
+            </div>
+          </section>
+        </section>
+
+        <section id="view-team" class="view">
+          <section class="panel">
+            <div class="panel-header"><h3>权限管理</h3><button class="text-button">同步成员</button></div>
+            <div class="team-grid">
+              <div><span class="avatar blue">管</span><b>运营管理</b><p>查看全部数据，审批执行动作，管理权限。</p></div>
+              <div><span class="avatar green">数</span><b>数据角色</b><p>维护日报、周报、月报和数据口径。</p></div>
+              <div><span class="avatar orange">投</span><b>投放角色</b><p>维护广告计划、执行记录和素材路径。</p></div>
+              <div><span class="avatar purple">内</span><b>内容角色</b><p>维护热点、社群内容、产品和公司知识库。</p></div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
