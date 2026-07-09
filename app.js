@@ -1017,6 +1017,7 @@ function initKnowledgeModule() {
       <td><span class="file-icon ${safeText(file.iconClass || file.category)}">${safeText(file.icon)}</span>${safeText(file.name)}${file.description ? `<span class="kb-file-note" title="${safeText(file.description)}">${safeText(file.description)}</span>` : ""}</td>
       <td>${safeText(categoryLabel[file.category] || file.category)}</td>
       <td><em class="kb-tag">${safeText(subcategoryLabel[file.subcategory] || file.subcategory)}</em></td>
+      <td>${knowledgePreviewButton()}</td>
       <td>${safeText(file.time)}</td>
       <td><button class="kb-switch${file.status === "enabled" ? " on" : ""}">${file.status === "enabled" ? "启用" : "禁用"}</button></td>
       <td>${knowledgeActionButtons()}</td>
@@ -1040,9 +1041,19 @@ function initKnowledgeModule() {
     `;
   }
 
+  function knowledgePreviewButton() {
+    return `
+      <button class="kb-preview-action" data-kb-file-action="预览" aria-label="预览" title="预览">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      </button>
+    `;
+  }
+
   function upgradeActionCells() {
     rows().forEach((row) => {
-      const actionCell = row.children[7];
+      const previewCell = row.children[5];
+      if (previewCell && !previewCell.querySelector(".kb-preview-action")) previewCell.innerHTML = knowledgePreviewButton();
+      const actionCell = row.children[8];
       if (actionCell && !actionCell.querySelector(".kb-action-icons")) actionCell.innerHTML = knowledgeActionButtons();
     });
   }
@@ -1144,7 +1155,7 @@ function initKnowledgeModule() {
       status: row.dataset.status || "enabled",
       icon: row.querySelector(".file-icon")?.textContent || fileIconFor(row.dataset.format, row.dataset.category),
       iconClass: row.querySelector(".file-icon")?.className.replace("file-icon", "").trim() || fileClassFor(row.dataset.format, row.dataset.category),
-      time: row.children[5]?.textContent.trim() || formatTime(),
+      time: row.children[6]?.textContent.trim() || formatTime(),
       hasBlob: Boolean(row.dataset.fileId),
     }));
   }
@@ -1384,7 +1395,22 @@ function initKnowledgeModule() {
       const action = event.target.closest("[data-kb-file-action]").dataset.kbFileAction;
       const fileNameCell = row.children[2];
       const fileName = fileNameCell?.textContent.trim() || "当前文件";
-      if (action === "删除") {
+      if (action === "预览") {
+        const fileId = row.dataset.fileId;
+        if (!fileId) {
+          knowledgeFeedback("暂无可预览源文件", "示例文件没有真实文件内容；你上传的文件可以直接预览。");
+          return;
+        }
+        getStoredBlob(fileId).then((record) => {
+          if (!record?.blob) {
+            knowledgeFeedback("预览失败", "没有找到本地保存的源文件。");
+            return;
+          }
+          const url = URL.createObjectURL(record.blob);
+          window.open(url, "_blank", "noopener,noreferrer");
+          window.setTimeout(() => URL.revokeObjectURL(url), 30000);
+        }).catch(() => knowledgeFeedback("预览失败", "浏览器本地数据库读取失败。"));
+      } else if (action === "删除") {
         const fileId = row.dataset.fileId;
         row.remove();
         deleteStoredBlob(fileId).catch(() => {});
