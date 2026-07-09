@@ -1,0 +1,17 @@
+{
+  "updatedAt": "2026-07-09T08:00:06.457Z",
+  "files": [
+    {
+      "date": "2026-07-08",
+      "file": "adstat-backups/2026-07-08.json",
+      "rowCount": 10,
+      "updatedAt": "2026-07-09T08:00:06.457Z"
+    },
+    {
+      "date": "2026-07-07",
+      "file": "adstat-backups/2026-07-07.json",
+      "rowCount": 6,
+      "updatedAt": "2026-07-09T07:44:41.438Z"
+    }
+  ]
+}
