@@ -1492,10 +1492,10 @@ h1 {
 
 .release-trend-chart {
   height: 276px;
-  padding: 18px 22px 16px;
-  border: 1px solid #dce8f7;
-  border-radius: 14px;
-  background: linear-gradient(180deg, #fbfdff 0%, #ffffff 100%);
+  padding: 20px 24px 18px;
+  border: 1px solid #e1ebf8;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fbfdff 0%, #ffffff 72%, #fbfdff 100%);
   overflow: hidden;
 }
 
@@ -1506,19 +1506,19 @@ h1 {
 }
 
 .release-trend-grid line {
-  stroke: #e7eef8;
-  stroke-width: 0.6;
+  stroke: #edf2f9;
+  stroke-width: 0.42;
 }
 
 .release-trend-area {
   fill: var(--trend-color);
-  opacity: 0.18;
+  opacity: 0.12;
 }
 
 .release-trend-line {
   fill: none;
   stroke: var(--trend-color);
-  stroke-width: 1.65;
+  stroke-width: 1.05;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -1526,18 +1526,18 @@ h1 {
 .release-trend-dots circle {
   fill: #fff;
   stroke: var(--trend-color);
-  stroke-width: 1.35;
+  stroke-width: 0.9;
 }
 
 .release-trend-values text {
   fill: var(--text);
-  font-size: 4.2px;
+  font-size: 3.2px;
   font-weight: 900;
 }
 
 .release-trend-labels text {
   fill: #7b8da6;
-  font-size: 3.8px;
+  font-size: 3px;
   font-weight: 800;
 }
 
