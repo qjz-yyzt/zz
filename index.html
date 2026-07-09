@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-filter" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-filter-left" />
   </head>
   <body>
     <div class="app-shell">
@@ -880,13 +880,13 @@
               <div>
                 <h3>更新记录</h3>
                 <p>勾选需要对外展示的版本，可批量发布，也可撤回到上一个发布状态。</p>
-              </div>
-              <div class="release-toolbar">
                 <div class="release-filter segmented" aria-label="更新记录筛选">
                   <button class="active" type="button" data-release-filter="all">全部</button>
-                  <button type="button" data-release-filter="wait">待发布</button>
                   <button type="button" data-release-filter="ok">已发布</button>
+                  <button type="button" data-release-filter="wait">待发布</button>
                 </div>
+              </div>
+              <div class="release-toolbar">
                 <button class="text-button" id="selectAllRelease" type="button">一键全选</button>
                 <button class="text-button" id="selectPendingRelease" type="button">选择待发布</button>
                 <button class="text-button" id="clearReleaseSelection" type="button">清空选择</button>
@@ -1140,8 +1140,8 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-filter"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-filter"></script>
-    <script src="./app.js?v=20260709-release-filter"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-filter-left"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-filter-left"></script>
+    <script src="./app.js?v=20260709-release-filter-left"></script>
   </body>
 </html>
