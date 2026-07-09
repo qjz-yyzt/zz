@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-copy-links" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-trend-card" />
   </head>
   <body>
     <div class="app-shell">
@@ -928,6 +928,13 @@
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.54" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.54" /><span></span></label>
+                <time>2026-07-09 17:22:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.54 版本趋势图样式升级</h4>
+                <p>日报、周报、月报、年报改为同一趋势图卡切换展示，参考项目业绩趋势样式呈现折线和面积趋势。</p>
+              </article>
               <article data-release-id="v0.53" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.53" /><span></span></label>
                 <time>2026-07-09 17:14:00</time>
@@ -1305,47 +1312,28 @@
                 <p id="releaseVersionLatestDesc">等待版本模块更新</p>
               </div>
             </div>
-            <div class="release-report-grid" aria-label="版本发布报表">
-              <div class="release-report-card">
-                <span class="release-report-icon blue">日</span>
+            <div class="release-trend-card" aria-label="版本发布趋势">
+              <div class="release-trend-head">
                 <div>
-                  <strong>日报</strong>
-                  <p id="releaseDailyReport">今日等待记录</p>
-                  <div class="release-mini-chart" id="releaseDailyChart"></div>
+                  <h4>版本发布趋势</h4>
+                  <p id="releaseTrendSummary">按周期查看版本发布量级</p>
+                </div>
+                <div class="release-trend-tabs" aria-label="版本发布趋势周期">
+                  <button class="active" type="button" data-release-report-tab="day">日报</button>
+                  <button type="button" data-release-report-tab="week">周报</button>
+                  <button type="button" data-release-report-tab="month">月报</button>
+                  <button type="button" data-release-report-tab="year">年报</button>
                 </div>
               </div>
-              <div class="release-report-card">
-                <span class="release-report-icon green">周</span>
-                <div>
-                  <strong>周报</strong>
-                  <p id="releaseWeeklyReport">本周等待记录</p>
-                  <div class="release-mini-chart" id="releaseWeeklyChart"></div>
-                </div>
-              </div>
-              <div class="release-report-card">
-                <span class="release-report-icon orange">月</span>
-                <div>
-                  <strong>月报</strong>
-                  <p id="releaseMonthlyReport">本月等待记录</p>
-                  <div class="release-mini-chart" id="releaseMonthlyChart"></div>
-                </div>
-              </div>
-              <div class="release-report-card">
-                <span class="release-report-icon purple">年</span>
-                <div>
-                  <strong>年报</strong>
-                  <p id="releaseYearlyReport">本年等待记录</p>
-                  <div class="release-mini-chart" id="releaseYearlyChart"></div>
-                </div>
-              </div>
+              <div class="release-trend-chart" id="releaseTrendChart"></div>
             </div>
           </section>
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-copy-links"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-copy-links"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-copy-links"></script>
-    <script src="./app.js?v=20260709-release-copy-links"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-trend-card"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-trend-card"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-trend-card"></script>
+    <script src="./app.js?v=20260709-release-trend-card"></script>
   </body>
 </html>
