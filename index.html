@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-report-charts" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-copy-links" />
   </head>
   <body>
     <div class="app-shell">
@@ -843,14 +843,20 @@
                 <div class="release-status-card">
                   <span class="release-state ok" id="releaseGateState">自动发版</span>
                   <strong>长期展示链接</strong>
-                  <a href="https://qjz-yyzt.github.io/zz/" target="_blank" rel="noopener noreferrer">https://qjz-yyzt.github.io/zz/</a>
+                  <div class="release-link-row">
+                    <a href="https://qjz-yyzt.github.io/zz/" target="_blank" rel="noopener noreferrer">https://qjz-yyzt.github.io/zz/</a>
+                    <button class="text-button" id="copyReleaseLink" type="button" data-copy-url="https://qjz-yyzt.github.io/zz/">复制链接</button>
+                  </div>
                   <strong>本机预览链接</strong>
-                  <a href="http://127.0.0.1:8099/index.html" target="_blank" rel="noopener noreferrer">http://127.0.0.1:8099/index.html</a>
+                  <div class="release-link-row">
+                    <a href="http://127.0.0.1:8099/index.html" target="_blank" rel="noopener noreferrer">http://127.0.0.1:8099/index.html</a>
+                    <button class="text-button" id="copyPreviewLink" type="button" data-copy-url="http://127.0.0.1:8099/index.html">复制链接</button>
+                  </div>
                   <p id="releaseGateText">记录仅代表本机已留痕，外部正式链接不会自动展示；需要在下方勾选版本后发布。</p>
                 </div>
                 <div class="release-actions">
-                  <button class="text-button" id="copyReleaseLink" type="button">复制外链</button>
-                  <button class="text-button" id="resetReleaseApproval" type="button">清除本机记录</button>
+                  <button class="text-button" id="resetReleaseApproval" type="button">重置本机发布确认</button>
+                  <span>仅清除“已记录本次发布”的确认状态，不删除更新记录，不影响正式链接。</span>
                 </div>
               </div>
             </section>
@@ -922,6 +928,13 @@
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.53" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.53" /><span></span></label>
+                <time>2026-07-09 17:14:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.53 链接复制入口整理</h4>
+                <p>复制链接移动到链接行右侧，并将清除本机记录改为重置本机发布确认，补充影响说明。</p>
+              </article>
               <article data-release-id="v0.52" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.52" /><span></span></label>
                 <time>2026-07-09 17:08:00</time>
@@ -1330,9 +1343,9 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-report-charts"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-report-charts"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-report-charts"></script>
-    <script src="./app.js?v=20260709-release-report-charts"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-copy-links"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-copy-links"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-copy-links"></script>
+    <script src="./app.js?v=20260709-release-copy-links"></script>
   </body>
 </html>
