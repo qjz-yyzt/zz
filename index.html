@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-fix" />
   </head>
   <body>
     <div class="app-shell">
@@ -736,7 +736,8 @@
                 <label>项目<select id="analysisProject"></select></label>
                 <label>日期<input id="analysisDate" type="date" /></label>
                 <label>对比<input id="analysisCompareDate" type="date" /></label>
-                <label>口径<select id="analysisChannel"><option value="ALL">APP+PC全部</option><option value="APP">APP</option><option value="PC">PC</option></select></label>
+                <label>广告类型<select id="analysisChannel"><option value="normal">普通广告</option><option value="appPopup" selected>APP弹窗广告</option><option value="appNotice">APP通知栏推送</option><option value="pcPopup">PC弹窗推送</option></select></label>
+                <label>应用范围<select id="analysisAppScope"><option value="ALL">全部</option><option value="PC">PC</option><option value="APP">APP</option></select></label>
                 <label>问题阈值<input id="analysisPopupThreshold" type="number" min="0" step="100" value="1000" /></label>
               </div>
               <div class="analysis-update-panel">
@@ -1133,8 +1134,8 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js"></script>
-    <script src="./data/community-material-seed.js"></script>
-    <script src="./app.js"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-fix"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-fix"></script>
+    <script src="./app.js?v=20260709-release-fix"></script>
   </body>
 </html>
