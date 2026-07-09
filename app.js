@@ -154,6 +154,17 @@ const reportPeriodCopy = {
     description: "按月汇总项目目标完成度、渠道贡献、活动效果和关键风险，为下一阶段资源分配提供依据。",
   },
 };
+const analysisAdTypes = {
+  normal: { label: "普通广告", channel: "APP", bannerType: 1 },
+  appPopup: { label: "APP弹窗广告", channel: "APP", bannerType: 2 },
+  appNotice: { label: "APP通知栏推送", channel: "APP", bannerType: 3 },
+  pcPopup: { label: "PC弹窗推送", channel: "PC", bannerType: 4 },
+};
+const analysisAppScopes = {
+  ALL: { label: "全部", backendLabel: "PC+APP", channels: ["APP", "PC"] },
+  PC: { label: "PC", backendLabel: "股票软件+多赢WEB网站", channels: ["PC"] },
+  APP: { label: "APP", backendLabel: "经传多赢股票", channels: ["APP"] },
+};
 const contentTypeCopy = {
   copy: {
     title: "文案创作：把热点、活动和产品卖点转成可直接分发的话术",
@@ -2202,20 +2213,37 @@ function kpiHtml(label, value, sub, key, current, previous, type = "number") {
 }
 
 function currentAnalysisFilters() {
+  const adType = document.querySelector("#analysisChannel")?.value || "appPopup";
+  const appScope = document.querySelector("#analysisAppScope")?.value || "ALL";
   return {
     project: document.querySelector("#analysisProject")?.value || "短线王续费",
     date: document.querySelector("#analysisDate")?.value || "2026-07-08",
     compareDate: document.querySelector("#analysisCompareDate")?.value || "2026-07-07",
-    channel: document.querySelector("#analysisChannel")?.value || "ALL",
+    adType,
+    adTypeLabel: analysisAdTypes[adType]?.label || adType,
+    appScope,
+    appScopeLabel: analysisAppScopes[appScope]?.label || appScope,
+    appScopeBackendLabel: analysisAppScopes[appScope]?.backendLabel || appScope,
+    channel: appScope === "ALL" ? "ALL" : appScope,
     threshold: Number(document.querySelector("#analysisPopupThreshold")?.value || 1000),
   };
+}
+
+function rowAnalysisAdType(row) {
+  const raw = String(row.adType || row.adTypeName || row.backendAdTypeName || row.bannerType || row._bannerType || "").toLowerCase();
+  if (raw.includes("normal") || raw.includes("普通") || raw === "1") return "normal";
+  if (raw.includes("notice") || raw.includes("通知") || raw === "3") return "appNotice";
+  if (raw.includes("pc") || raw === "4") return "pcPopup";
+  if (raw.includes("popup") || raw.includes("弹窗") || raw === "2") return "appPopup";
+  return String(row.channel || "").toUpperCase().includes("PC") ? "pcPopup" : "appPopup";
 }
 
 function filteredAnalysisRows(date) {
   const filters = currentAnalysisFilters();
   const period = getStoredReportPeriod();
   const startDate = analysisPeriodStart(date, period);
-  return analysisRows.filter((row) => row.date >= startDate && row.date <= date && row.project === filters.project && (filters.channel === "ALL" || row.channel === filters.channel));
+  const allowedChannels = analysisAppScopes[filters.appScope]?.channels || ["APP", "PC"];
+  return analysisRows.filter((row) => row.date >= startDate && row.date <= date && row.project === filters.project && rowAnalysisAdType(row) === filters.adType && allowedChannels.includes(String(row.channel || "").toUpperCase()));
 }
 
 function addDateDays(date, days) {
@@ -2266,6 +2294,7 @@ function normalizeBackendRows(rows, projectName) {
       date: String(row.date ?? row["日期"] ?? currentAnalysisFilters().date),
       project: String(row.project ?? row.projectName ?? row["项目"] ?? projectName),
       channel: String(row.channel ?? row["渠道"] ?? "APP").toUpperCase().includes("PC") ? "PC" : "APP",
+      adType: row.adType || row.adTypeName || row.backendAdTypeName || row.bannerType || row._bannerType || "",
       adId: String(row.adId ?? row.id ?? row["广告ID"] ?? row["广告id"] ?? `NEW-${Date.now()}-${index}`),
       title: String(row.title ?? row["标题"] ?? row.materialTitle ?? "后台同步素材"),
       audience: String(row.audience ?? row.audienceKey ?? row.target ?? row["命中人群"] ?? "后台同步人群"),
@@ -2288,6 +2317,12 @@ async function updateAnalysisProject(projectName) {
     projectName,
     backendProjectName: project?.backendProjectName || projectName,
     groupId: project?.groupId || "",
+    adType: filters.adType,
+    adTypeName: filters.adTypeLabel,
+    bannerType: analysisAdTypes[filters.adType]?.bannerType || 2,
+    appScope: filters.appScope,
+    appScopeName: filters.appScopeLabel,
+    backendAppNames: filters.appScopeBackendLabel,
     currentDate: filters.date,
     compareDate: filters.compareDate,
     startDate: [filters.date, filters.compareDate].sort()[0],
@@ -2343,7 +2378,7 @@ function renderAnalysisOptions() {
   projectEl.innerHTML = projects.map((project) => `<option value="${escapeHtml(project)}">${escapeHtml(project)}</option>`).join("");
   dateEl.value = dates[0] || "2026-07-08";
   compareEl.value = dates[1] || dates[0] || "2026-07-07";
-  [projectEl, dateEl, compareEl, document.querySelector("#analysisChannel"), document.querySelector("#analysisPopupThreshold")].forEach((el) => {
+  [projectEl, dateEl, compareEl, document.querySelector("#analysisChannel"), document.querySelector("#analysisAppScope"), document.querySelector("#analysisPopupThreshold")].forEach((el) => {
     el?.addEventListener("input", renderDataCenter);
   });
   document.querySelector("#copyAnalysisSummary")?.addEventListener("click", () => {
@@ -2373,7 +2408,7 @@ function renderDataCenter() {
   const previous = compareRows.length ? sumAnalysis(compareRows) : null;
   if (!document.querySelector("#analysisMetrics")) return;
   const period = getStoredReportPeriod();
-  document.querySelector("#analysisDateNote").textContent = `${filters.project}｜${analysisPeriodLabel(filters.date, period)} 对比 ${analysisPeriodLabel(filters.compareDate, period)}｜${filters.channel === "ALL" ? "APP+PC全部" : filters.channel}`;
+  document.querySelector("#analysisDateNote").textContent = `${filters.project}｜${analysisPeriodLabel(filters.date, period)} 对比 ${analysisPeriodLabel(filters.compareDate, period)}｜${filters.adTypeLabel}｜${filters.appScopeLabel}`;
 
   const problems = problemRows(rows);
   const previousWithExtra = previous ? { ...previous, adCount: compareRows.length, problemCount: problemRows(compareRows).length } : null;
@@ -2397,15 +2432,15 @@ function renderDataCenter() {
     <div class="analysis-funnel-row"><span>${label}</span><div class="analysis-funnel-track"><div class="analysis-funnel-fill" style="width:${Math.max(4, (value * 100) / maxFunnel)}%"></div></div><strong>${fmt(value)}</strong></div>
   `).join("");
 
-  document.querySelector("#analysisChannelTable").innerHTML = `<tr><th>渠道/分组</th><th class="num">广告数</th><th class="num">弹出</th><th class="num">点击</th><th class="num">点击率</th><th class="num">成交</th><th class="num">付款完成率</th></tr>` +
-    groupAnalysisRows(rows, (row) => row.channel).map((group) => `<tr><td>${escapeHtml(group.name)}<br><span class="analysis-tag">${escapeHtml(filters.project)}</span></td><td class="num">${fmt(group.adCount)}</td><td class="num">${fmt(group.popup)}</td><td class="num">${fmt(group.click)}</td><td class="num">${pct(group.clickRate)}</td><td class="num">${fmt(group.deal)}</td><td class="num">${pct(group.paymentFinishRate)}</td></tr>`).join("");
+  document.querySelector("#analysisChannelTable").innerHTML = `<tr><th>广告类型</th><th class="num">广告数</th><th class="num">弹出</th><th class="num">点击</th><th class="num">点击率</th><th class="num">成交</th><th class="num">付款完成率</th></tr>` +
+    groupAnalysisRows(rows, (row) => analysisAdTypes[rowAnalysisAdType(row)]?.label || row.channel).map((group) => `<tr><td>${escapeHtml(group.name)}<br><span class="analysis-tag">${escapeHtml(filters.project)}</span></td><td class="num">${fmt(group.adCount)}</td><td class="num">${fmt(group.popup)}</td><td class="num">${fmt(group.click)}</td><td class="num">${pct(group.clickRate)}</td><td class="num">${fmt(group.deal)}</td><td class="num">${pct(group.paymentFinishRate)}</td></tr>`).join("");
 
   document.querySelector("#analysisAudienceTable").innerHTML = `<tr><th>命中人群</th><th class="num">广告数</th><th class="num">问题素材</th><th class="num">弹出</th><th class="num">点击</th><th class="num">点击率</th><th class="num">成交</th><th class="num">付款完成率</th></tr>` +
     groupAnalysisRows(rows, (row) => row.audience).map((group) => `<tr><td>${escapeHtml(group.name)}</td><td class="num">${fmt(group.adCount)}</td><td class="num">${fmt(problemRows(group.rows).length)}</td><td class="num">${fmt(group.popup)}</td><td class="num">${fmt(group.click)}</td><td class="num">${pct(group.clickRate)}</td><td class="num">${fmt(group.deal)}</td><td class="num">${pct(group.paymentFinishRate)}</td></tr>`).join("");
 
   document.querySelector("#analysisProblemCount").textContent = `共 ${problems.length} 条，显示 TOP ${Math.min(5, problems.length)} 条`;
   document.querySelector("#analysisProblemTable").innerHTML = `<tr><th>素材</th><th>广告ID</th><th>渠道</th><th>命中人群</th><th class="num">弹出</th><th class="num">点击率</th><th class="num">成交</th><th>问题标签</th><th>建议</th><th>待办</th></tr>` +
-    problems.slice(0, 5).map((row) => `<tr><td><div class="analysis-material">${escapeHtml(row.material)}</div></td><td>${row.adId}</td><td>${row.channel}</td><td>${escapeHtml(row.audience)}</td><td class="num">${fmt(row.popup)}</td><td class="num">${pct(row.clickRate)}</td><td class="num">${fmt(row.deal)}</td><td>${rowTags(row).map((tag) => `<span class="analysis-tag ${tag === "素材可复用" ? "" : row.clickRate < 2 || row.deal === 0 ? "up" : "down"}">${escapeHtml(tag)}</span>`).join("")}</td><td>${escapeHtml(analysisAdvice(row))}</td><td><button class="text-button" type="button">加入待办</button></td></tr>`).join("");
+    problems.slice(0, 5).map((row) => `<tr><td><div class="analysis-material">${escapeHtml(row.material)}</div></td><td>${row.adId}</td><td>${escapeHtml(analysisAdTypes[rowAnalysisAdType(row)]?.label || row.channel)}</td><td>${escapeHtml(row.audience)}</td><td class="num">${fmt(row.popup)}</td><td class="num">${pct(row.clickRate)}</td><td class="num">${fmt(row.deal)}</td><td>${rowTags(row).map((tag) => `<span class="analysis-tag ${tag === "素材可复用" ? "" : row.clickRate < 2 || row.deal === 0 ? "up" : "down"}">${escapeHtml(tag)}</span>`).join("")}</td><td>${escapeHtml(analysisAdvice(row))}</td><td><button class="text-button" type="button">加入待办</button></td></tr>`).join("");
 
   document.querySelector("#analysisMarket").innerHTML = `市场情绪：${analysisMarket.emotion}<br>指数表现：${analysisMarket.index}<br>赚钱效应：${analysisMarket.money}<br>热点标签：${analysisMarket.tags.join("、")}<br>备注：${analysisMarket.risk}`;
 
@@ -2447,7 +2482,7 @@ function metricDeltaText(current, previous) {
 }
 
 function analysisSummaryText(filters, total, problems, auto) {
-  return `【${filters.project} 日报】\n日期：${filters.date}\n口径：${filters.channel === "ALL" ? "APP+PC全部" : filters.channel}\n\n核心指标：弹出 ${fmt(total.popup)}，点击 ${fmt(total.click)}，点击率 ${pct(total.clickRate)}，提交订单 ${fmt(total.order)}，成交 ${fmt(total.deal)}，付款完成率 ${pct(total.paymentFinishRate)}。\n\n系统自动复盘：\n1. 聚焦异常：${auto.focus}\n2. 关联动作：${auto.action}\n3. 驱动闭环：${auto.next}\n\n问题素材：共 ${problems.length} 条，重点关注 ${problems.slice(0, 3).map((row) => row.adId).join("、") || "无"}。\n\n优化建议：\n${problems.slice(0, 4).map((row, index) => `${index + 1}. 广告 ${row.adId}：${analysisAdvice(row)}`).join("\n") || "1. 今日整体表现稳定，继续观察高成交素材的人群和表达方式。"}`;
+  return `【${filters.project} 日报】\n日期：${filters.date}\n广告类型：${filters.adTypeLabel}\n应用范围：${filters.appScopeLabel}（${filters.appScopeBackendLabel}）\n\n核心指标：弹出 ${fmt(total.popup)}，点击 ${fmt(total.click)}，点击率 ${pct(total.clickRate)}，提交订单 ${fmt(total.order)}，成交 ${fmt(total.deal)}，付款完成率 ${pct(total.paymentFinishRate)}。\n\n系统自动复盘：\n1. 聚焦异常：${auto.focus}\n2. 关联动作：${auto.action}\n3. 驱动闭环：${auto.next}\n\n问题素材：共 ${problems.length} 条，重点关注 ${problems.slice(0, 3).map((row) => row.adId).join("、") || "无"}。\n\n优化建议：\n${problems.slice(0, 4).map((row, index) => `${index + 1}. 广告 ${row.adId}：${analysisAdvice(row)}`).join("\n") || "1. 今日整体表现稳定，继续观察高成交素材的人群和表达方式。"}`;
 }
 
 const miniChartData = {
