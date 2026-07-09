@@ -1390,14 +1390,21 @@ h1 {
   margin-top: 16px;
 }
 
+.release-data-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.25fr);
+  gap: 14px;
+  align-items: stretch;
+}
+
 .release-data-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
 .release-data-grid div {
-  min-height: 122px;
+  min-height: 132px;
   padding: 16px;
   border: 1px solid #dce8f7;
   border-radius: 16px;
@@ -1432,7 +1439,6 @@ h1 {
 }
 
 .release-trend-card {
-  margin-top: 14px;
   padding: 18px;
   border: 1px solid #dce8f7;
   border-radius: 16px;
@@ -1485,7 +1491,7 @@ h1 {
 }
 
 .release-trend-chart {
-  height: 250px;
+  height: 276px;
   padding: 18px 20px 12px;
   border: 1px solid #dce8f7;
   border-radius: 14px;
@@ -4465,6 +4471,7 @@ th {
   .file-action-grid,
   .data-controls,
   .dashboard-grid,
+  .release-data-layout,
   .release-data-grid,
   .release-report-grid,
   .section-grid.two,
