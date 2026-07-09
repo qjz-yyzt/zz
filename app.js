@@ -320,6 +320,7 @@ document.querySelectorAll(".quick-grid button").forEach((button) => {
 function initReleaseModule() {
   const approvalKey = "operation-director-release-approval";
   const releaseStateKey = "operation-center-release-state";
+  const releaseSnapshotKey = "operation-center-release-daily-snapshots";
   const publicUrl = "https://qjz-yyzt.github.io/zz/";
   const approveButton = document.querySelector("#approveRelease");
   const resetButton = document.querySelector("#resetReleaseApproval");
@@ -371,6 +372,10 @@ function initReleaseModule() {
   const versionOkEl = document.querySelector("#releaseVersionOk");
   const versionLatestEl = document.querySelector("#releaseVersionLatest");
   const versionLatestDescEl = document.querySelector("#releaseVersionLatestDesc");
+  const dailyReportEl = document.querySelector("#releaseDailyReport");
+  const weeklyReportEl = document.querySelector("#releaseWeeklyReport");
+  const monthlyReportEl = document.querySelector("#releaseMonthlyReport");
+  const yearlyReportEl = document.querySelector("#releaseYearlyReport");
   let activeReleaseFilter = "all";
   let activeReleaseModuleFilter = "all";
 
@@ -401,6 +406,26 @@ function initReleaseModule() {
 
   function writeReleaseState(state) {
     localStorage.setItem(releaseStateKey, JSON.stringify(state));
+  }
+
+  function dateKey(date = new Date()) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  function readReleaseSnapshots() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(releaseSnapshotKey) || "[]");
+      return Array.isArray(stored) ? stored : [];
+    } catch {
+      return [];
+    }
+  }
+
+  function writeReleaseSnapshots(snapshots) {
+    localStorage.setItem(releaseSnapshotKey, JSON.stringify(snapshots.slice(-370)));
   }
 
   function getReleaseInfo(item) {
@@ -451,11 +476,52 @@ function initReleaseModule() {
     const waitCount = versionItems.filter((item) => (item.dataset.releaseCurrentStatus || item.dataset.releaseStatus || "wait") !== "ok").length;
     const okCount = versionItems.filter((item) => (item.dataset.releaseCurrentStatus || item.dataset.releaseStatus || "wait") === "ok").length;
     const latest = versionItems[0];
+    const snapshot = recordReleaseSnapshot(versionItems, waitCount, okCount, latest);
     if (versionTotalEl) versionTotalEl.textContent = String(versionItems.length);
     if (versionWaitEl) versionWaitEl.textContent = String(waitCount);
     if (versionOkEl) versionOkEl.textContent = String(okCount);
     if (versionLatestEl) versionLatestEl.textContent = latest?.dataset.releaseId || "-";
     if (versionLatestDescEl) versionLatestDescEl.textContent = latest?.querySelector("h4")?.textContent || "等待版本模块更新";
+    renderReleaseReports(snapshot);
+  }
+
+  function recordReleaseSnapshot(versionItems, waitCount, okCount, latest) {
+    const today = dateKey();
+    const snapshot = {
+      date: today,
+      total: versionItems.length,
+      wait: waitCount,
+      ok: okCount,
+      latestId: latest?.dataset.releaseId || "-",
+      latestTitle: latest?.querySelector("h4")?.textContent || "等待版本模块更新",
+      updatedAt: new Date().toISOString(),
+    };
+    const snapshots = readReleaseSnapshots().filter((item) => item.date !== today);
+    snapshots.push(snapshot);
+    writeReleaseSnapshots(snapshots);
+    return snapshot;
+  }
+
+  function renderReleaseReports(todaySnapshot) {
+    const snapshots = readReleaseSnapshots();
+    const today = todaySnapshot || snapshots[snapshots.length - 1];
+    const now = new Date();
+    const currentYear = String(now.getFullYear());
+    const currentMonth = `${currentYear}-${String(now.getMonth() + 1).padStart(2, "0")}`;
+    const weekStart = new Date(now);
+    weekStart.setDate(now.getDate() - ((now.getDay() + 6) % 7));
+    weekStart.setHours(0, 0, 0, 0);
+    const weekItems = snapshots.filter((item) => new Date(`${item.date}T00:00:00`) >= weekStart);
+    const monthItems = snapshots.filter((item) => item.date.startsWith(currentMonth));
+    const yearItems = snapshots.filter((item) => item.date.startsWith(currentYear));
+    const latestOf = (items) => items[items.length - 1] || today || { total: 0, wait: 0, ok: 0, latestId: "-" };
+    const weekly = latestOf(weekItems);
+    const monthly = latestOf(monthItems);
+    const yearly = latestOf(yearItems);
+    if (dailyReportEl) dailyReportEl.textContent = `${today?.date || dateKey()}：${today?.total || 0}条，待发布${today?.wait || 0}条`;
+    if (weeklyReportEl) weeklyReportEl.textContent = `本周${weekItems.length || 1}天快照，最新待发布${weekly.wait || 0}条`;
+    if (monthlyReportEl) monthlyReportEl.textContent = `本月${monthItems.length || 1}天快照，最新已发布${monthly.ok || 0}条`;
+    if (yearlyReportEl) yearlyReportEl.textContent = `本年${yearItems.length || 1}天快照，最新版本${yearly.latestId || "-"}`;
   }
 
   function selectedReleaseIds() {
