@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-master-visible" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-select-merge" />
   </head>
   <body>
     <div class="app-shell">
@@ -915,13 +915,19 @@
               <label class="release-master-select">
                 <input id="toggleAllRelease" type="checkbox" />
                 <span></span>
-                <strong>全选</strong>
+                <strong>全选当前筛选</strong>
               </label>
-              <button class="text-button" id="selectPendingRelease" type="button">选择待发布</button>
               <button class="primary-button" id="publishSelectedRelease" type="button">发布选中</button>
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.50" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.50" /><span></span></label>
+                <time>2026-07-09 15:55:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.50 批量选择入口合并</h4>
+                <p>合并选择待发布与全选入口，改为先用状态筛选定位记录，再用全选当前筛选完成批量勾选。</p>
+              </article>
               <article data-release-id="v0.49" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.49" /><span></span></label>
                 <time>2026-07-09 15:48:00</time>
@@ -1305,9 +1311,9 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-master-visible"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-master-visible"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-master-visible"></script>
-    <script src="./app.js?v=20260709-release-master-visible"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-select-merge"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-select-merge"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-select-merge"></script>
+    <script src="./app.js?v=20260709-release-select-merge"></script>
   </body>
 </html>
