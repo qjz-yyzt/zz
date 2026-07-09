@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-trend-detail" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-trend-light" />
   </head>
   <body>
     <div class="app-shell">
@@ -928,6 +928,13 @@
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.58" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.58" /><span></span></label>
+                <time>2026-07-09 17:52:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.58 版本趋势图轻量化</h4>
+                <p>进一步缩小版本趋势图线条、节点、数值和日期标签，并降低面积填充透明度，让图表更轻盈。</p>
+              </article>
               <article data-release-id="v0.57" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.57" /><span></span></label>
                 <time>2026-07-09 17:45:00</time>
@@ -1354,9 +1361,9 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-trend-detail"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-trend-detail"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-trend-detail"></script>
-    <script src="./app.js?v=20260709-release-trend-detail"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-trend-light"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-trend-light"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-trend-light"></script>
+    <script src="./app.js?v=20260709-release-trend-light"></script>
   </body>
 </html>
