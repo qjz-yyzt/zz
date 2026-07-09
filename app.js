@@ -610,6 +610,8 @@ function initKnowledgeModule() {
   const chooseFilesButton = document.getElementById("knowledgeChooseFiles");
   const editFileModal = document.getElementById("knowledgeEditFileModal");
   const editFileNameInput = document.getElementById("knowledgeEditFileName");
+  const editCategorySelect = document.getElementById("knowledgeEditFileCategory");
+  const editSubcategorySelect = document.getElementById("knowledgeEditFileSubcategory");
   const saveFileNameButton = document.getElementById("knowledgeSaveFileName");
   if (!tableBody) return;
 
@@ -944,6 +946,13 @@ function initKnowledgeModule() {
     pendingUploadSubcategory = nextSubcategory;
   }
 
+  function updateEditSubcategoryOptions(selectedCategory, selectedSubcategory = "") {
+    const subcategories = subcategoriesForCategory(selectedCategory);
+    fillSelect(editSubcategorySelect, subcategories, subcategoryLabel);
+    const nextSubcategory = subcategories.includes(selectedSubcategory) ? selectedSubcategory : (subcategories[0] || defaultSubcategoryFor(selectedCategory));
+    if (editSubcategorySelect) editSubcategorySelect.value = nextSubcategory;
+  }
+
   function openUploadModal() {
     pendingUploadCategory = activeCategory === "all" ? "product" : activeCategory;
     pendingUploadSubcategory = activeSubcategory === "all" ? defaultSubcategoryFor(pendingUploadCategory) : activeSubcategory;
@@ -959,6 +968,11 @@ function initKnowledgeModule() {
 
   function openEditFileModal(row) {
     editingFileRow = row;
+    const currentCategory = row.dataset.category || "product";
+    const currentSubcategory = row.dataset.subcategory || defaultSubcategoryFor(currentCategory);
+    fillSelect(editCategorySelect, categoryOrder.filter((key) => key !== "all"), categoryLabel);
+    if (editCategorySelect) editCategorySelect.value = currentCategory;
+    updateEditSubcategoryOptions(currentCategory, currentSubcategory);
     if (editFileNameInput) {
       editFileNameInput.value = row.dataset.fileName || row.children[2]?.textContent.trim() || "";
       window.setTimeout(() => editFileNameInput.focus(), 0);
@@ -1292,6 +1306,10 @@ function initKnowledgeModule() {
     pendingUploadSubcategory = uploadSubcategorySelect.value || defaultSubcategoryFor(pendingUploadCategory);
   });
 
+  editCategorySelect?.addEventListener("change", () => {
+    updateEditSubcategoryOptions(editCategorySelect.value || "product");
+  });
+
   chooseFilesButton?.addEventListener("click", () => {
     pendingUploadCategory = uploadCategorySelect?.value || pendingUploadCategory;
     pendingUploadSubcategory = uploadSubcategorySelect?.value || defaultSubcategoryFor(pendingUploadCategory);
@@ -1353,15 +1371,22 @@ function initKnowledgeModule() {
     }
     const fileNameCell = editingFileRow.children[2];
     const oldName = editingFileRow.dataset.fileName || fileNameCell?.textContent.trim() || "当前文件";
+    const nextCategory = editCategorySelect?.value || editingFileRow.dataset.category || "product";
+    const nextSubcategory = editSubcategorySelect?.value || defaultSubcategoryFor(nextCategory);
     if (fileNameCell) {
       const icon = fileNameCell.querySelector(".file-icon")?.outerHTML || "";
       fileNameCell.innerHTML = `${icon}${safeText(cleanName)}`;
       editingFileRow.dataset.fileName = cleanName;
     }
+    editingFileRow.dataset.category = nextCategory;
+    editingFileRow.dataset.subcategory = nextSubcategory;
+    if (editingFileRow.children[3]) editingFileRow.children[3].textContent = categoryLabel[nextCategory] || nextCategory;
+    const subcategoryTag = editingFileRow.children[4]?.querySelector(".kb-tag");
+    if (subcategoryTag) subcategoryTag.textContent = subcategoryLabel[nextSubcategory] || nextSubcategory;
     saveKnowledgeState();
     closeEditFileModal();
     applyFilters();
-    knowledgeFeedback("文件已修改", `${oldName} 已改为 ${cleanName}。`);
+    knowledgeFeedback("文件已修改", `${oldName} 已更新到 ${categoryLabel[nextCategory] || nextCategory} / ${subcategoryLabel[nextSubcategory] || nextSubcategory}。`);
   });
 
   document.querySelectorAll("[data-kb-close-edit]").forEach((button) => {
@@ -2384,7 +2409,11 @@ async function updateAnalysisProject(projectName) {
     if (Array.isArray(backendRows) && backendRows.length) {
       const normalized = normalizeBackendRows(backendRows, projectName);
       const replaceDates = new Set(normalized.map((row) => row.date));
-      analysisRows = analysisRows.filter((row) => !(row.project === projectName && replaceDates.has(row.date)));
+      const allowedChannels = analysisAppScopes[filters.appScope]?.channels || ["APP", "PC"];
+      analysisRows = analysisRows.filter((row) => !(row.project === projectName
+        && replaceDates.has(row.date)
+        && rowAnalysisAdType(row) === filters.adType
+        && allowedChannels.includes(String(row.channel || "").toUpperCase())));
       analysisRows.push(...normalized);
       saveAnalysisRows();
     }
