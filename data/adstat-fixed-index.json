@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T09:04:22.674Z",
+  "updatedAt": "2026-07-09T09:23:48.653Z",
   "fixedItems": [
     {
       "key": "2026-07-08|中高端续费|4|PC",
@@ -14,6 +14,40 @@
       "fixedAt": "2026-07-09",
       "markedAt": "2026-07-09T09:04:22.674Z",
       "backupUpdatedAt": "2026-07-09T09:04:22.593Z"
+    },
+    {
+      "key": "2026-07-08|中高端续费|1,2,3,4|ALL",
+      "date": "2026-07-08",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T09:23:48.653Z",
+      "backupUpdatedAt": "2026-07-09"
+    },
+    {
+      "key": "2026-07-07|中高端续费|1,2,3,4|ALL",
+      "date": "2026-07-07",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-08",
+      "markedAt": "2026-07-09T09:23:48.651Z",
+      "backupUpdatedAt": "2026-07-09"
     }
   ]
 }
