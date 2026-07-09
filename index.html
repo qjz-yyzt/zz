@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-module-data" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-module-full" />
   </head>
   <body>
     <div class="app-shell">
@@ -527,6 +527,7 @@
                   <label>第一层大类<select id="knowledgeEditFileCategory"></select></label>
                   <label>第二层小类<select id="knowledgeEditFileSubcategory"></select></label>
                   <label>备注/描述<textarea id="knowledgeEditFileDescription" placeholder="非必填，可填写内容说明、适用场景或上传口径"></textarea></label>
+                  <p class="kb-modal-tip">如您想更新替换文件，可直接重新上传，本文件选择禁用/删除即可。</p>
                 </div>
                 <div class="kb-modal-actions">
                   <button type="button" class="text-button" data-kb-close-edit>取消</button>
@@ -732,6 +733,7 @@
                 <button class="active" type="button" data-report-period="daily">日报数据</button>
                 <button type="button" data-report-period="weekly">周报数据</button>
                 <button type="button" data-report-period="monthly">月报数据</button>
+                <button type="button" data-report-period="yearly">年报数据</button>
               </div>
             </div>
 
@@ -740,8 +742,7 @@
                 <label>项目<select id="analysisProject"></select></label>
                 <label>日期<input id="analysisDate" type="date" /></label>
                 <label>对比<input id="analysisCompareDate" type="date" /></label>
-                <label>广告类型<select id="analysisChannel"><option value="normal">普通广告</option><option value="appPopup" selected>APP弹窗广告</option><option value="appNotice">APP通知栏推送</option><option value="pcPopup">PC弹窗推送</option></select></label>
-                <label>应用范围<select id="analysisAppScope"><option value="ALL">全部</option><option value="PC">PC</option><option value="APP">APP</option></select></label>
+                <label>筛选口径<select id="analysisChannel"><option value="scope:ALL">全部</option><option value="scope:PC">PC</option><option value="scope:APP">APP</option><option value="adType:normal">普通广告</option><option value="adType:appPopup" selected>APP弹窗广告</option><option value="adType:appNotice">APP通知栏推送</option><option value="adType:pcPopup">PC弹窗推送</option></select></label>
                 <label>问题阈值<input id="analysisPopupThreshold" type="number" min="0" step="100" value="1000" /></label>
               </div>
               <div class="analysis-update-panel">
@@ -897,6 +898,15 @@
                     <span>模块</span>
                     <div class="release-filter segmented" aria-label="更新记录模块筛选">
                       <button class="active" type="button" data-release-module-filter="all">全部模块</button>
+                      <button type="button" data-release-module-filter="overview">数据总览</button>
+                      <button type="button" data-release-module-filter="project">项目管理</button>
+                      <button type="button" data-release-module-filter="activity">营销活动</button>
+                      <button type="button" data-release-module-filter="knowledge">知识库</button>
+                      <button type="button" data-release-module-filter="content">内容创作</button>
+                      <button type="button" data-release-module-filter="ad">广告计划执行</button>
+                      <button type="button" data-release-module-filter="data">数据中心</button>
+                      <button type="button" data-release-module-filter="risk">风控监测</button>
+                      <button type="button" data-release-module-filter="team">权限管理</button>
                       <button type="button" data-release-module-filter="version">版本模块</button>
                     </div>
                   </div>
@@ -911,6 +921,34 @@
               </div>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.47" data-release-status="wait" data-release-module="team">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.47" /><span></span></label>
+                <time>2026-07-09 15:36:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.47 权限管理模块记录</h4>
+                <p>补充权限管理模块版本记录入口，方便后续单独追踪账号、角色、审批和操作留痕相关调整。</p>
+              </article>
+              <article data-release-id="v0.46" data-release-status="wait" data-release-module="data">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.46" /><span></span></label>
+                <time>2026-07-09 15:34:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.46 数据中心模块记录</h4>
+                <p>补充数据中心模块版本记录入口，方便后续单独追踪日报、周报、月报和复盘建议相关调整。</p>
+              </article>
+              <article data-release-id="v0.45" data-release-status="wait" data-release-module="knowledge">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.45" /><span></span></label>
+                <time>2026-07-09 15:32:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.45 知识库模块记录</h4>
+                <p>补充知识库模块版本记录入口，方便后续单独追踪资料上传、类目管理、文件编辑和知识沉淀相关调整。</p>
+              </article>
+              <article data-release-id="v0.44" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.44" /><span></span></label>
+                <time>2026-07-09 15:30:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.44 更新记录模块筛选补全</h4>
+                <p>模块筛选移动到第二行，并补齐数据总览、项目管理、营销活动、知识库、内容创作、广告计划执行、数据中心、风控监测、权限管理和版本模块。</p>
+              </article>
               <article data-release-id="v0.43" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.43" /><span></span></label>
                 <time>2026-07-09 15:22:00</time>
@@ -1223,8 +1261,9 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-module-data"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-module-data"></script>
-    <script src="./app.js?v=20260709-release-module-data"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-module-full"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-module-full"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-module-full"></script>
+    <script src="./app.js?v=20260709-release-module-full"></script>
   </body>
 </html>
