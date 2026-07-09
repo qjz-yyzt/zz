@@ -134,6 +134,61 @@ const heroTitle = document.querySelector("#heroTitle");
 const heroDescription = document.querySelector("#heroDescription");
 const workflowTitle = document.querySelector("#workflowTitle");
 const workflowSteps = document.querySelector("#workflowSteps");
+const reportPeriodButtons = document.querySelectorAll("[data-report-period]");
+const contentTypeButtons = document.querySelectorAll("[data-content-tab]");
+const localOnlyElements = document.querySelectorAll("[data-local-only]");
+const ACTIVE_VIEW_STORAGE_KEY = "operation-center-active-view";
+const ACTIVE_REPORT_PERIOD_KEY = "operation-center-report-period";
+const ACTIVE_CONTENT_TYPE_KEY = "operation-center-content-type";
+const reportPeriodCopy = {
+  daily: {
+    title: "日报数据：当天投放结果与复盘动作",
+    description: "按日汇总广告触达、点击转化、成交结果和问题素材，快速判断今日表现并生成次日优化动作。",
+  },
+  weekly: {
+    title: "周报数据：7天趋势与项目推进质量",
+    description: "按周对比广告触达、成交转化、渠道贡献和素材表现，沉淀本周问题与下周优化重点。",
+  },
+  monthly: {
+    title: "月报数据：月度目标、资源投入和增长结构",
+    description: "按月汇总项目目标完成度、渠道贡献、活动效果和关键风险，为下一阶段资源分配提供依据。",
+  },
+};
+const contentTypeCopy = {
+  copy: {
+    title: "文案创作：把热点、活动和产品卖点转成可直接分发的话术",
+    description: "支持社群短文案、活动提醒、朋友圈表达和盘中话题，强调快产出、可复制和合规边界。",
+  },
+  article: {
+    title: "长文创作：沉淀完整观点、复盘和产品知识内容",
+    description: "适合公众号、知识库文章、产品讲解和项目复盘，围绕结构、论据、风险提示和行动引导统一生成。",
+  },
+  image: {
+    title: "图片创作：围绕活动、产品和社群触达生成视觉素材",
+    description: "管理封面图、活动海报、社群配图和广告素材需求，方便后续对接设计、审核和投放。",
+  },
+  video: {
+    title: "视频创作：把运营主题拆成脚本、分镜和发布素材",
+    description: "支持短视频脚本、口播提纲、分镜节奏和素材清单，服务活动预热、产品讲解和复盘传播。",
+  },
+};
+
+function isLocalPreview() {
+  const { protocol, hostname } = window.location;
+  return protocol === "file:" || hostname === "127.0.0.1" || hostname === "localhost";
+}
+
+function applyLocalOnlyVisibility() {
+  localOnlyElements.forEach((element) => {
+    element.classList.toggle("local-only-hidden", !isLocalPreview());
+  });
+}
+
+function isViewAvailable(view) {
+  const targetButton = document.querySelector(`.nav-item[data-view="${view}"]`);
+  if (!targetButton) return false;
+  return !targetButton.matches("[data-local-only]") || isLocalPreview();
+}
 
 function setPageCopy(view) {
   pageTitle.textContent = titles[view] || "运营工作台";
@@ -152,16 +207,77 @@ function setPageCopy(view) {
     .join("");
 }
 
-setPageCopy("overview");
+function getStoredView() {
+  const storedView = localStorage.getItem(ACTIVE_VIEW_STORAGE_KEY);
+  return isViewAvailable(storedView) ? storedView : "overview";
+}
+
+function getStoredReportPeriod() {
+  const storedPeriod = localStorage.getItem(ACTIVE_REPORT_PERIOD_KEY);
+  return reportPeriodCopy[storedPeriod] ? storedPeriod : "daily";
+}
+
+function getStoredContentType() {
+  const storedType = localStorage.getItem(ACTIVE_CONTENT_TYPE_KEY);
+  return contentTypeCopy[storedType] ? storedType : "copy";
+}
+
+function setReportPeriod(period, shouldPersist = true) {
+  const nextPeriod = reportPeriodCopy[period] ? period : "daily";
+  reportPeriodButtons.forEach((button) => {
+    button.classList.toggle("active", button.dataset.reportPeriod === nextPeriod);
+  });
+  if (document.querySelector(".nav-item.active")?.dataset.view === "report") {
+    heroTitle.textContent = reportPeriodCopy[nextPeriod].title;
+    heroDescription.textContent = reportPeriodCopy[nextPeriod].description;
+  }
+  if (shouldPersist) localStorage.setItem(ACTIVE_REPORT_PERIOD_KEY, nextPeriod);
+}
+
+function setContentType(type, shouldPersist = true) {
+  const nextType = contentTypeCopy[type] ? type : "copy";
+  contentTypeButtons.forEach((button) => {
+    button.classList.toggle("active", button.dataset.contentTab === nextType);
+  });
+  switchContentTab(nextType);
+  if (shouldPersist) localStorage.setItem(ACTIVE_CONTENT_TYPE_KEY, nextType);
+}
+
+function activateView(view, shouldPersist = true) {
+  const nextView = isViewAvailable(view) ? view : "overview";
+
+  navButtons.forEach((item) => item.classList.toggle("active", item.dataset.view === nextView));
+  views.forEach((section) => section.classList.toggle("active", section.id === `view-${nextView}`));
+  setPageCopy(nextView);
+  if (nextView === "content") {
+    setContentType(getStoredContentType(), false);
+  }
+  if (nextView === "report") {
+    setReportPeriod(getStoredReportPeriod(), false);
+    renderDataCenter();
+  }
+  if (shouldPersist) localStorage.setItem(ACTIVE_VIEW_STORAGE_KEY, nextView);
+}
+
+applyLocalOnlyVisibility();
 
 navButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const view = button.dataset.view;
+    activateView(button.dataset.view);
+  });
+});
 
-    navButtons.forEach((item) => item.classList.toggle("active", item === button));
-    views.forEach((section) => section.classList.toggle("active", section.id === `view-${view}`));
-    setPageCopy(view);
-    if (view === "report") renderDataCenter();
+reportPeriodButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setReportPeriod(button.dataset.reportPeriod);
+    activateView("report");
+  });
+});
+
+contentTypeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    setContentType(button.dataset.contentTab);
+    activateView("content");
   });
 });
 
@@ -187,12 +303,34 @@ document.querySelectorAll(".quick-grid button").forEach((button) => {
 
 function initReleaseModule() {
   const approvalKey = "operation-director-release-approval";
+  const releaseStateKey = "operation-center-release-state";
   const publicUrl = "https://qjz-yyzt.github.io/zz/";
   const approveButton = document.querySelector("#approveRelease");
   const resetButton = document.querySelector("#resetReleaseApproval");
   const copyButton = document.querySelector("#copyReleaseLink");
   const stateEl = document.querySelector("#releaseGateState");
   const textEl = document.querySelector("#releaseGateText");
+  const timeline = document.querySelector(".release-timeline");
+
+  timeline?.querySelectorAll("article").forEach((item, index) => {
+    const title = item.querySelector("h4")?.textContent || `release-${index + 1}`;
+    const id = title.match(/v[\d.]+/)?.[0] || `release-${index + 1}`;
+    const state = item.querySelector(".release-state");
+    if (!item.dataset.releaseId) item.dataset.releaseId = id;
+    if (!item.dataset.releaseStatus) item.dataset.releaseStatus = state?.classList.contains("ok") ? "ok" : "wait";
+    if (!item.querySelector("[data-release-check]")) {
+      item.insertAdjacentHTML("afterbegin", `<label class="release-select"><input type="checkbox" data-release-check value="${id}" /><span></span></label>`);
+    }
+  });
+
+  const releaseItems = [...document.querySelectorAll("[data-release-id]")];
+  const releaseChecks = [...document.querySelectorAll("[data-release-check]")];
+  const selectedList = document.querySelector("#releaseSelectedList");
+  const batchState = document.querySelector("#releaseBatchState");
+  const selectPendingButton = document.querySelector("#selectPendingRelease");
+  const clearSelectionButton = document.querySelector("#clearReleaseSelection");
+  const publishButton = document.querySelector("#publishSelectedRelease");
+  const rollbackButton = document.querySelector("#rollbackRelease");
 
   if (!approveButton || !stateEl || !textEl) return;
 
@@ -206,17 +344,76 @@ function initReleaseModule() {
     }).format(new Date(value));
   }
 
+  function readReleaseState() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(releaseStateKey) || "{}");
+      return {
+        statuses: stored.statuses || {},
+        lastPublished: Array.isArray(stored.lastPublished) ? stored.lastPublished : [],
+        publishedAt: stored.publishedAt || "",
+      };
+    } catch {
+      return { statuses: {}, lastPublished: [], publishedAt: "" };
+    }
+  }
+
+  function writeReleaseState(state) {
+    localStorage.setItem(releaseStateKey, JSON.stringify(state));
+  }
+
+  function getReleaseInfo(item) {
+    return {
+      id: item.dataset.releaseId,
+      title: item.querySelector("h4")?.textContent || "",
+      desc: item.querySelector("p")?.textContent || "",
+    };
+  }
+
+  function setItemStatus(item, status) {
+    const state = item.querySelector(".release-state");
+    if (!state) return;
+    item.classList.toggle("released", status === "ok");
+    item.classList.toggle("rolled-back", status === "rollback");
+    state.classList.toggle("ok", status === "ok");
+    state.classList.toggle("wait", status !== "ok");
+    state.textContent = status === "ok" ? "已发布" : status === "rollback" ? "已撤回" : "准备发布";
+  }
+
+  function selectedReleaseIds() {
+    return releaseChecks.filter((check) => check.checked).map((check) => check.value);
+  }
+
+  function renderSelectedList(ids, fallbackIds = []) {
+    const activeIds = ids.length ? ids : fallbackIds;
+    const selected = releaseItems.filter((item) => activeIds.includes(item.dataset.releaseId)).map(getReleaseInfo);
+    if (!selectedList || !batchState) return;
+    batchState.textContent = ids.length ? `已选择 ${selected.length} 项` : selected.length ? `最近发布 ${selected.length} 项` : "未选择";
+    selectedList.innerHTML = selected.length
+      ? selected.map((item, index) => `
+          <div><span class="status-dot ${index % 3 === 0 ? "blue" : index % 3 === 1 ? "green" : "orange"}"></span><strong>${item.title}</strong><p>${item.desc}</p></div>
+        `).join("")
+      : `<div><span class="status-dot blue"></span><strong>未选择发布版本</strong><p>请在下方更新记录中勾选需要同步到对外正式环境的版本。</p></div>`;
+  }
+
   function renderReleaseState() {
     const approvedAt = localStorage.getItem(approvalKey);
+    const releaseState = readReleaseState();
     const isApproved = Boolean(approvedAt);
-    stateEl.textContent = isApproved ? "已同意" : "待确认";
-    stateEl.classList.toggle("ok", isApproved);
-    stateEl.classList.toggle("wait", !isApproved);
-    approveButton.textContent = isApproved ? "已同意对外展示" : "同意对外展示";
+    stateEl.textContent = isApproved ? "已记录" : "待记录";
+    stateEl.classList.add("ok");
+    stateEl.classList.remove("wait");
+    approveButton.textContent = isApproved ? "已记录本次发布" : "记录本次发布";
     approveButton.disabled = isApproved;
-    textEl.textContent = isApproved
-      ? `你已在 ${formatTime(approvedAt)} 同意本次更新可对外展示。实际发布长期链接前，仍会再次向你确认。`
-      : "本地改动完成后，需要你点击同意，我再发布到长期链接。";
+    textEl.textContent = releaseState.publishedAt
+      ? `最近发布包已在 ${formatTime(releaseState.publishedAt)} 本机标记完成。对外正式环境需要同步部署后才可见。`
+      : isApproved
+        ? `你已在 ${formatTime(approvedAt)} 完成本机记录。外部正式链接仍不会自动更新，需要在下方勾选版本后点击“发布选中”。`
+        : "记录仅代表本机已留痕，外部正式链接不会自动展示；需要在下方勾选版本后发布。";
+    releaseItems.forEach((item) => setItemStatus(item, releaseState.statuses[item.dataset.releaseId] || item.dataset.releaseStatus || "wait"));
+    releaseChecks.forEach((check) => {
+      check.closest("article")?.classList.toggle("selected", check.checked);
+    });
+    renderSelectedList(selectedReleaseIds(), releaseState.lastPublished);
   }
 
   approveButton.addEventListener("click", () => {
@@ -226,6 +423,62 @@ function initReleaseModule() {
 
   resetButton?.addEventListener("click", () => {
     localStorage.removeItem(approvalKey);
+    renderReleaseState();
+  });
+
+  releaseChecks.forEach((check) => {
+    check.addEventListener("change", () => renderReleaseState());
+  });
+
+  selectPendingButton?.addEventListener("click", () => {
+    const releaseState = readReleaseState();
+    releaseChecks.forEach((check) => {
+      check.checked = (releaseState.statuses[check.value] || "wait") === "wait";
+    });
+    renderReleaseState();
+  });
+
+  clearSelectionButton?.addEventListener("click", () => {
+    releaseChecks.forEach((check) => {
+      check.checked = false;
+    });
+    renderReleaseState();
+  });
+
+  publishButton?.addEventListener("click", () => {
+    const ids = selectedReleaseIds();
+    if (!ids.length) {
+      renderSelectedList([]);
+      return;
+    }
+    const releaseState = readReleaseState();
+    ids.forEach((id) => {
+      releaseState.statuses[id] = "ok";
+    });
+    releaseState.lastPublished = ids;
+    releaseState.publishedAt = new Date().toISOString();
+    writeReleaseState(releaseState);
+    releaseChecks.forEach((check) => {
+      check.checked = false;
+    });
+    textEl.textContent = `已在本机标记 ${ids.length} 个版本进入对外发布包。正式同步外链前仍需执行发布流程。`;
+    renderReleaseState();
+  });
+
+  rollbackButton?.addEventListener("click", () => {
+    const releaseState = readReleaseState();
+    const ids = releaseState.lastPublished || [];
+    if (!ids.length) {
+      textEl.textContent = "当前没有可撤回的最近发布包。";
+      return;
+    }
+    ids.forEach((id) => {
+      releaseState.statuses[id] = "rollback";
+    });
+    releaseState.lastPublished = [];
+    releaseState.publishedAt = "";
+    writeReleaseState(releaseState);
+    textEl.textContent = `已在本机撤回 ${ids.length} 个版本，状态回滚为已撤回。`;
     renderReleaseState();
   });
 
@@ -262,6 +515,889 @@ document.querySelectorAll("[data-campaign-tab]").forEach((button) => {
   button.addEventListener("click", () => switchCampaignTab(button.dataset.campaignTab));
 });
 
+function switchContentTab(tabName = "copy") {
+  document.querySelectorAll("[data-content-tab]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.contentTab === tabName);
+  });
+  document.querySelectorAll("[data-content-panel]").forEach((panel) => {
+    panel.classList.toggle("active", panel.dataset.contentPanel === tabName);
+  });
+}
+
+document.querySelectorAll("[data-content-tab]").forEach((button) => {
+  button.addEventListener("click", () => switchContentTab(button.dataset.contentTab));
+});
+
+function knowledgeFeedback(action, detail = "") {
+  const status = document.getElementById("knowledgeStatus");
+  if (!status) return;
+  status.innerHTML = `<strong>${safeText(action)}</strong><span>${safeText(detail)}</span>`;
+}
+
+function setKnowledgeActive(items, target) {
+  items.forEach((item) => item.classList.toggle("active", item === target));
+}
+
+function initKnowledgeModule() {
+  const center = document.querySelector(".knowledge-center");
+  if (!center) return;
+  const tableBody = document.getElementById("knowledgeFileTable");
+  const sectionTabs = [...center.querySelectorAll("[data-knowledge-tab]")];
+  const sectionPanels = [...center.querySelectorAll("[data-knowledge-panel]")];
+  const categoryTabs = [...center.querySelectorAll("[data-kb-category]")];
+  const subcategoryTabs = [...center.querySelectorAll("[data-kb-subcategory]")];
+  const manageCategoryTabs = [...center.querySelectorAll("[data-kb-manage-category]")];
+  const manageSubcategoryTabs = [...center.querySelectorAll("[data-kb-manage-subcategory]")];
+  const statusFilter = document.getElementById("knowledgeStatusFilter");
+  const formatFilter = document.getElementById("knowledgeFormatFilter");
+  const searchInput = document.getElementById("knowledgeSearchInput");
+  const batchAction = document.getElementById("knowledgeBatchAction");
+  const selectAll = document.getElementById("knowledgeSelectAll");
+  const totalCount = document.getElementById("knowledgeTotalCount");
+  const fileInput = document.getElementById("knowledgeFileInput");
+  const uploadModal = document.getElementById("knowledgeUploadModal");
+  const uploadCategorySelect = document.getElementById("knowledgeUploadCategory");
+  const uploadSubcategorySelect = document.getElementById("knowledgeUploadSubcategory");
+  const chooseFilesButton = document.getElementById("knowledgeChooseFiles");
+  const editFileModal = document.getElementById("knowledgeEditFileModal");
+  const editFileNameInput = document.getElementById("knowledgeEditFileName");
+  const saveFileNameButton = document.getElementById("knowledgeSaveFileName");
+  if (!tableBody) return;
+
+  const KB_FILES_KEY = "operation-center-knowledge-files";
+  const KB_LABELS_KEY = "operation-center-knowledge-labels";
+  const KB_DB_NAME = "operation-center-knowledge-db";
+  const KB_DB_STORE = "fileBlobs";
+  let knowledgeDb = null;
+
+  const categoryLabel = {
+    all: "全部",
+    company: "公司知识库",
+    product: "产品知识库",
+    activity: "活动知识库",
+    material: "素材知识库",
+  };
+  const subcategoryLabel = {
+    all: "全部",
+    "company-license": "公司资质",
+    brand: "品牌介绍",
+    duanxianwang: "短线王",
+    xuanguguang: "选股王",
+    zhuli: "主力版",
+    jigou: "机构版",
+    zhizun: "智尊版",
+    renewal: "续费活动",
+    community: "社群素材",
+  };
+  const defaultCategoryOrder = ["all", "company", "product", "activity", "material"];
+  const defaultSubcategoryOrder = ["all", "company-license", "brand", "duanxianwang", "xuanguguang", "zhuli", "jigou", "zhizun", "renewal", "community"];
+  let categoryOrder = [...defaultCategoryOrder];
+  let subcategoryOrder = [...defaultSubcategoryOrder];
+  let activeCategory = "all";
+  let activeSubcategory = "all";
+  let activeStatus = "all";
+  let uploadIndex = 1;
+  let pendingUploadCategory = "product";
+  let pendingUploadSubcategory = "duanxianwang";
+  let editingFileRow = null;
+
+  function rows() {
+    return [...tableBody.querySelectorAll("tr")];
+  }
+
+  function visibleRows() {
+    return rows().filter((row) => row.style.display !== "none");
+  }
+
+  function closeMenus(exceptMenu = null) {
+    center.querySelectorAll(".kb-menu.open").forEach((menu) => {
+      if (menu !== exceptMenu) menu.classList.remove("open");
+    });
+  }
+
+  function renumberRows() {
+    rows().forEach((row, index) => {
+      const cell = row.children[1];
+      if (cell) cell.textContent = String(index + 1).padStart(2, "0");
+    });
+  }
+
+  function updateTabCounts() {
+    const allRows = rows();
+    categoryTabs.forEach((button) => {
+      const category = button.dataset.kbCategory;
+      const count = category === "all" ? allRows.length : allRows.filter((row) => row.dataset.category === category).length;
+      button.textContent = `${categoryLabel[category] || category}(${count})`;
+    });
+    manageCategoryTabs.forEach((button) => {
+      const category = button.dataset.kbManageCategory;
+      const count = category === "all" ? allRows.length : allRows.filter((row) => row.dataset.category === category).length;
+      button.textContent = `${categoryLabel[category] || category}(${count})`;
+    });
+    subcategoryTabs.forEach((button) => {
+      const subcategory = button.dataset.kbSubcategory;
+      if (subcategory === "all") {
+        button.textContent = "全部";
+        return;
+      }
+      const count = allRows.filter((row) => row.dataset.subcategory === subcategory).length;
+      button.textContent = `${subcategoryLabel[subcategory] || subcategory}(${count})`;
+    });
+    manageSubcategoryTabs.forEach((button) => {
+      const subcategory = button.dataset.kbManageSubcategory;
+      if (subcategory === "all") {
+        button.textContent = "全部";
+        return;
+      }
+      const count = allRows.filter((row) => row.dataset.subcategory === subcategory).length;
+      button.textContent = `${subcategoryLabel[subcategory] || subcategory}(${count})`;
+    });
+    if (totalCount) totalCount.textContent = String(allRows.length);
+  }
+
+  function syncSubcategoryTabs() {
+    subcategoryTabs.forEach((button) => {
+      const parent = button.dataset.parent;
+      const shouldShow = parent === "all" || activeCategory === "all" || parent === activeCategory;
+      button.hidden = !shouldShow;
+    });
+    const activeButton = subcategoryTabs.find((button) => button.dataset.kbSubcategory === activeSubcategory);
+    if (!activeButton || activeButton.hidden) {
+      activeSubcategory = "all";
+      const allButton = subcategoryTabs.find((button) => button.dataset.kbSubcategory === "all");
+      if (allButton) setKnowledgeActive(subcategoryTabs, allButton);
+    }
+    manageSubcategoryTabs.forEach((button) => {
+      const parent = button.dataset.parent;
+      const shouldShow = parent === "all" || activeCategory === "all" || parent === activeCategory;
+      button.hidden = !shouldShow;
+    });
+    const activeManageButton = manageSubcategoryTabs.find((button) => button.dataset.kbManageSubcategory === activeSubcategory);
+    if (!activeManageButton || activeManageButton.hidden) {
+      const allManageButton = manageSubcategoryTabs.find((button) => button.dataset.kbManageSubcategory === "all");
+      if (allManageButton) setKnowledgeActive(manageSubcategoryTabs, allManageButton);
+    }
+  }
+
+  function switchKnowledgePanel(panelName) {
+    sectionTabs.forEach((button) => button.classList.toggle("active", button.dataset.knowledgeTab === panelName));
+    sectionPanels.forEach((panel) => panel.classList.toggle("active", panel.dataset.knowledgePanel === panelName));
+    center.classList.toggle("kb-categories-active", panelName === "categories");
+  }
+
+  function normalizeOrder(order, defaults) {
+    const clean = Array.isArray(order) ? order.filter((item) => defaults.includes(item) && item !== "all") : [];
+    return ["all", ...clean, ...defaults.filter((item) => item !== "all" && !clean.includes(item))];
+  }
+
+  function sortButtonsByOrder(buttons, order, datasetKey) {
+    const map = new Map(buttons.map((button) => [button.dataset[datasetKey], button]));
+    order.forEach((key) => {
+      const button = map.get(key);
+      if (button) button.parentElement?.appendChild(button);
+    });
+  }
+
+  function applyCategoryOrder() {
+    categoryOrder = normalizeOrder(categoryOrder, defaultCategoryOrder);
+    sortButtonsByOrder(categoryTabs, categoryOrder, "kbCategory");
+    sortButtonsByOrder(manageCategoryTabs, categoryOrder, "kbManageCategory");
+  }
+
+  function applySubcategoryOrder() {
+    subcategoryOrder = normalizeOrder(subcategoryOrder, defaultSubcategoryOrder);
+    sortButtonsByOrder(subcategoryTabs, subcategoryOrder, "kbSubcategory");
+    sortButtonsByOrder(manageSubcategoryTabs, subcategoryOrder, "kbManageSubcategory");
+  }
+
+  function saveCategoryConfig() {
+    localStorage.setItem(KB_LABELS_KEY, JSON.stringify({ categoryLabel, subcategoryLabel, categoryOrder, subcategoryOrder }));
+  }
+
+  function enableDragOrdering(buttons, orderGetter, orderSetter, datasetKey, afterChange) {
+    buttons.forEach((button) => {
+      const key = button.dataset[datasetKey];
+      button.draggable = key !== "all";
+      if (key === "all") button.classList.add("fixed");
+      button.addEventListener("dragstart", (event) => {
+        if (key === "all") return;
+        button.classList.add("dragging");
+        event.dataTransfer.effectAllowed = "move";
+        event.dataTransfer.setData("text/plain", key);
+      });
+      button.addEventListener("dragend", () => button.classList.remove("dragging"));
+      button.addEventListener("dragover", (event) => {
+        if (key === "all") return;
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "move";
+      });
+      button.addEventListener("drop", (event) => {
+        event.preventDefault();
+        const draggedKey = event.dataTransfer.getData("text/plain");
+        const targetKey = button.dataset[datasetKey];
+        if (!draggedKey || draggedKey === "all" || targetKey === "all" || draggedKey === targetKey) return;
+        const nextOrder = orderGetter().filter((item) => item !== draggedKey);
+        const targetIndex = nextOrder.indexOf(targetKey);
+        nextOrder.splice(targetIndex, 0, draggedKey);
+        orderSetter(normalizeOrder(nextOrder, orderGetter()));
+        afterChange();
+      });
+    });
+  }
+
+  function syncActiveCategoryButtons() {
+    const categoryButton = categoryTabs.find((button) => button.dataset.kbCategory === activeCategory);
+    const manageButton = manageCategoryTabs.find((button) => button.dataset.kbManageCategory === activeCategory);
+    if (categoryButton) setKnowledgeActive(categoryTabs, categoryButton);
+    if (manageButton) setKnowledgeActive(manageCategoryTabs, manageButton);
+  }
+
+  function syncActiveSubcategoryButtons() {
+    const subcategoryButton = subcategoryTabs.find((button) => button.dataset.kbSubcategory === activeSubcategory);
+    const manageButton = manageSubcategoryTabs.find((button) => button.dataset.kbManageSubcategory === activeSubcategory);
+    if (subcategoryButton) setKnowledgeActive(subcategoryTabs, subcategoryButton);
+    if (manageButton) setKnowledgeActive(manageSubcategoryTabs, manageButton);
+  }
+
+  function applyFilters() {
+    const selectedFormat = formatFilter?.value || "all";
+    const keyword = (searchInput?.value || "").trim().toLowerCase();
+    syncSubcategoryTabs();
+    rows().forEach((row) => {
+      const matchCategory = activeCategory === "all" || row.dataset.category === activeCategory;
+      const matchSubcategory = activeSubcategory === "all" || row.dataset.subcategory === activeSubcategory;
+      const matchStatus = activeStatus === "all" || row.dataset.status === activeStatus;
+      const matchFormat = selectedFormat === "all" || row.dataset.format === selectedFormat;
+      const searchText = [
+        row.dataset.fileName,
+        row.dataset.format,
+        row.dataset.status === "enabled" ? "启用" : "禁用",
+        categoryLabel[row.dataset.category],
+        subcategoryLabel[row.dataset.subcategory],
+        row.textContent,
+      ].join(" ").toLowerCase();
+      const matchKeyword = !keyword || searchText.includes(keyword);
+      row.style.display = matchCategory && matchSubcategory && matchStatus && matchFormat && matchKeyword ? "" : "none";
+      const checkbox = row.querySelector('input[type="checkbox"]');
+      if (checkbox && row.style.display === "none") checkbox.checked = false;
+    });
+    if (selectAll) {
+      selectAll.checked = false;
+      selectAll.indeterminate = false;
+    }
+    updateTabCounts();
+    knowledgeFeedback("筛选完成", `当前展示 ${visibleRows().length} 条知识文件。`);
+  }
+
+  function setRowStatus(row, status) {
+    row.dataset.status = status;
+    const button = row.querySelector(".kb-switch");
+    if (!button) return;
+    button.classList.toggle("on", status === "enabled");
+    button.textContent = status === "enabled" ? "启用" : "禁用";
+  }
+
+  function selectedRows() {
+    return visibleRows().filter((row) => row.querySelector('input[type="checkbox"]')?.checked);
+  }
+
+  function refreshSelectionState() {
+    if (!selectAll) return;
+    const visible = visibleRows();
+    const checked = selectedRows().length;
+    selectAll.checked = visible.length > 0 && checked === visible.length;
+    selectAll.indeterminate = checked > 0 && checked < visible.length;
+  }
+
+  function createFileRow(file) {
+    const row = document.createElement("tr");
+    row.dataset.fileId = file.id || "";
+    row.dataset.fileName = file.name || "";
+    row.dataset.category = file.category;
+    row.dataset.subcategory = file.subcategory;
+    row.dataset.format = file.format;
+    row.dataset.status = file.status;
+    row.innerHTML = `
+      <td><input type="checkbox"></td>
+      <td></td>
+      <td><span class="file-icon ${safeText(file.iconClass || file.category)}">${safeText(file.icon)}</span>${safeText(file.name)}</td>
+      <td>${safeText(categoryLabel[file.category] || file.category)}</td>
+      <td><em class="kb-tag">${safeText(subcategoryLabel[file.subcategory] || file.subcategory)}</em></td>
+      <td><em class="segment ${safeText(file.segmentClass)}">${safeText(file.segment)}</em></td>
+      <td>${safeText(file.time)}</td>
+      <td><button class="kb-switch${file.status === "enabled" ? " on" : ""}">${file.status === "enabled" ? "启用" : "禁用"}</button></td>
+      <td>${knowledgeActionButtons()}</td>
+    `;
+    return row;
+  }
+
+  function knowledgeActionButtons() {
+    return `
+      <div class="kb-action-icons">
+        <button class="kb-icon-action" data-kb-file-action="修改" aria-label="修改" title="修改">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+        </button>
+        <button class="kb-icon-action" data-kb-file-action="下载" aria-label="下载" title="下载">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
+        </button>
+        <button class="kb-icon-action danger" data-kb-file-action="删除" aria-label="删除" title="删除">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+        </button>
+      </div>
+    `;
+  }
+
+  function upgradeActionCells() {
+    rows().forEach((row) => {
+      const actionCell = row.children[8];
+      if (actionCell && !actionCell.querySelector(".kb-action-icons")) actionCell.innerHTML = knowledgeActionButtons();
+    });
+  }
+
+  function fileIconFor(format, category) {
+    if (["png", "jpg", "jpeg", "gif", "webp"].includes(format)) return "▧";
+    if (["mp3", "mp4", "wav", "mov"].includes(format)) return "◍";
+    if (["xlsx", "xls", "csv"].includes(format)) return "▤";
+    return "▧";
+  }
+
+  function fileClassFor(format, category) {
+    if (["png", "jpg", "jpeg", "gif", "webp"].includes(format)) return "image";
+    if (["mp3", "mp4", "wav", "mov"].includes(format)) return "media";
+    if (["xlsx", "xls", "csv"].includes(format)) return "data";
+    return category || "product";
+  }
+
+  function defaultSubcategoryFor(category) {
+    const map = {
+      company: "company-license",
+      product: "duanxianwang",
+      activity: "renewal",
+      material: "community",
+    };
+    return map[category] || "duanxianwang";
+  }
+
+  function subcategoriesForCategory(category) {
+    return subcategoryOrder.filter((key) => key !== "all" && manageSubcategoryTabs.some((button) => button.dataset.kbManageSubcategory === key && button.dataset.parent === category));
+  }
+
+  function fillSelect(select, keys, labelMap) {
+    if (!select) return;
+    select.innerHTML = keys.map((key) => `<option value="${safeText(key)}">${safeText(labelMap[key] || key)}</option>`).join("");
+  }
+
+  function updateUploadSubcategoryOptions(selectedCategory, selectedSubcategory = "") {
+    const subcategories = subcategoriesForCategory(selectedCategory);
+    fillSelect(uploadSubcategorySelect, subcategories, subcategoryLabel);
+    const nextSubcategory = subcategories.includes(selectedSubcategory) ? selectedSubcategory : (subcategories[0] || defaultSubcategoryFor(selectedCategory));
+    if (uploadSubcategorySelect) uploadSubcategorySelect.value = nextSubcategory;
+    pendingUploadSubcategory = nextSubcategory;
+  }
+
+  function openUploadModal() {
+    pendingUploadCategory = activeCategory === "all" ? "product" : activeCategory;
+    pendingUploadSubcategory = activeSubcategory === "all" ? defaultSubcategoryFor(pendingUploadCategory) : activeSubcategory;
+    fillSelect(uploadCategorySelect, categoryOrder.filter((key) => key !== "all"), categoryLabel);
+    if (uploadCategorySelect) uploadCategorySelect.value = pendingUploadCategory;
+    updateUploadSubcategoryOptions(pendingUploadCategory, pendingUploadSubcategory);
+    if (uploadModal) uploadModal.hidden = false;
+  }
+
+  function closeUploadModal() {
+    if (uploadModal) uploadModal.hidden = true;
+  }
+
+  function openEditFileModal(row) {
+    editingFileRow = row;
+    if (editFileNameInput) {
+      editFileNameInput.value = row.dataset.fileName || row.children[2]?.textContent.trim() || "";
+      window.setTimeout(() => editFileNameInput.focus(), 0);
+    }
+    if (editFileModal) editFileModal.hidden = false;
+  }
+
+  function closeEditFileModal() {
+    editingFileRow = null;
+    if (editFileModal) editFileModal.hidden = true;
+  }
+
+  function formatTime(date = new Date()) {
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")} ${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}:00`;
+  }
+
+  function serializeRows() {
+    return rows().map((row) => ({
+      id: row.dataset.fileId || "",
+      name: row.dataset.fileName || row.children[2]?.textContent.trim() || "",
+      category: row.dataset.category || "product",
+      subcategory: row.dataset.subcategory || defaultSubcategoryFor(row.dataset.category),
+      format: row.dataset.format || "pdf",
+      status: row.dataset.status || "enabled",
+      icon: row.querySelector(".file-icon")?.textContent || fileIconFor(row.dataset.format, row.dataset.category),
+      iconClass: row.querySelector(".file-icon")?.className.replace("file-icon", "").trim() || fileClassFor(row.dataset.format, row.dataset.category),
+      segment: row.children[5]?.textContent.trim() || "自动分段",
+      segmentClass: row.children[5]?.querySelector(".segment")?.className.replace("segment", "").trim() || "auto",
+      time: row.children[6]?.textContent.trim() || formatTime(),
+      hasBlob: Boolean(row.dataset.fileId),
+    }));
+  }
+
+  function saveKnowledgeState() {
+    localStorage.setItem(KB_FILES_KEY, JSON.stringify(serializeRows()));
+  }
+
+  function saveLabelState() {
+    saveCategoryConfig();
+  }
+
+  function loadLabelState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(KB_LABELS_KEY) || "{}");
+      if (saved.categoryLabel) Object.assign(categoryLabel, saved.categoryLabel);
+      if (saved.subcategoryLabel) Object.assign(subcategoryLabel, saved.subcategoryLabel);
+      categoryOrder = normalizeOrder(saved.categoryOrder, defaultCategoryOrder);
+      subcategoryOrder = normalizeOrder(saved.subcategoryOrder, defaultSubcategoryOrder);
+    } catch {
+      localStorage.removeItem(KB_LABELS_KEY);
+    }
+  }
+
+  function restoreRowsFromStorage() {
+    const raw = localStorage.getItem(KB_FILES_KEY);
+    rows().forEach((row) => {
+      if (!row.dataset.fileId) row.dataset.fileId = "";
+      if (!row.dataset.fileName) {
+        const iconText = row.querySelector(".file-icon")?.textContent || "";
+        row.dataset.fileName = row.children[2]?.textContent.replace(iconText, "").trim() || "";
+      }
+    });
+    if (!raw) {
+      saveKnowledgeState();
+      return;
+    }
+    try {
+      const savedFiles = JSON.parse(raw);
+      tableBody.innerHTML = "";
+      savedFiles.forEach((file) => tableBody.appendChild(createFileRow(file)));
+    } catch {
+      localStorage.removeItem(KB_FILES_KEY);
+      saveKnowledgeState();
+    }
+  }
+
+  function openKnowledgeDb() {
+    if (knowledgeDb) return Promise.resolve(knowledgeDb);
+    return new Promise((resolve, reject) => {
+      const request = indexedDB.open(KB_DB_NAME, 1);
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains(KB_DB_STORE)) db.createObjectStore(KB_DB_STORE, { keyPath: "id" });
+      };
+      request.onsuccess = () => {
+        knowledgeDb = request.result;
+        resolve(knowledgeDb);
+      };
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  async function putStoredBlob(record) {
+    const db = await openKnowledgeDb();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(KB_DB_STORE, "readwrite");
+      tx.objectStore(KB_DB_STORE).put(record);
+      tx.oncomplete = resolve;
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
+  async function getStoredBlob(id) {
+    const db = await openKnowledgeDb();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(KB_DB_STORE, "readonly");
+      const request = tx.objectStore(KB_DB_STORE).get(id);
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+  }
+
+  async function deleteStoredBlob(id) {
+    if (!id) return;
+    const db = await openKnowledgeDb();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(KB_DB_STORE, "readwrite");
+      tx.objectStore(KB_DB_STORE).delete(id);
+      tx.oncomplete = resolve;
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
+  function renameActiveCategory() {
+    if (activeCategory === "all") {
+      knowledgeFeedback("请选择具体大类", "先选择公司知识库、产品知识库等具体大类，再修改名称。");
+      return;
+    }
+    const currentName = categoryLabel[activeCategory] || activeCategory;
+    const nextName = window.prompt("修改大类名称", currentName);
+    const cleanName = nextName?.trim();
+    if (!cleanName || cleanName === currentName) return;
+    categoryLabel[activeCategory] = cleanName;
+    rows().forEach((row) => {
+      if (row.dataset.category === activeCategory && row.children[3]) row.children[3].textContent = cleanName;
+    });
+    updateTabCounts();
+    saveLabelState();
+    knowledgeFeedback("大类名称已修改", `${currentName} 已改为 ${cleanName}。`);
+  }
+
+  function renameActiveSubcategory() {
+    if (activeSubcategory === "all") {
+      knowledgeFeedback("请选择具体小类", "先选择短线王、选股王等具体小类，再修改名称。");
+      return;
+    }
+    const currentName = subcategoryLabel[activeSubcategory] || activeSubcategory;
+    const nextName = window.prompt("修改小类名称", currentName);
+    const cleanName = nextName?.trim();
+    if (!cleanName || cleanName === currentName) return;
+    subcategoryLabel[activeSubcategory] = cleanName;
+    rows().forEach((row) => {
+      if (row.dataset.subcategory !== activeSubcategory) return;
+      const tag = row.children[4]?.querySelector(".kb-tag");
+      if (tag) tag.textContent = cleanName;
+    });
+    updateTabCounts();
+    saveLabelState();
+    knowledgeFeedback("小类名称已修改", `${currentName} 已改为 ${cleanName}。`);
+  }
+
+  sectionTabs.forEach((button) => {
+    button.addEventListener("click", () => switchKnowledgePanel(button.dataset.knowledgeTab || "upload"));
+  });
+
+  enableDragOrdering(
+    manageCategoryTabs,
+    () => categoryOrder,
+    (nextOrder) => { categoryOrder = nextOrder; },
+    "kbManageCategory",
+    () => {
+      applyCategoryOrder();
+      syncActiveCategoryButtons();
+      updateTabCounts();
+      saveCategoryConfig();
+      knowledgeFeedback("大类顺序已调整", "全部固定第一位，其余大类会按当前顺序展示。");
+    },
+  );
+
+  enableDragOrdering(
+    manageSubcategoryTabs,
+    () => subcategoryOrder,
+    (nextOrder) => { subcategoryOrder = nextOrder; },
+    "kbManageSubcategory",
+    () => {
+      applySubcategoryOrder();
+      syncSubcategoryTabs();
+      syncActiveSubcategoryButtons();
+      updateTabCounts();
+      saveCategoryConfig();
+      knowledgeFeedback("小类顺序已调整", "全部固定第一位，其余小类会按当前顺序展示。");
+    },
+  );
+
+  categoryTabs.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeCategory = button.dataset.kbCategory || "all";
+      activeSubcategory = "all";
+      syncActiveCategoryButtons();
+      activeSubcategory = "all";
+      syncActiveSubcategoryButtons();
+      applyFilters();
+    });
+  });
+
+  subcategoryTabs.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeSubcategory = button.dataset.kbSubcategory || "all";
+      const parent = button.dataset.parent;
+      if (parent && parent !== "all" && activeCategory === "all") {
+        const parentTab = categoryTabs.find((item) => item.dataset.kbCategory === parent);
+        if (parentTab) {
+          activeCategory = parent;
+          syncActiveCategoryButtons();
+        }
+      }
+      syncActiveSubcategoryButtons();
+      applyFilters();
+    });
+  });
+
+  manageCategoryTabs.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeCategory = button.dataset.kbManageCategory || "all";
+      activeSubcategory = "all";
+      syncActiveCategoryButtons();
+      syncActiveSubcategoryButtons();
+      applyFilters();
+    });
+  });
+
+  manageSubcategoryTabs.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeSubcategory = button.dataset.kbManageSubcategory || "all";
+      const parent = button.dataset.parent;
+      if (parent && parent !== "all" && activeCategory === "all") {
+        activeCategory = parent;
+        syncActiveCategoryButtons();
+      }
+      syncActiveSubcategoryButtons();
+      applyFilters();
+    });
+  });
+
+  statusFilter?.addEventListener("change", () => {
+    activeStatus = statusFilter.value || "all";
+    applyFilters();
+  });
+  searchInput?.addEventListener("input", applyFilters);
+  formatFilter?.addEventListener("change", applyFilters);
+  document.getElementById("knowledgeEditCategory")?.addEventListener("click", renameActiveCategory);
+  document.getElementById("knowledgeEditSubcategory")?.addEventListener("click", renameActiveSubcategory);
+
+  selectAll?.addEventListener("change", () => {
+    visibleRows().forEach((row) => {
+      const checkbox = row.querySelector('input[type="checkbox"]');
+      if (checkbox) checkbox.checked = selectAll.checked;
+    });
+    refreshSelectionState();
+    knowledgeFeedback(selectAll.checked ? "已全选当前列表" : "已取消全选", `当前列表共 ${visibleRows().length} 条。`);
+  });
+
+  tableBody.addEventListener("change", (event) => {
+    if (event.target.matches('input[type="checkbox"]')) refreshSelectionState();
+  });
+
+  tableBody.addEventListener("click", (event) => {
+    const row = event.target.closest("tr");
+    if (!row) return;
+    if (event.target.classList.contains("kb-switch")) {
+      const nextStatus = row.dataset.status === "enabled" ? "disabled" : "enabled";
+      setRowStatus(row, nextStatus);
+      saveKnowledgeState();
+      knowledgeFeedback(nextStatus === "enabled" ? "文件已启用" : "文件已禁用", row.children[2]?.textContent.trim() || "已更新文件状态。");
+      if (activeStatus !== "all") applyFilters();
+      return;
+    }
+    if (event.target.closest("[data-kb-file-action]")) {
+      const action = event.target.closest("[data-kb-file-action]").dataset.kbFileAction;
+      const fileNameCell = row.children[2];
+      const fileName = fileNameCell?.textContent.trim() || "当前文件";
+      if (action === "删除") {
+        const fileId = row.dataset.fileId;
+        row.remove();
+        deleteStoredBlob(fileId).catch(() => {});
+        renumberRows();
+        saveKnowledgeState();
+        applyFilters();
+        knowledgeFeedback("文件已删除", `${fileName} 已从知识库移除。`);
+      } else if (action === "修改") {
+        openEditFileModal(row);
+      } else {
+        const fileId = row.dataset.fileId;
+        if (!fileId) {
+          knowledgeFeedback("暂无可下载源文件", "示例文件没有真实文件内容；你上传的文件可以直接下载。");
+          return;
+        }
+        getStoredBlob(fileId).then((record) => {
+          if (!record?.blob) {
+            knowledgeFeedback("下载失败", "没有找到本地保存的源文件。");
+            return;
+          }
+          const url = URL.createObjectURL(record.blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = row.dataset.fileName || record.name || "知识库文件";
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+          knowledgeFeedback("已开始下载", row.dataset.fileName || record.name || fileName);
+        }).catch(() => knowledgeFeedback("下载失败", "浏览器本地数据库读取失败。"));
+      }
+      return;
+    }
+    if (!event.target.closest("button") && !event.target.matches('input[type="checkbox"]')) {
+      row.querySelector('input[type="checkbox"]')?.click();
+    }
+  });
+
+  document.getElementById("knowledgeUpload")?.addEventListener("click", () => {
+    openUploadModal();
+  });
+
+  uploadCategorySelect?.addEventListener("change", () => {
+    pendingUploadCategory = uploadCategorySelect.value || "product";
+    updateUploadSubcategoryOptions(pendingUploadCategory);
+  });
+
+  uploadSubcategorySelect?.addEventListener("change", () => {
+    pendingUploadSubcategory = uploadSubcategorySelect.value || defaultSubcategoryFor(pendingUploadCategory);
+  });
+
+  chooseFilesButton?.addEventListener("click", () => {
+    pendingUploadCategory = uploadCategorySelect?.value || pendingUploadCategory;
+    pendingUploadSubcategory = uploadSubcategorySelect?.value || defaultSubcategoryFor(pendingUploadCategory);
+    fileInput?.click();
+  });
+
+  document.querySelectorAll("[data-kb-close-upload]").forEach((button) => {
+    button.addEventListener("click", closeUploadModal);
+  });
+
+  uploadModal?.addEventListener("click", (event) => {
+    if (event.target === uploadModal) closeUploadModal();
+  });
+
+  fileInput?.addEventListener("change", async () => {
+    const selectedFiles = [...fileInput.files];
+    if (!selectedFiles.length) return;
+    const targetCategory = pendingUploadCategory || (activeCategory === "all" ? "product" : activeCategory);
+    const targetSubcategory = pendingUploadSubcategory || defaultSubcategoryFor(targetCategory);
+    let savedCount = 0;
+    for (const file of selectedFiles) {
+      const format = (file.name.split(".").pop() || "file").toLowerCase();
+      const id = `kb-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      const fileMeta = {
+        id,
+        category: targetCategory,
+        subcategory: targetSubcategory,
+        format,
+        status: "enabled",
+        icon: fileIconFor(format, targetCategory),
+        iconClass: fileClassFor(format, targetCategory),
+        name: file.name,
+        segment: "自动分段",
+        segmentClass: "auto",
+        time: formatTime(),
+      };
+      try {
+        await putStoredBlob({ id, name: file.name, type: file.type, size: file.size, blob: file, savedAt: Date.now() });
+        tableBody.prepend(createFileRow(fileMeta));
+        savedCount += 1;
+      } catch {
+        knowledgeFeedback("上传失败", `${file.name} 没有保存成功，请确认浏览器允许本地数据库。`);
+      }
+    }
+    fileInput.value = "";
+    renumberRows();
+    saveKnowledgeState();
+    applyFilters();
+    closeUploadModal();
+    knowledgeFeedback("上传并保存完成", `已保存 ${savedCount} 个文件到当前知识库分类，刷新页面后仍会保留。`);
+  });
+
+  saveFileNameButton?.addEventListener("click", () => {
+    if (!editingFileRow) return;
+    const cleanName = editFileNameInput?.value.trim();
+    if (!cleanName) {
+      knowledgeFeedback("请输入文件名称", "文件名称不能为空。");
+      return;
+    }
+    const fileNameCell = editingFileRow.children[2];
+    const oldName = editingFileRow.dataset.fileName || fileNameCell?.textContent.trim() || "当前文件";
+    if (fileNameCell) {
+      const icon = fileNameCell.querySelector(".file-icon")?.outerHTML || "";
+      fileNameCell.innerHTML = `${icon}${safeText(cleanName)}`;
+      editingFileRow.dataset.fileName = cleanName;
+    }
+    saveKnowledgeState();
+    closeEditFileModal();
+    applyFilters();
+    knowledgeFeedback("文件已修改", `${oldName} 已改为 ${cleanName}。`);
+  });
+
+  document.querySelectorAll("[data-kb-close-edit]").forEach((button) => {
+    button.addEventListener("click", closeEditFileModal);
+  });
+
+  editFileModal?.addEventListener("click", (event) => {
+    if (event.target === editFileModal) closeEditFileModal();
+  });
+
+  editFileNameInput?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      saveFileNameButton?.click();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    if (uploadModal && !uploadModal.hidden) closeUploadModal();
+    if (editFileModal && !editFileModal.hidden) closeEditFileModal();
+  });
+
+  [document.getElementById("knowledgeRefresh")].forEach((button) => {
+    button?.addEventListener("click", () => {
+      closeMenus();
+      loadLabelState();
+      restoreRowsFromStorage();
+      upgradeActionCells();
+      renumberRows();
+      applyCategoryOrder();
+      applySubcategoryOrder();
+      applyFilters();
+      knowledgeFeedback("知识库已刷新", "已从本地保存库重新读取文件、分类和状态。");
+    });
+  });
+
+  batchAction?.addEventListener("change", () => {
+    const action = batchAction.value;
+    if (action === "批量操作") return;
+    const targets = selectedRows();
+    if (!targets.length) {
+      knowledgeFeedback("请选择文件", "先勾选当前列表中的文件，再执行批量操作。");
+      batchAction.selectedIndex = 0;
+      return;
+    }
+    if (action === "批量启用") targets.forEach((row) => setRowStatus(row, "enabled"));
+    if (action === "批量禁用") targets.forEach((row) => setRowStatus(row, "disabled"));
+    if (action === "批量删除") {
+      targets.forEach((row) => {
+        deleteStoredBlob(row.dataset.fileId).catch(() => {});
+        row.remove();
+      });
+      renumberRows();
+    } else {
+      targets.forEach((row) => {
+        const checkbox = row.querySelector('input[type="checkbox"]');
+        if (checkbox) checkbox.checked = false;
+      });
+    }
+    saveKnowledgeState();
+    applyFilters();
+    knowledgeFeedback(action, `已处理 ${targets.length} 个文件。`);
+    batchAction.selectedIndex = 0;
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".kb-file-table")) closeMenus();
+  });
+
+  loadLabelState();
+  restoreRowsFromStorage();
+  upgradeActionCells();
+  renumberRows();
+  applyCategoryOrder();
+  applySubcategoryOrder();
+  syncActiveCategoryButtons();
+  syncActiveSubcategoryButtons();
+  syncSubcategoryTabs();
+  updateTabCounts();
+  knowledgeFeedback("知识库文件管理台", "现在支持真实上传并保存到本机浏览器，刷新页面后仍会保留。");
+}
+
+initKnowledgeModule();
+
 const AUTO_CONFIG_KEY = "operation-center-ad-automation-config";
 const AUTO_TASK_KEY = "operation-center-ad-automation-tasks";
 const AUTO_RUN_KEY = "operation-center-ad-automation-runs";
@@ -272,7 +1408,7 @@ const projectOptions = [
   { name: "短线王续费", groupId: 27 },
   { name: "新开升级", groupId: 63 },
   { name: "选股王", groupId: 81 },
-  { name: "中高端续费", groupId: 48 },
+  { name: "中高端续费", groupId: 51, backendProjectName: "中高端版本续费" },
   { name: "猎手活动", groupId: 92 },
   { name: "基金", groupId: 64 },
   { name: "转介绍", groupId: 73 },
@@ -660,72 +1796,139 @@ initAutomationModule();
 const periodData = {
   week: {
     labels: ["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-    values: [54, 72, 48, 84, 65, 78, 58],
-    trends: [
-      ["续费承接", "稳定提升，今日重点盯短线王续费与中高端续费"],
-      ["社群触达", "早报和纪律已准备，盘后播报等收盘数据"],
-      ["投放效率", "App/PC 弹窗需进入换图策略复盘"],
-    ],
+    metrics: {
+      revenue: { values: [960000, 1040000, 1010000, 1120000, 1180000, 1140000, 1286000], display: ["960,000", "1,040,000", "1,010,000", "1,120,000", "1,180,000", "1,140,000", "1,286,000"], lineValues: [138, 146, 151, 158, 162, 169, 176], lineDisplay: ["138", "146", "151", "158", "162", "169", "176"], lineLabel: "单量", lineColor: "#16b6a1", lineArea: "rgba(22, 182, 161, 0.15)", title: "业绩 / 单量", text: "柱状：业绩；折线：单量" },
+      ads: { values: [242000, 258000, 251000, 276000, 269000, 274000, 284000], display: ["242,000", "258,000", "251,000", "276,000", "269,000", "274,000", "284,000"], lineValues: [2.43, 2.58, 2.51, 2.76, 2.69, 2.74, 2.86], lineDisplay: ["2.43%", "2.58%", "2.51%", "2.76%", "2.69%", "2.74%", "2.86%"], lineLabel: "点击率", lineColor: "#ff9f2d", lineArea: "rgba(255, 159, 45, 0.16)", title: "广告展示 / 点击率", text: "柱状：广告展示；折线：点击率" },
+      community: { values: [31, 34, 37, 35, 39, 41, 42], display: ["31", "34", "37", "35", "39", "41", "42"], lineValues: [238, 254, 276, 263, 291, 307, 318], lineDisplay: ["238", "254", "276", "263", "291", "307", "318"], lineLabel: "日转发", lineColor: "#7c6dff", lineArea: "rgba(124, 109, 255, 0.16)", title: "社群文案数 / 日转发", text: "柱状：社群文案数；折线：日转发" },
+    },
   },
   month: {
     labels: ["1周", "2周", "3周", "4周", "5周", "6周"],
-    values: [62, 69, 76, 71, 88, 93],
-    trends: [
-      ["月度承接", "整体向上，但新开升级转化效率需要单独拆解"],
-      ["内容节奏", "社群内容产出稳定，引用数据需要接入素材管理"],
-      ["投放复盘", "月内低效素材集中在晚间弹窗时段"],
-    ],
+    metrics: {
+      revenue: { values: [620000, 690000, 760000, 710000, 880000, 930000], display: ["620,000", "690,000", "760,000", "710,000", "880,000", "930,000"], lineValues: [82, 91, 108, 96, 121, 138], lineDisplay: ["82", "91", "108", "96", "121", "138"], lineLabel: "单量", lineColor: "#16b6a1", lineArea: "rgba(22, 182, 161, 0.15)", title: "业绩 / 单量", text: "柱状：业绩；折线：单量" },
+      ads: { values: [186000, 214000, 238000, 221000, 267000, 284000], display: ["186,000", "214,000", "238,000", "221,000", "267,000", "284,000"], lineValues: [2.18, 2.32, 2.49, 2.37, 2.68, 2.86], lineDisplay: ["2.18%", "2.32%", "2.49%", "2.37%", "2.68%", "2.86%"], lineLabel: "点击率", lineColor: "#ff9f2d", lineArea: "rgba(255, 159, 45, 0.16)", title: "广告展示 / 点击率", text: "柱状：广告展示；折线：点击率" },
+      community: { values: [28, 31, 35, 34, 39, 42], display: ["28", "31", "35", "34", "39", "42"], lineValues: [212, 238, 267, 259, 294, 318], lineDisplay: ["212", "238", "267", "259", "294", "318"], lineLabel: "日转发", lineColor: "#7c6dff", lineArea: "rgba(124, 109, 255, 0.16)", title: "社群文案数 / 日转发", text: "柱状：社群文案数；折线：日转发" },
+    },
   },
 };
 
 const lineSeries = [
   {
-    name: "续费承接",
+    name: "中高端续费",
     color: "#1976ff",
-    values: [48, 56, 53, 71, 77, 82, 86],
+    day: [51, 54, 59, 63, 68, 72, 76, 81, 84, 88, 90, 92],
+    week: [284, 302, 318, 336, 351, 372, 386, 402, 418, 431, 446, 462],
+    month: [1080, 1160, 1218, 1325, 1402, 1490, 1588, 1660, 1748, 1832, 1925, 2040],
   },
   {
-    name: "内容触达",
+    name: "新开升级+选股王",
     color: "#26c281",
-    values: [42, 46, 61, 58, 67, 72, 74],
+    day: [47, 51, 56, 60, 64, 67, 69, 73, 75, 76, 78, 79],
+    week: [256, 276, 291, 309, 324, 338, 352, 369, 381, 395, 408, 424],
+    month: [930, 1015, 1088, 1162, 1248, 1330, 1415, 1496, 1572, 1648, 1735, 1810],
   },
   {
-    name: "投放效率",
+    name: "猎手复购",
     color: "#ff9f2d",
-    values: [36, 44, 39, 48, 57, 62, 69],
+    day: [43, 46, 44, 50, 55, 58, 61, 65, 68, 72, 75, 77],
+    week: [218, 231, 228, 246, 263, 279, 295, 306, 318, 335, 349, 366],
+    month: [780, 825, 870, 918, 982, 1040, 1115, 1180, 1252, 1328, 1405, 1510],
   },
 ];
 
+const projectTrendPeriods = {
+  day: {
+    labels: ["6/26", "6/27", "6/28", "6/29", "6/30", "7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7"],
+  },
+  week: {
+    labels: ["4W1", "4W2", "4W3", "4W4", "5W1", "5W2", "5W3", "5W4", "6W1", "6W2", "6W3", "6W4"],
+  },
+  month: {
+    labels: ["8月", "9月", "10月", "11月", "12月", "1月", "2月", "3月", "4月", "5月", "6月", "7月"],
+  },
+};
+
 let lineOffset = 0;
+let currentPeriod = "week";
+let currentTrendKey = "revenue";
+let currentProjectPeriod = "day";
 
-function renderBarChart(period = "week") {
+function renderBarChart(period = currentPeriod) {
   const chart = document.querySelector("#operationBarChart");
+  if (!chart) return;
   const data = periodData[period];
-  const max = Math.max(...data.values);
+  const metric = data.metrics[currentTrendKey] || data.metrics.revenue;
+  chart.style.setProperty("--combo-line", metric.lineColor || "#ff9f2d");
+  chart.style.setProperty("--combo-area", metric.lineArea || "rgba(255, 159, 45, 0.14)");
+  const max = Math.max(...metric.values);
+  const lineValues = metric.lineValues || [];
+  const lineMin = Math.min(...lineValues);
+  const lineMax = Math.max(...lineValues);
+  const lineRange = lineMax - lineMin || 1;
+  const linePoints = lineValues.map((value, index) => ({
+    x: 8 + (index / Math.max(1, lineValues.length - 1)) * 84,
+    y: 18 + (1 - (value - lineMin) / lineRange) * 54,
+    label: metric.lineDisplay?.[index] || value,
+  }));
+  const linePath = smoothPath(linePoints);
+  const areaPath = `${linePath} L${linePoints.at(-1).x.toFixed(2)},88 L${linePoints[0].x.toFixed(2)},88 Z`;
 
-  chart.innerHTML = data.values
+  const bars = metric.values
     .map((value, index) => {
       const height = Math.max(16, Math.round((value / max) * 132));
       return `
         <div class="bar-col">
-          <span style="--h: ${height}px" data-value="${value}"></span>
+          <span style="--h: ${height}px" data-value="${metric.display?.[index] || value}"></span>
           <em>${data.labels[index]}</em>
         </div>
       `;
     })
     .join("");
+  const line = `
+    <svg class="combo-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-label="${metric.lineLabel}趋势折线">
+      <path class="combo-area" d="${areaPath}" />
+      <path class="combo-glow" d="${linePath}" />
+      <path class="combo-curve" d="${linePath}" />
+      ${linePoints.map((point) => `<circle cx="${point.x.toFixed(2)}" cy="${point.y.toFixed(2)}" r="2.5"></circle>`).join("")}
+    </svg>
+    <div class="combo-point-labels">
+      ${linePoints.map((point) => `<span style="left:${point.x.toFixed(2)}%; top:${point.y.toFixed(2)}%">${point.label}</span>`).join("")}
+    </div>
+    <div class="combo-legend"><b>柱状</b>${metric.title.split(" / ")[0]}<b>折线</b>${metric.lineLabel}</div>
+  `;
+  chart.innerHTML = `<div class="combo-bars">${bars}</div>${line}`;
 
-  const [main, second, third] = data.trends;
-  document.querySelector("#trendMainTitle").textContent = main[0];
-  document.querySelector("#trendMainText").textContent = main[1];
-  document.querySelector("#trendSecondTitle").textContent = second[0];
-  document.querySelector("#trendSecondText").textContent = second[1];
-  document.querySelector("#trendThirdTitle").textContent = third[0];
-  document.querySelector("#trendThirdText").textContent = third[1];
+  Object.entries(data.metrics).forEach(([key, item]) => {
+    const option = document.querySelector(`[data-trend-key="${key}"]`);
+    if (!option) return;
+    option.classList.toggle("active", key === currentTrendKey);
+    option.querySelector("strong").textContent = item.title;
+    option.querySelector("span").textContent = item.text;
+  });
+}
+
+function smoothPath(points) {
+  if (points.length < 2) return "";
+  return points.reduce((path, point, index, list) => {
+    if (index === 0) return `M${point.x.toFixed(2)},${point.y.toFixed(2)}`;
+    const prev = list[index - 1];
+    const midX = (prev.x + point.x) / 2;
+    return `${path} C${midX.toFixed(2)},${prev.y.toFixed(2)} ${midX.toFixed(2)},${point.y.toFixed(2)} ${point.x.toFixed(2)},${point.y.toFixed(2)}`;
+  }, "");
 }
 
 function pointsToPath(points) {
   return points.map((point, index) => `${index === 0 ? "M" : "L"}${point.x},${point.y}`).join(" ");
+}
+
+function pointsToSmoothPath(points) {
+  if (points.length < 2) return pointsToPath(points);
+  return points.reduce((path, point, index, list) => {
+    if (index === 0) return `M${point.x},${point.y}`;
+    const prev = list[index - 1];
+    const midX = (prev.x + point.x) / 2;
+    return `${path} C${midX},${prev.y} ${midX},${point.y} ${point.x},${point.y}`;
+  }, "");
 }
 
 function renderLineChart() {
@@ -735,10 +1938,11 @@ function renderLineChart() {
   const width = 520;
   const height = 210;
   const padding = { top: 24, right: 26, bottom: 34, left: 34 };
-  const labels = ["7/1", "7/2", "7/3", "7/4", "7/5", "7/6", "7/7"];
+  const period = projectTrendPeriods[currentProjectPeriod] || projectTrendPeriods.day;
+  const labels = period.labels;
   const series = lineSeries.map((item, index) => ({
     ...item,
-    values: item.values.map((value, valueIndex) => {
+    values: item[currentProjectPeriod].map((value, valueIndex) => {
       const wave = ((lineOffset + index + valueIndex) % 3) * 2;
       return value + wave;
     }),
@@ -761,19 +1965,21 @@ function renderLineChart() {
     .join("");
 
   const lines = series
-    .map((item) => {
+    .map((item, index) => {
       const points = item.values.map((value, index) => ({ x: xFor(index), y: yFor(value), value }));
-      const linePath = pointsToPath(points);
+      const linePath = pointsToSmoothPath(points);
       const areaPath = `${linePath} L${points.at(-1).x},${height - padding.bottom} L${points[0].x},${height - padding.bottom} Z`;
       const pointMarkup = points
         .map((point) => `<circle class="chart-point" cx="${point.x}" cy="${point.y}" r="4" stroke="${item.color}" />`)
         .join("");
       const last = points.at(-1);
+      const labelOffsets = [-18, -4, 12];
+      const labelY = Math.max(padding.top + 8, Math.min(height - padding.bottom - 6, last.y + labelOffsets[index]));
       return `
         <path class="chart-area" d="${areaPath}" fill="${item.color}"></path>
         <path class="chart-line" d="${linePath}" stroke="${item.color}"></path>
         ${pointMarkup}
-        <text class="chart-value-label" x="${last.x - 8}" y="${last.y - 12}" text-anchor="end">${item.name}</text>
+        <text class="chart-value-label" x="${last.x - 8}" y="${labelY}" text-anchor="end">${item.name}</text>
       `;
     })
     .join("");
@@ -784,13 +1990,31 @@ function renderLineChart() {
 document.querySelectorAll("#chartPeriod button").forEach((button) => {
   button.addEventListener("click", () => {
     document.querySelectorAll("#chartPeriod button").forEach((item) => item.classList.toggle("active", item === button));
-    renderBarChart(button.dataset.period);
+    currentPeriod = button.dataset.period;
+    renderBarChart();
+  });
+});
+
+document.querySelectorAll("[data-trend-key]").forEach((button) => {
+  button.addEventListener("click", () => {
+    currentTrendKey = button.dataset.trendKey || "revenue";
+    renderBarChart();
   });
 });
 
 document.querySelector("#shuffleLineChart")?.addEventListener("click", () => {
   lineOffset += 1;
   renderLineChart();
+});
+
+document.querySelectorAll("#projectTrendPeriod button").forEach((button) => {
+  button.addEventListener("click", () => {
+    currentProjectPeriod = button.dataset.projectPeriod || "day";
+    document.querySelectorAll("#projectTrendPeriod button").forEach((item) => {
+      item.classList.toggle("active", item === button);
+    });
+    renderLineChart();
+  });
 });
 
 renderBarChart("week");
@@ -809,7 +2033,7 @@ function loadStoredAnalysisRows() {
   }
 }
 
-let analysisRows = loadStoredAnalysisRows() || [
+let analysisRows = (typeof window !== "undefined" && Array.isArray(window.OPERATION_ADSTAT_SEED?.rows) && window.OPERATION_ADSTAT_SEED.rows.length ? window.OPERATION_ADSTAT_SEED.rows : loadStoredAnalysisRows()) || [
   { date: "2026-07-08", project: "短线王新开", channel: "APP", adId: "269301", title: "短线王新开福利", audience: "新注册1-7天", popup: 1480, click: 96, purchaseClick: 34, order: 16, deal: 5, material: "新开福利" },
   { date: "2026-07-08", project: "短线王新开", channel: "PC", adId: "108221", title: "短线工具体验提醒", audience: "新客未体验", popup: 720, click: 22, purchaseClick: 9, order: 5, deal: 1, material: "体验提醒" },
   { date: "2026-07-08", project: "短线王续费", channel: "APP", adId: "261821", title: "小白也能掌握的买点信号", audience: "活跃登录1-180天", popup: 2310, click: 182, purchaseClick: 64, order: 28, deal: 8, material: "买点信号" },
@@ -878,6 +2102,13 @@ function fmt(value) {
 
 function pct(value) {
   return `${Number(value || 0).toFixed(2)}%`;
+}
+
+function deltaClass(value) {
+  const number = Number(value || 0);
+  if (number > 0) return "up";
+  if (number < 0) return "down";
+  return "flat";
 }
 
 function escapeHtml(value) {
@@ -958,7 +2189,7 @@ function metricDelta(current, previous, type = "number") {
   if (!previous && current) return '<span class="analysis-delta up">新增</span>';
   if (!previous && !current) return '<span class="analysis-delta flat">持平</span>';
   const diff = ((Number(current || 0) - Number(previous || 0)) * 100) / Math.abs(Number(previous || 1));
-  const cls = diff > 0 ? "up" : diff < 0 ? "down" : "flat";
+  const cls = deltaClass(diff);
   const arrow = diff > 0 ? "↑" : diff < 0 ? "↓" : "→";
   const text = type === "pct" ? `${arrow} ${Math.abs(diff).toFixed(1)}%` : `${arrow} ${Math.abs(diff).toFixed(1)}%`;
   return `<span class="analysis-delta ${cls}">${text}</span>`;
@@ -981,18 +2212,46 @@ function currentAnalysisFilters() {
 
 function filteredAnalysisRows(date) {
   const filters = currentAnalysisFilters();
-  return analysisRows.filter((row) => row.date === date && row.project === filters.project && (filters.channel === "ALL" || row.channel === filters.channel));
+  const period = getStoredReportPeriod();
+  const startDate = analysisPeriodStart(date, period);
+  return analysisRows.filter((row) => row.date >= startDate && row.date <= date && row.project === filters.project && (filters.channel === "ALL" || row.channel === filters.channel));
+}
+
+function addDateDays(date, days) {
+  const next = new Date(`${date}T00:00:00`);
+  next.setDate(next.getDate() + days);
+  return next.toISOString().slice(0, 10);
+}
+
+function analysisPeriodStart(date, period) {
+  if (period === "weekly") return addDateDays(date, -6);
+  if (period === "monthly") return `${date.slice(0, 8)}01`;
+  return date;
+}
+
+function analysisPeriodLabel(date, period) {
+  const start = analysisPeriodStart(date, period);
+  if (period === "weekly") return `${start} 至 ${date}`;
+  if (period === "monthly") return `${date.slice(0, 7)} 月累计`;
+  return date;
 }
 
 function saveAnalysisRows() {
   localStorage.setItem("operation-center-analysis-rows", JSON.stringify(analysisRows));
 }
 
+let analysisUpdateStatusTimer = null;
+
 function setAnalysisUpdateStatus(text, type = "") {
   const status = document.querySelector("#analysisUpdateStatus");
   if (!status) return;
+  clearTimeout(analysisUpdateStatusTimer);
   status.textContent = text;
-  status.className = `analysis-update-status ${type}`.trim();
+  status.className = `analysis-update-status show ${type}`.trim();
+  analysisUpdateStatusTimer = setTimeout(() => {
+    status.textContent = "";
+    status.className = "analysis-update-status";
+  }, 5000);
 }
 
 function normalizeBackendRows(rows, projectName) {
@@ -1026,6 +2285,7 @@ async function updateAnalysisProject(projectName) {
   const payload = {
     sourceUrl: ADSTAT_SOURCE_URL,
     projectName,
+    backendProjectName: project?.backendProjectName || projectName,
     groupId: project?.groupId || "",
     currentDate: filters.date,
     compareDate: filters.compareDate,
@@ -1080,8 +2340,8 @@ function renderAnalysisOptions() {
   const projects = projectOptions.map((project) => project.name);
   const dates = [...new Set(analysisRows.map((row) => row.date))].sort().reverse();
   projectEl.innerHTML = projects.map((project) => `<option value="${escapeHtml(project)}">${escapeHtml(project)}</option>`).join("");
-  dateEl.innerHTML = dates.map((date) => `<option value="${date}">${date}</option>`).join("");
-  compareEl.innerHTML = dates.map((date, index) => `<option value="${date}" ${index === 1 ? "selected" : ""}>${date}</option>`).join("");
+  dateEl.value = dates[0] || "2026-07-08";
+  compareEl.value = dates[1] || dates[0] || "2026-07-07";
   [projectEl, dateEl, compareEl, document.querySelector("#analysisChannel"), document.querySelector("#analysisPopupThreshold")].forEach((el) => {
     el?.addEventListener("input", renderDataCenter);
   });
@@ -1111,7 +2371,8 @@ function renderDataCenter() {
   const total = sumAnalysis(rows);
   const previous = compareRows.length ? sumAnalysis(compareRows) : null;
   if (!document.querySelector("#analysisMetrics")) return;
-  document.querySelector("#analysisDateNote").textContent = `${filters.project}｜${filters.date} 对比 ${filters.compareDate}｜${filters.channel === "ALL" ? "APP+PC全部" : filters.channel}`;
+  const period = getStoredReportPeriod();
+  document.querySelector("#analysisDateNote").textContent = `${filters.project}｜${analysisPeriodLabel(filters.date, period)} 对比 ${analysisPeriodLabel(filters.compareDate, period)}｜${filters.channel === "ALL" ? "APP+PC全部" : filters.channel}`;
 
   const problems = problemRows(rows);
   const previousWithExtra = previous ? { ...previous, adCount: compareRows.length, problemCount: problemRows(compareRows).length } : null;
@@ -1195,6 +2456,58 @@ const miniChartData = {
   community: { color: "#7c6dff", values: [31, 34, 37, 35, 39, 41, 42] },
 };
 
+function communityMaterialSeed() {
+  const fallback = {
+    currentDate: "2026-07-08",
+    compareDate: "2026-07-07",
+    categories: [
+      { name: "基金", copyCount: 4, forwardCount: 28, compareCopyCount: 3, compareForwardCount: 23 },
+      { name: "升级高端版", copyCount: 5, forwardCount: 41, compareCopyCount: 4, compareForwardCount: 33 },
+      { name: "猎手", copyCount: 4, forwardCount: 31, compareCopyCount: 4, compareForwardCount: 35 },
+      { name: "中高端续费", copyCount: 6, forwardCount: 48, compareCopyCount: 5, compareForwardCount: 36 },
+      { name: "短线王", copyCount: 11, forwardCount: 83, compareCopyCount: 9, compareForwardCount: 71 },
+      { name: "选股王", copyCount: 4, forwardCount: 27, compareCopyCount: 3, compareForwardCount: 24 },
+    ],
+    trend: [27, 29, 31, 30, 32, 33, 34],
+  };
+  const seed = typeof window !== "undefined" ? window.OPERATION_COMMUNITY_MATERIAL_SEED : null;
+  return seed && Array.isArray(seed.categories) && seed.categories.length ? seed : fallback;
+}
+
+function renderCommunityOverview() {
+  const totalEl = document.querySelector("#communityOverviewTotal");
+  const listEl = document.querySelector("#communityOverviewBreakdown");
+  if (!totalEl || !listEl) return;
+  const data = communityMaterialSeed();
+  const categories = data.categories || [];
+  const totalCopy = categories.reduce((sum, item) => sum + Number(item.copyCount || 0), 0);
+  const totalForward = categories.reduce((sum, item) => sum + Number(item.forwardCount || 0), 0);
+  const compareCopy = categories.reduce((sum, item) => sum + Number(item.compareCopyCount || 0), 0);
+  const compareForward = categories.reduce((sum, item) => sum + Number(item.compareForwardCount || 0), 0);
+  const copyDelta = totalCopy - compareCopy;
+  const forwardDelta = totalForward - compareForward;
+  const totalDeltaClass = deltaClass(forwardDelta);
+  totalEl.innerHTML = `<strong>${fmt(totalCopy)} <small>/ ${fmt(totalForward)}</small></strong><span class="${totalDeltaClass}">环比 ${copyDelta >= 0 ? "+" : ""}${fmt(copyDelta)} 篇 / ${forwardDelta >= 0 ? "+" : ""}${fmt(forwardDelta)} 次</span>`;
+  const displayNameMap = { 升级高端版: "新开升级", 猎手: "猎手活动" };
+  const order = ["短线王新开", "短线王续费", "新开升级", "选股王", "中高端续费", "猎手活动", "基金"];
+  const orderedCategories = [...categories].sort((a, b) => {
+    const aName = displayNameMap[a.name] || a.name;
+    const bName = displayNameMap[b.name] || b.name;
+    const aIndex = order.indexOf(aName);
+    const bIndex = order.indexOf(bName);
+    return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex);
+  });
+  listEl.innerHTML = orderedCategories.map((item) => {
+    const displayName = displayNameMap[item.name] || item.name;
+    const copyDelta = Number(item.copyCount || 0) - Number(item.compareCopyCount || 0);
+    const forwardDelta = Number(item.forwardCount || 0) - Number(item.compareForwardCount || 0);
+    return `<div class="community-row"><span>${escapeHtml(displayName)}</span><b>${fmt(item.copyCount)} / ${fmt(item.forwardCount)} <em class="${deltaClass(copyDelta)}">${copyDelta >= 0 ? "+" : ""}${fmt(copyDelta)}</em><em class="${deltaClass(forwardDelta)}">${forwardDelta >= 0 ? "+" : ""}${fmt(forwardDelta)}</em></b></div>`;
+  }).join("");
+  if (Array.isArray(data.trend) && data.trend.length) {
+    miniChartData.community.values = data.trend;
+  }
+}
+
 function renderMiniChart(container, config) {
   const width = 118;
   const height = 62;
@@ -1220,7 +2533,11 @@ function renderMiniChart(container, config) {
   `;
 }
 
+renderCommunityOverview();
+
 document.querySelectorAll("[data-mini-chart]").forEach((container) => {
   const key = container.dataset.miniChart;
   renderMiniChart(container, miniChartData[key]);
 });
+
+activateView(getStoredView(), false);
