@@ -633,7 +633,20 @@ document.querySelectorAll("[data-content-tab]").forEach((button) => {
 
 function knowledgeFeedback(action, detail = "") {
   const status = document.getElementById("knowledgeStatus");
-  if (!status) return;
+  if (!status) {
+    const shouldToast = /失败|请选择|请输入|暂无|没有找到|不能为空|不支持|错误/.test(`${action}${detail}`);
+    if (!shouldToast) return;
+    const toast = document.createElement("div");
+    toast.className = "kb-toast";
+    toast.innerHTML = `<strong>${safeText(action)}</strong><span>${safeText(detail)}</span>`;
+    document.body.appendChild(toast);
+    window.setTimeout(() => toast.classList.add("show"), 20);
+    window.setTimeout(() => {
+      toast.classList.remove("show");
+      window.setTimeout(() => toast.remove(), 240);
+    }, 2600);
+    return;
+  }
   status.innerHTML = `<strong>${safeText(action)}</strong><span>${safeText(detail)}</span>`;
 }
 
@@ -932,7 +945,6 @@ function initKnowledgeModule() {
       <td><span class="file-icon ${safeText(file.iconClass || file.category)}">${safeText(file.icon)}</span>${safeText(file.name)}${file.description ? `<span class="kb-file-note" title="${safeText(file.description)}">${safeText(file.description)}</span>` : ""}</td>
       <td>${safeText(categoryLabel[file.category] || file.category)}</td>
       <td><em class="kb-tag">${safeText(subcategoryLabel[file.subcategory] || file.subcategory)}</em></td>
-      <td><em class="segment ${safeText(file.segmentClass)}">${safeText(file.segment)}</em></td>
       <td>${safeText(file.time)}</td>
       <td><button class="kb-switch${file.status === "enabled" ? " on" : ""}">${file.status === "enabled" ? "启用" : "禁用"}</button></td>
       <td>${knowledgeActionButtons()}</td>
@@ -958,7 +970,7 @@ function initKnowledgeModule() {
 
   function upgradeActionCells() {
     rows().forEach((row) => {
-      const actionCell = row.children[8];
+      const actionCell = row.children[7];
       if (actionCell && !actionCell.querySelector(".kb-action-icons")) actionCell.innerHTML = knowledgeActionButtons();
     });
   }
@@ -1060,9 +1072,7 @@ function initKnowledgeModule() {
       status: row.dataset.status || "enabled",
       icon: row.querySelector(".file-icon")?.textContent || fileIconFor(row.dataset.format, row.dataset.category),
       iconClass: row.querySelector(".file-icon")?.className.replace("file-icon", "").trim() || fileClassFor(row.dataset.format, row.dataset.category),
-      segment: row.children[5]?.textContent.trim() || "自动分段",
-      segmentClass: row.children[5]?.querySelector(".segment")?.className.replace("segment", "").trim() || "auto",
-      time: row.children[6]?.textContent.trim() || formatTime(),
+      time: row.children[5]?.textContent.trim() || formatTime(),
       hasBlob: Boolean(row.dataset.fileId),
     }));
   }
