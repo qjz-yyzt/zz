@@ -1093,7 +1093,7 @@ h1 {
 .release-summary-grid > .panel {
   display: flex;
   flex-direction: column;
-  height: 360px;
+  height: 430px;
   overflow: hidden;
 }
 
@@ -1125,7 +1125,7 @@ h1 {
 
 .release-summary-grid .release-status-card {
   min-height: 0;
-  overflow-y: auto;
+  overflow: visible;
 }
 
 .release-status-card strong {
