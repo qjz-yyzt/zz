@@ -1179,9 +1179,10 @@ h1 {
 .release-toolbar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   gap: 8px;
+  margin: 0 0 14px 28px;
 }
 
 .release-filter {
@@ -1192,7 +1193,7 @@ h1 {
 .release-filter-stack {
   display: grid;
   gap: 10px 14px;
-  margin-top: 10px;
+  margin: 2px 0 16px;
 }
 
 .release-filter-stack .release-filter {
@@ -1214,8 +1215,14 @@ h1 {
 }
 
 .release-filter-group .segmented {
-  flex-wrap: wrap;
-  gap: 3px;
+  flex-wrap: nowrap;
+  gap: 2px;
+  max-width: 100%;
+}
+
+.release-filter-group .segmented button {
+  padding: 6px 10px;
+  white-space: nowrap;
 }
 
 .release-pill {
@@ -2716,6 +2723,38 @@ th {
   color: #526986;
 }
 
+.kb-toast {
+  position: fixed;
+  right: 28px;
+  top: 28px;
+  z-index: 60;
+  display: grid;
+  gap: 3px;
+  min-width: 240px;
+  max-width: min(360px, calc(100vw - 40px));
+  padding: 12px 14px;
+  border: 1px solid #ffd7df;
+  border-radius: 12px;
+  color: #526986;
+  background: #fff8f9;
+  box-shadow: 0 18px 42px rgba(16, 38, 72, 0.16);
+  font-size: 12px;
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.kb-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.kb-toast strong {
+  color: var(--red);
+  font-size: 13px;
+}
+
 .kb-table-wrap {
   overflow-x: auto;
   border: 1px solid var(--line);
@@ -3479,7 +3518,7 @@ th {
 
 .data-controls {
   display: grid;
-  grid-template-columns: repeat(6, minmax(104px, 1fr));
+  grid-template-columns: repeat(5, minmax(112px, 1fr));
   gap: 10px;
   width: 100%;
   padding: 12px;
