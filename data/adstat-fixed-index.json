@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T11:43:45.791Z",
+  "updatedAt": "2026-07-09T13:45:50.715Z",
   "fixedItems": [
     {
       "key": "2026-07-08|短线王新开|1,2,3,4|ALL",
@@ -17,6 +17,40 @@
       "fixedAt": "2026-07-09",
       "markedAt": "2026-07-09T11:34:48.737Z",
       "backupUpdatedAt": "2026-07-09T11:34:48.684Z"
+    },
+    {
+      "key": "2026-07-08|短线王续费|1,2,3,4|ALL",
+      "date": "2026-07-08",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T11:46:51.481Z",
+      "backupUpdatedAt": "2026-07-09T11:46:51.330Z"
+    },
+    {
+      "key": "2026-07-08|新开升级|1,2,3,4|ALL",
+      "date": "2026-07-08",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T12:06:29.967Z",
+      "backupUpdatedAt": "2026-07-09T12:06:29.722Z"
     },
     {
       "key": "2026-07-08|中高端续费|4|PC",
@@ -67,6 +101,40 @@
       "backupUpdatedAt": "2026-07-09T11:34:31.695Z"
     },
     {
+      "key": "2026-07-07|短线王续费|1,2,3,4|ALL",
+      "date": "2026-07-07",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-08",
+      "markedAt": "2026-07-09T11:46:31.997Z",
+      "backupUpdatedAt": "2026-07-09T11:46:31.750Z"
+    },
+    {
+      "key": "2026-07-07|新开升级|1,2,3,4|ALL",
+      "date": "2026-07-07",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-08",
+      "markedAt": "2026-07-09T12:06:12.995Z",
+      "backupUpdatedAt": "2026-07-09T12:06:12.701Z"
+    },
+    {
       "key": "2026-07-07|中高端续费|1,2,3,4|ALL",
       "date": "2026-07-07",
       "projectName": "中高端续费",
@@ -101,6 +169,57 @@
       "backupUpdatedAt": "2026-07-09T11:34:13.684Z"
     },
     {
+      "key": "2026-07-06|短线王续费|1,2,3,4|ALL",
+      "date": "2026-07-06",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-07",
+      "markedAt": "2026-07-09T11:46:10.147Z",
+      "backupUpdatedAt": "2026-07-09T11:46:09.818Z"
+    },
+    {
+      "key": "2026-07-06|新开升级|1,2,3,4|ALL",
+      "date": "2026-07-06",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-07",
+      "markedAt": "2026-07-09T13:45:50.715Z",
+      "backupUpdatedAt": "2026-07-09T13:45:49.837Z"
+    },
+    {
+      "key": "2026-07-06|中高端续费|1,2,3,4|ALL",
+      "date": "2026-07-06",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-07",
+      "markedAt": "2026-07-09T12:26:22.390Z",
+      "backupUpdatedAt": "2026-07-09T12:26:21.967Z"
+    },
+    {
       "key": "2026-07-05|短线王新开|1,2,3,4|ALL",
       "date": "2026-07-05",
       "projectName": "短线王新开",
@@ -116,6 +235,57 @@
       "fixedAt": "2026-07-06",
       "markedAt": "2026-07-09T11:33:56.728Z",
       "backupUpdatedAt": "2026-07-09T11:33:56.689Z"
+    },
+    {
+      "key": "2026-07-05|短线王续费|1,2,3,4|ALL",
+      "date": "2026-07-05",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-06",
+      "markedAt": "2026-07-09T11:45:28.791Z",
+      "backupUpdatedAt": "2026-07-09T11:45:28.696Z"
+    },
+    {
+      "key": "2026-07-05|新开升级|1,2,3,4|ALL",
+      "date": "2026-07-05",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-06",
+      "markedAt": "2026-07-09T12:05:38.910Z",
+      "backupUpdatedAt": "2026-07-09T12:05:38.713Z"
+    },
+    {
+      "key": "2026-07-05|中高端续费|1,2,3,4|ALL",
+      "date": "2026-07-05",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-06",
+      "markedAt": "2026-07-09T12:25:56.965Z",
+      "backupUpdatedAt": "2026-07-09T12:25:56.733Z"
     },
     {
       "key": "2026-07-04|短线王新开|1,2,3,4|ALL",
@@ -135,6 +305,40 @@
       "backupUpdatedAt": "2026-07-09T11:33:38.696Z"
     },
     {
+      "key": "2026-07-04|短线王续费|1,2,3,4|ALL",
+      "date": "2026-07-04",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-05",
+      "markedAt": "2026-07-09T11:45:11.793Z",
+      "backupUpdatedAt": "2026-07-09T11:45:11.703Z"
+    },
+    {
+      "key": "2026-07-04|中高端续费|1,2,3,4|ALL",
+      "date": "2026-07-04",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-05",
+      "markedAt": "2026-07-09T12:25:39.968Z",
+      "backupUpdatedAt": "2026-07-09T12:25:39.722Z"
+    },
+    {
       "key": "2026-07-03|短线王新开|1,2,3,4|ALL",
       "date": "2026-07-03",
       "projectName": "短线王新开",
@@ -150,6 +354,40 @@
       "fixedAt": "2026-07-04",
       "markedAt": "2026-07-09T11:33:20.753Z",
       "backupUpdatedAt": "2026-07-09T11:33:20.691Z"
+    },
+    {
+      "key": "2026-07-03|短线王续费|1,2,3,4|ALL",
+      "date": "2026-07-03",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-04",
+      "markedAt": "2026-07-09T11:44:54.808Z",
+      "backupUpdatedAt": "2026-07-09T11:44:54.702Z"
+    },
+    {
+      "key": "2026-07-03|中高端续费|1,2,3,4|ALL",
+      "date": "2026-07-03",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-04",
+      "markedAt": "2026-07-09T12:25:22.968Z",
+      "backupUpdatedAt": "2026-07-09T12:25:22.732Z"
     },
     {
       "key": "2026-07-02|短线王新开|1,2,3,4|ALL",
@@ -169,6 +407,57 @@
       "backupUpdatedAt": "2026-07-09T11:33:03.670Z"
     },
     {
+      "key": "2026-07-02|短线王续费|1,2,3,4|ALL",
+      "date": "2026-07-02",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-03",
+      "markedAt": "2026-07-09T11:44:37.761Z",
+      "backupUpdatedAt": "2026-07-09T11:44:37.682Z"
+    },
+    {
+      "key": "2026-07-02|新开升级|1,2,3,4|ALL",
+      "date": "2026-07-02",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-03",
+      "markedAt": "2026-07-09T12:04:58.893Z",
+      "backupUpdatedAt": "2026-07-09T12:04:58.712Z"
+    },
+    {
+      "key": "2026-07-02|中高端续费|1,2,3,4|ALL",
+      "date": "2026-07-02",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-03",
+      "markedAt": "2026-07-09T12:25:06.145Z",
+      "backupUpdatedAt": "2026-07-09T12:25:05.717Z"
+    },
+    {
       "key": "2026-07-01|短线王新开|1,2,3,4|ALL",
       "date": "2026-07-01",
       "projectName": "短线王新开",
@@ -186,6 +475,57 @@
       "backupUpdatedAt": "2026-07-09T11:32:46.678Z"
     },
     {
+      "key": "2026-07-01|短线王续费|1,2,3,4|ALL",
+      "date": "2026-07-01",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-02",
+      "markedAt": "2026-07-09T11:44:19.772Z",
+      "backupUpdatedAt": "2026-07-09T11:44:19.690Z"
+    },
+    {
+      "key": "2026-07-01|新开升级|1,2,3,4|ALL",
+      "date": "2026-07-01",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-02",
+      "markedAt": "2026-07-09T12:04:44.846Z",
+      "backupUpdatedAt": "2026-07-09T12:04:44.708Z"
+    },
+    {
+      "key": "2026-07-01|中高端续费|1,2,3,4|ALL",
+      "date": "2026-07-01",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-02",
+      "markedAt": "2026-07-09T12:24:48.956Z",
+      "backupUpdatedAt": "2026-07-09T12:24:48.717Z"
+    },
+    {
       "key": "2026-06-30|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-30",
       "projectName": "短线王新开",
@@ -201,6 +541,57 @@
       "fixedAt": "2026-07-01",
       "markedAt": "2026-07-09T11:32:28.706Z",
       "backupUpdatedAt": "2026-07-09T11:32:28.674Z"
+    },
+    {
+      "key": "2026-06-30|短线王续费|1,2,3,4|ALL",
+      "date": "2026-06-30",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-01",
+      "markedAt": "2026-07-09T11:44:02.871Z",
+      "backupUpdatedAt": "2026-07-09T11:44:02.731Z"
+    },
+    {
+      "key": "2026-06-30|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-30",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-01",
+      "markedAt": "2026-07-09T12:04:29.871Z",
+      "backupUpdatedAt": "2026-07-09T12:04:29.698Z"
+    },
+    {
+      "key": "2026-06-30|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-30",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-01",
+      "markedAt": "2026-07-09T12:24:31.965Z",
+      "backupUpdatedAt": "2026-07-09T12:24:31.724Z"
     },
     {
       "key": "2026-06-29|短线王新开|1,2,3,4|ALL",
@@ -237,6 +628,40 @@
       "backupUpdatedAt": "2026-07-09T11:43:45.685Z"
     },
     {
+      "key": "2026-06-29|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-29",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-30",
+      "markedAt": "2026-07-09T12:04:13.860Z",
+      "backupUpdatedAt": "2026-07-09T12:04:13.712Z"
+    },
+    {
+      "key": "2026-06-29|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-29",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-30",
+      "markedAt": "2026-07-09T12:24:14.985Z",
+      "backupUpdatedAt": "2026-07-09T12:24:14.732Z"
+    },
+    {
       "key": "2026-06-28|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-28",
       "projectName": "短线王新开",
@@ -269,6 +694,40 @@
       "fixedAt": "2026-06-29",
       "markedAt": "2026-07-09T11:43:28.769Z",
       "backupUpdatedAt": "2026-07-09T11:43:28.686Z"
+    },
+    {
+      "key": "2026-06-28|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-28",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-29",
+      "markedAt": "2026-07-09T12:03:58.914Z",
+      "backupUpdatedAt": "2026-07-09T12:03:58.731Z"
+    },
+    {
+      "key": "2026-06-28|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-28",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-29",
+      "markedAt": "2026-07-09T12:23:57.993Z",
+      "backupUpdatedAt": "2026-07-09T12:23:57.726Z"
     },
     {
       "key": "2026-06-27|短线王新开|1,2,3,4|ALL",
@@ -305,6 +764,40 @@
       "backupUpdatedAt": "2026-07-09T11:43:11.693Z"
     },
     {
+      "key": "2026-06-27|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-27",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-28",
+      "markedAt": "2026-07-09T12:03:43.969Z",
+      "backupUpdatedAt": "2026-07-09T12:03:43.750Z"
+    },
+    {
+      "key": "2026-06-27|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-27",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-28",
+      "markedAt": "2026-07-09T12:23:41.061Z",
+      "backupUpdatedAt": "2026-07-09T12:23:40.714Z"
+    },
+    {
       "key": "2026-06-26|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-26",
       "projectName": "短线王新开",
@@ -337,6 +830,40 @@
       "fixedAt": "2026-06-27",
       "markedAt": "2026-07-09T11:42:52.748Z",
       "backupUpdatedAt": "2026-07-09T11:42:52.681Z"
+    },
+    {
+      "key": "2026-06-26|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-26",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-27",
+      "markedAt": "2026-07-09T12:03:29.902Z",
+      "backupUpdatedAt": "2026-07-09T12:03:29.707Z"
+    },
+    {
+      "key": "2026-06-26|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-26",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-27",
+      "markedAt": "2026-07-09T12:23:22.973Z",
+      "backupUpdatedAt": "2026-07-09T12:23:22.723Z"
     },
     {
       "key": "2026-06-25|短线王新开|1,2,3,4|ALL",
@@ -373,6 +900,40 @@
       "backupUpdatedAt": "2026-07-09T11:42:35.682Z"
     },
     {
+      "key": "2026-06-25|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-25",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-26",
+      "markedAt": "2026-07-09T12:03:13.841Z",
+      "backupUpdatedAt": "2026-07-09T12:03:13.702Z"
+    },
+    {
+      "key": "2026-06-25|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-25",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-26",
+      "markedAt": "2026-07-09T12:23:05.932Z",
+      "backupUpdatedAt": "2026-07-09T12:23:05.721Z"
+    },
+    {
       "key": "2026-06-24|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-24",
       "projectName": "短线王新开",
@@ -405,6 +966,40 @@
       "fixedAt": "2026-06-25",
       "markedAt": "2026-07-09T11:42:17.740Z",
       "backupUpdatedAt": "2026-07-09T11:42:17.687Z"
+    },
+    {
+      "key": "2026-06-24|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-24",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-25",
+      "markedAt": "2026-07-09T12:02:58.894Z",
+      "backupUpdatedAt": "2026-07-09T12:02:58.730Z"
+    },
+    {
+      "key": "2026-06-24|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-24",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-25",
+      "markedAt": "2026-07-09T12:22:49.988Z",
+      "backupUpdatedAt": "2026-07-09T12:22:49.726Z"
     },
     {
       "key": "2026-06-23|短线王新开|1,2,3,4|ALL",
@@ -441,6 +1036,40 @@
       "backupUpdatedAt": "2026-07-09T11:42:00.689Z"
     },
     {
+      "key": "2026-06-23|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-23",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-24",
+      "markedAt": "2026-07-09T12:02:41.092Z",
+      "backupUpdatedAt": "2026-07-09T12:02:40.814Z"
+    },
+    {
+      "key": "2026-06-23|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-23",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-24",
+      "markedAt": "2026-07-09T12:22:33.017Z",
+      "backupUpdatedAt": "2026-07-09T12:22:32.721Z"
+    },
+    {
       "key": "2026-06-22|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-22",
       "projectName": "短线王新开",
@@ -473,6 +1102,40 @@
       "fixedAt": "2026-06-23",
       "markedAt": "2026-07-09T11:41:43.767Z",
       "backupUpdatedAt": "2026-07-09T11:41:43.693Z"
+    },
+    {
+      "key": "2026-06-22|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-22",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-23",
+      "markedAt": "2026-07-09T12:02:22.876Z",
+      "backupUpdatedAt": "2026-07-09T12:02:22.703Z"
+    },
+    {
+      "key": "2026-06-22|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-22",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-23",
+      "markedAt": "2026-07-09T12:22:17.040Z",
+      "backupUpdatedAt": "2026-07-09T12:22:16.722Z"
     },
     {
       "key": "2026-06-21|短线王新开|1,2,3,4|ALL",
@@ -509,6 +1172,40 @@
       "backupUpdatedAt": "2026-07-09T11:41:26.710Z"
     },
     {
+      "key": "2026-06-21|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-21",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-22",
+      "markedAt": "2026-07-09T12:02:06.918Z",
+      "backupUpdatedAt": "2026-07-09T12:02:06.706Z"
+    },
+    {
+      "key": "2026-06-21|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-21",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-22",
+      "markedAt": "2026-07-09T12:22:01.137Z",
+      "backupUpdatedAt": "2026-07-09T12:22:00.741Z"
+    },
+    {
       "key": "2026-06-20|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-20",
       "projectName": "短线王新开",
@@ -541,6 +1238,40 @@
       "fixedAt": "2026-06-21",
       "markedAt": "2026-07-09T11:41:07.762Z",
       "backupUpdatedAt": "2026-07-09T11:41:07.692Z"
+    },
+    {
+      "key": "2026-06-20|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-20",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-21",
+      "markedAt": "2026-07-09T12:01:50.967Z",
+      "backupUpdatedAt": "2026-07-09T12:01:50.715Z"
+    },
+    {
+      "key": "2026-06-20|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-20",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-21",
+      "markedAt": "2026-07-09T12:21:44.053Z",
+      "backupUpdatedAt": "2026-07-09T12:21:43.723Z"
     },
     {
       "key": "2026-06-19|短线王新开|1,2,3,4|ALL",
@@ -577,6 +1308,40 @@
       "backupUpdatedAt": "2026-07-09T11:40:50.702Z"
     },
     {
+      "key": "2026-06-19|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-19",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-20",
+      "markedAt": "2026-07-09T12:01:32.981Z",
+      "backupUpdatedAt": "2026-07-09T12:01:32.712Z"
+    },
+    {
+      "key": "2026-06-19|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-19",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-20",
+      "markedAt": "2026-07-09T12:21:26.987Z",
+      "backupUpdatedAt": "2026-07-09T12:21:26.726Z"
+    },
+    {
       "key": "2026-06-18|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-18",
       "projectName": "短线王新开",
@@ -609,6 +1374,40 @@
       "fixedAt": "2026-06-19",
       "markedAt": "2026-07-09T11:40:33.740Z",
       "backupUpdatedAt": "2026-07-09T11:40:33.680Z"
+    },
+    {
+      "key": "2026-06-18|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-18",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-19",
+      "markedAt": "2026-07-09T12:01:17.027Z",
+      "backupUpdatedAt": "2026-07-09T12:01:16.770Z"
+    },
+    {
+      "key": "2026-06-18|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-18",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-19",
+      "markedAt": "2026-07-09T12:21:10.204Z",
+      "backupUpdatedAt": "2026-07-09T12:21:09.781Z"
     },
     {
       "key": "2026-06-17|短线王新开|1,2,3,4|ALL",
@@ -645,6 +1444,40 @@
       "backupUpdatedAt": "2026-07-09T11:40:16.680Z"
     },
     {
+      "key": "2026-06-17|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-17",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-18",
+      "markedAt": "2026-07-09T12:00:50.886Z",
+      "backupUpdatedAt": "2026-07-09T12:00:50.701Z"
+    },
+    {
+      "key": "2026-06-17|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-17",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-18",
+      "markedAt": "2026-07-09T12:20:43.107Z",
+      "backupUpdatedAt": "2026-07-09T12:20:42.785Z"
+    },
+    {
       "key": "2026-06-16|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-16",
       "projectName": "短线王新开",
@@ -677,6 +1510,40 @@
       "fixedAt": "2026-06-17",
       "markedAt": "2026-07-09T11:39:56.800Z",
       "backupUpdatedAt": "2026-07-09T11:39:56.691Z"
+    },
+    {
+      "key": "2026-06-16|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-16",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-17",
+      "markedAt": "2026-07-09T12:00:33.958Z",
+      "backupUpdatedAt": "2026-07-09T12:00:33.725Z"
+    },
+    {
+      "key": "2026-06-16|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-16",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-17",
+      "markedAt": "2026-07-09T12:20:25.996Z",
+      "backupUpdatedAt": "2026-07-09T12:20:25.747Z"
     },
     {
       "key": "2026-06-15|短线王新开|1,2,3,4|ALL",
@@ -713,6 +1580,40 @@
       "backupUpdatedAt": "2026-07-09T11:39:32.720Z"
     },
     {
+      "key": "2026-06-15|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-15",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-16",
+      "markedAt": "2026-07-09T12:00:16.889Z",
+      "backupUpdatedAt": "2026-07-09T12:00:16.724Z"
+    },
+    {
+      "key": "2026-06-15|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-15",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-16",
+      "markedAt": "2026-07-09T12:20:10.020Z",
+      "backupUpdatedAt": "2026-07-09T12:20:09.734Z"
+    },
+    {
       "key": "2026-06-14|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-14",
       "projectName": "短线王新开",
@@ -745,6 +1646,40 @@
       "fixedAt": "2026-06-15",
       "markedAt": "2026-07-09T11:39:13.763Z",
       "backupUpdatedAt": "2026-07-09T11:39:13.692Z"
+    },
+    {
+      "key": "2026-06-14|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-14",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-15",
+      "markedAt": "2026-07-09T12:00:00.899Z",
+      "backupUpdatedAt": "2026-07-09T12:00:00.735Z"
+    },
+    {
+      "key": "2026-06-14|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-14",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-15",
+      "markedAt": "2026-07-09T12:19:54.033Z",
+      "backupUpdatedAt": "2026-07-09T12:19:53.766Z"
     },
     {
       "key": "2026-06-13|短线王新开|1,2,3,4|ALL",
@@ -781,6 +1716,40 @@
       "backupUpdatedAt": "2026-07-09T11:38:55.692Z"
     },
     {
+      "key": "2026-06-13|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-13",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-14",
+      "markedAt": "2026-07-09T11:59:43.862Z",
+      "backupUpdatedAt": "2026-07-09T11:59:43.699Z"
+    },
+    {
+      "key": "2026-06-13|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-13",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-14",
+      "markedAt": "2026-07-09T12:19:37.984Z",
+      "backupUpdatedAt": "2026-07-09T12:19:37.740Z"
+    },
+    {
       "key": "2026-06-12|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-12",
       "projectName": "短线王新开",
@@ -813,6 +1782,40 @@
       "fixedAt": "2026-06-13",
       "markedAt": "2026-07-09T11:38:37.771Z",
       "backupUpdatedAt": "2026-07-09T11:38:37.692Z"
+    },
+    {
+      "key": "2026-06-12|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-12",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-13",
+      "markedAt": "2026-07-09T11:59:25.826Z",
+      "backupUpdatedAt": "2026-07-09T11:59:25.709Z"
+    },
+    {
+      "key": "2026-06-12|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-12",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-13",
+      "markedAt": "2026-07-09T12:19:22.002Z",
+      "backupUpdatedAt": "2026-07-09T12:19:21.754Z"
     },
     {
       "key": "2026-06-11|短线王新开|1,2,3,4|ALL",
@@ -849,6 +1852,40 @@
       "backupUpdatedAt": "2026-07-09T11:38:18.681Z"
     },
     {
+      "key": "2026-06-11|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-11",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-12",
+      "markedAt": "2026-07-09T11:59:08.854Z",
+      "backupUpdatedAt": "2026-07-09T11:59:08.710Z"
+    },
+    {
+      "key": "2026-06-11|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-11",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-12",
+      "markedAt": "2026-07-09T12:19:06.011Z",
+      "backupUpdatedAt": "2026-07-09T12:19:05.737Z"
+    },
+    {
       "key": "2026-06-10|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-10",
       "projectName": "短线王新开",
@@ -881,6 +1918,40 @@
       "fixedAt": "2026-06-11",
       "markedAt": "2026-07-09T11:37:59.762Z",
       "backupUpdatedAt": "2026-07-09T11:37:59.685Z"
+    },
+    {
+      "key": "2026-06-10|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-10",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-11",
+      "markedAt": "2026-07-09T11:58:51.820Z",
+      "backupUpdatedAt": "2026-07-09T11:58:51.706Z"
+    },
+    {
+      "key": "2026-06-10|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-10",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-11",
+      "markedAt": "2026-07-09T12:18:47.976Z",
+      "backupUpdatedAt": "2026-07-09T12:18:47.728Z"
     },
     {
       "key": "2026-06-09|短线王新开|1,2,3,4|ALL",
@@ -917,6 +1988,40 @@
       "backupUpdatedAt": "2026-07-09T11:37:41.684Z"
     },
     {
+      "key": "2026-06-09|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-09",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-10",
+      "markedAt": "2026-07-09T11:58:34.845Z",
+      "backupUpdatedAt": "2026-07-09T11:58:34.704Z"
+    },
+    {
+      "key": "2026-06-09|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-09",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-10",
+      "markedAt": "2026-07-09T12:18:29.981Z",
+      "backupUpdatedAt": "2026-07-09T12:18:29.743Z"
+    },
+    {
       "key": "2026-06-08|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-08",
       "projectName": "短线王新开",
@@ -949,6 +2054,40 @@
       "fixedAt": "2026-06-09",
       "markedAt": "2026-07-09T11:37:24.734Z",
       "backupUpdatedAt": "2026-07-09T11:37:24.682Z"
+    },
+    {
+      "key": "2026-06-08|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-08",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-09",
+      "markedAt": "2026-07-09T11:58:18.849Z",
+      "backupUpdatedAt": "2026-07-09T11:58:18.711Z"
+    },
+    {
+      "key": "2026-06-08|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-08",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-09",
+      "markedAt": "2026-07-09T12:18:12.941Z",
+      "backupUpdatedAt": "2026-07-09T12:18:12.730Z"
     },
     {
       "key": "2026-06-07|短线王新开|1,2,3,4|ALL",
@@ -985,6 +2124,40 @@
       "backupUpdatedAt": "2026-07-09T11:37:07.684Z"
     },
     {
+      "key": "2026-06-07|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-07",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-08",
+      "markedAt": "2026-07-09T11:58:01.834Z",
+      "backupUpdatedAt": "2026-07-09T11:58:01.693Z"
+    },
+    {
+      "key": "2026-06-07|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-07",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-08",
+      "markedAt": "2026-07-09T12:17:55.977Z",
+      "backupUpdatedAt": "2026-07-09T12:17:55.742Z"
+    },
+    {
       "key": "2026-06-06|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-06",
       "projectName": "短线王新开",
@@ -1017,6 +2190,40 @@
       "fixedAt": "2026-06-07",
       "markedAt": "2026-07-09T11:36:50.913Z",
       "backupUpdatedAt": "2026-07-09T11:36:50.848Z"
+    },
+    {
+      "key": "2026-06-06|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-06",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-07",
+      "markedAt": "2026-07-09T11:57:45.835Z",
+      "backupUpdatedAt": "2026-07-09T11:57:45.695Z"
+    },
+    {
+      "key": "2026-06-06|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-06",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-07",
+      "markedAt": "2026-07-09T12:17:37.045Z",
+      "backupUpdatedAt": "2026-07-09T12:17:36.751Z"
     },
     {
       "key": "2026-06-05|短线王新开|1,2,3,4|ALL",
@@ -1053,6 +2260,40 @@
       "backupUpdatedAt": "2026-07-09T11:36:32.677Z"
     },
     {
+      "key": "2026-06-05|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-05",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-06",
+      "markedAt": "2026-07-09T11:57:28.888Z",
+      "backupUpdatedAt": "2026-07-09T11:57:28.710Z"
+    },
+    {
+      "key": "2026-06-05|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-05",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-06",
+      "markedAt": "2026-07-09T12:17:19.932Z",
+      "backupUpdatedAt": "2026-07-09T12:17:19.727Z"
+    },
+    {
       "key": "2026-06-04|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-04",
       "projectName": "短线王新开",
@@ -1085,6 +2326,40 @@
       "fixedAt": "2026-06-05",
       "markedAt": "2026-07-09T11:36:14.868Z",
       "backupUpdatedAt": "2026-07-09T11:36:14.780Z"
+    },
+    {
+      "key": "2026-06-04|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-04",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-05",
+      "markedAt": "2026-07-09T11:57:12.839Z",
+      "backupUpdatedAt": "2026-07-09T11:57:12.703Z"
+    },
+    {
+      "key": "2026-06-04|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-04",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-05",
+      "markedAt": "2026-07-09T12:17:02.932Z",
+      "backupUpdatedAt": "2026-07-09T12:17:02.734Z"
     },
     {
       "key": "2026-06-03|短线王新开|1,2,3,4|ALL",
@@ -1121,6 +2396,40 @@
       "backupUpdatedAt": "2026-07-09T11:35:57.690Z"
     },
     {
+      "key": "2026-06-03|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-03",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-04",
+      "markedAt": "2026-07-09T11:56:55.870Z",
+      "backupUpdatedAt": "2026-07-09T11:56:55.707Z"
+    },
+    {
+      "key": "2026-06-03|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-03",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-04",
+      "markedAt": "2026-07-09T12:16:44.908Z",
+      "backupUpdatedAt": "2026-07-09T12:16:44.724Z"
+    },
+    {
       "key": "2026-06-02|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-02",
       "projectName": "短线王新开",
@@ -1155,6 +2464,40 @@
       "backupUpdatedAt": "2026-07-09T11:35:40.683Z"
     },
     {
+      "key": "2026-06-02|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-02",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-03",
+      "markedAt": "2026-07-09T11:56:39.921Z",
+      "backupUpdatedAt": "2026-07-09T11:56:39.756Z"
+    },
+    {
+      "key": "2026-06-02|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-02",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-03",
+      "markedAt": "2026-07-09T12:16:27.031Z",
+      "backupUpdatedAt": "2026-07-09T12:16:26.742Z"
+    },
+    {
       "key": "2026-06-01|短线王新开|1,2,3,4|ALL",
       "date": "2026-06-01",
       "projectName": "短线王新开",
@@ -1187,6 +2530,40 @@
       "fixedAt": "2026-06-02",
       "markedAt": "2026-07-09T11:35:22.725Z",
       "backupUpdatedAt": "2026-07-09T11:35:22.680Z"
+    },
+    {
+      "key": "2026-06-01|新开升级|1,2,3,4|ALL",
+      "date": "2026-06-01",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-02",
+      "markedAt": "2026-07-09T11:56:23.286Z",
+      "backupUpdatedAt": "2026-07-09T11:56:23.075Z"
+    },
+    {
+      "key": "2026-06-01|中高端续费|1,2,3,4|ALL",
+      "date": "2026-06-01",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-02",
+      "markedAt": "2026-07-09T12:16:08.345Z",
+      "backupUpdatedAt": "2026-07-09T12:16:08.082Z"
     }
   ]
 }
