@@ -4,7 +4,7 @@
   activity: "营销活动",
   knowledge: "知识库",
   content: "内容创作",
-  campaign: "广告计划 / 执行",
+  campaign: "广告计划执行",
   report: "数据中心",
   workflow: "风控监测",
   team: "权限管理",
@@ -246,6 +246,7 @@ function setContentType(type, shouldPersist = true) {
 function activateView(view, shouldPersist = true) {
   const nextView = isViewAvailable(view) ? view : "overview";
 
+  document.querySelector(".app-shell")?.scrollTo({ top: 0, left: 0 });
   navButtons.forEach((item) => item.classList.toggle("active", item.dataset.view === nextView));
   views.forEach((section) => section.classList.toggle("active", section.id === `view-${nextView}`));
   setPageCopy(nextView);
@@ -1769,8 +1770,8 @@ function clearDoneAutomationTasks() {
 
 function initAutomationModule() {
   if (!$("autoProject")) return;
-  $("automationHelperState").classList.add("ok");
-  $("automationHelperState").textContent = "演示模式";
+  $("automationHelperState")?.classList.add("ok");
+  if ($("automationHelperState")) $("automationHelperState").textContent = "演示模式";
   const saved = readStore(AUTO_CONFIG_KEY, null);
   fillAutomationForm(saved || { sourceDate: isoDate(-1), targetDate: isoDate(0) });
   $("autoProject").addEventListener("change", () => {
