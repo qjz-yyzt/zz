@@ -604,16 +604,16 @@ function initReleaseModule() {
     if (!trendChartEl) return;
     const max = Math.max(...series.map((item) => item.value), 1);
     const points = series.map((item, index) => {
-      const x = series.length === 1 ? 50 : (index / (series.length - 1)) * 92 + 4;
-      const y = 76 - (item.value / max) * 52;
+      const x = series.length === 1 ? 50 : (index / (series.length - 1)) * 88 + 6;
+      const y = 72 - (item.value / max) * 46;
       return { x, y, value: item.value, label: item.label };
     });
     const line = points.map((point) => `${point.x},${point.y}`).join(" ");
-    const area = `4,82 ${line} 96,82`;
-    const grid = [24, 42, 60, 78].map((y) => `<line x1="4" y1="${y}" x2="96" y2="${y}"></line>`).join("");
-    const labels = points.map((point) => `<text x="${point.x}" y="96" text-anchor="middle">${point.label}</text>`).join("");
-    const values = points.map((point) => `<text x="${point.x}" y="${Math.max(point.y - 5, 10)}" text-anchor="middle">${point.value}</text>`).join("");
-    const dots = points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.4"></circle>`).join("");
+    const area = `6,80 ${line} 94,80`;
+    const grid = [26, 42, 58, 74].map((y) => `<line x1="6" y1="${y}" x2="94" y2="${y}"></line>`).join("");
+    const labels = points.map((point) => `<text x="${point.x}" y="94" text-anchor="middle">${point.label}</text>`).join("");
+    const values = points.map((point) => `<text x="${point.x}" y="${Math.max(point.y - 4, 10)}" text-anchor="middle">${point.value}</text>`).join("");
+    const dots = points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="1.8"></circle>`).join("");
     trendChartEl.innerHTML = `
       <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" style="--trend-color:${color}">
         <g class="release-trend-grid">${grid}</g>
