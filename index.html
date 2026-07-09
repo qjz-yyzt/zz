@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-trend-card" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-summary-height" />
   </head>
   <body>
     <div class="app-shell">
@@ -928,6 +928,13 @@
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.55" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.55" /><span></span></label>
+                <time>2026-07-09 17:30:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.55 发布规则区域高度优化</h4>
+                <p>发布规则与本次发布包顶部区域高度拉高，左侧链接说明完整展示，不再出现内部滚动条。</p>
+              </article>
               <article data-release-id="v0.54" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.54" /><span></span></label>
                 <time>2026-07-09 17:22:00</time>
@@ -1331,9 +1338,9 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-trend-card"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-trend-card"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-trend-card"></script>
-    <script src="./app.js?v=20260709-release-trend-card"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-summary-height"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-summary-height"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-summary-height"></script>
+    <script src="./app.js?v=20260709-release-summary-height"></script>
   </body>
 </html>
