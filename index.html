@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-select-merge" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-report-charts" />
   </head>
   <body>
     <div class="app-shell">
@@ -62,7 +62,7 @@
           <div class="topbar-copy">
             <div class="page-title-block">
               <h1 id="pageTitle">工作台首页</h1>
-              <div class="header-date">2026-07-07 · 周二</div>
+              <div class="header-date" id="headerDate">2026-07-09 · 周四</div>
             </div>
             <div class="module-position">
               <h2 id="heroTitle">把每日运营动作串成一条可追踪链路</h2>
@@ -678,7 +678,7 @@
               <section class="campaign-card">
                 <div class="campaign-card-title"><span class="tile-icon icon-blue">▣</span><div><h4>任务配置</h4><p>复刻广告自动化参数口径，先保存或入队，再执行。</p></div></div>
                 <div class="campaign-form">
-                  <label>项目<select id="autoProject"><optgroup label="续费 / 活动"><option value="中高端续费" data-group="48">中高端续费</option><option value="猎手活动" data-group="92">猎手活动</option></optgroup><optgroup label="选股 / 升级"><option value="选股王" data-group="81">选股王</option><option value="新开升级" data-group="63">新开升级</option></optgroup><optgroup label="短线王"><option value="短线王新开" data-group="7">短线王新开</option><option value="短线王续费" data-group="27">短线王续费</option></optgroup><optgroup label="私域 / 增长"><option value="基金" data-group="64">基金</option><option value="转介绍" data-group="73">转介绍</option><option value="加企微活动" data-group="88">加企微活动</option></optgroup></select></label>
+                  <label>项目<select id="autoProject"><option value="中高端续费" data-group="48">中高端续费</option><option value="猎手活动" data-group="92">猎手活动</option><option value="选股王" data-group="81">选股王</option><option value="新开升级" data-group="63">新开升级</option><option value="短线王新开" data-group="7">短线王新开</option><option value="短线王续费" data-group="27">短线王续费</option><option value="基金" data-group="64">基金</option><option value="转介绍" data-group="73">转介绍</option><option value="加企微活动" data-group="88">加企微活动</option></select></label>
                   <label>广告类型<select id="autoAdType"><option value="normal">普通广告</option><option value="appPopup">APP 弹窗广告</option><option value="pcPopup">PC 客户端弹窗</option></select></label>
                   <label>执行动作<select id="autoAction"><option value="copyAndReplace">复制并换图</option><option value="replaceOnly">只换图不复制</option><option value="copyOnly">只复制不换图</option></select></label>
                   <label>广告分组ID<input id="autoGroupId" type="number" value="27" /></label>
@@ -864,6 +864,7 @@
                 <span class="release-pill" id="releaseBatchState">未选择</span>
               </div>
               <div class="release-checklist" id="releaseSelectedList">
+                <div><span class="status-dot blue"></span><strong>头部日期自动同步</strong><p>左上角日期改为按当天自动生成，不再固定停留在旧日期。</p></div>
                 <div><span class="status-dot orange"></span><strong>猎手标签补充核对</strong><p>猎手活动口径补充主题猎手标签，重新核对猎手和基金数据。</p></div>
                 <div><span class="status-dot blue"></span><strong>素材抓取重置筛选</strong><p>抓取企微素材前先重置后台筛选，避免残留标签或栏目导致漏数。</p></div>
                 <div><span class="status-dot blue"></span><strong>环比颜色规则统一</strong><p>环比等于0用主蓝色，大于0用红色，小于0用绿色。</p></div>
@@ -921,6 +922,20 @@
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.52" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.52" /><span></span></label>
+                <time>2026-07-09 17:08:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.52 版本报表趋势图</h4>
+                <p>日报、周报、月报、年报升级为柱状/曲线图展示，便于一眼判断近期版本发布量级。</p>
+              </article>
+              <article data-release-id="v0.51" data-release-status="wait" data-release-module="overview">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.51" /><span></span></label>
+                <time>2026-07-09 17:01:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.51 头部日期自动同步</h4>
+                <p>左上角日期从固定文案改为按当天日期自动生成，确保各模块页面展示最新日期。</p>
+              </article>
               <article data-release-id="v0.50" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.50" /><span></span></label>
                 <time>2026-07-09 15:55:00</time>
@@ -1283,6 +1298,7 @@
                 <div>
                   <strong>日报</strong>
                   <p id="releaseDailyReport">今日等待记录</p>
+                  <div class="release-mini-chart" id="releaseDailyChart"></div>
                 </div>
               </div>
               <div class="release-report-card">
@@ -1290,6 +1306,7 @@
                 <div>
                   <strong>周报</strong>
                   <p id="releaseWeeklyReport">本周等待记录</p>
+                  <div class="release-mini-chart" id="releaseWeeklyChart"></div>
                 </div>
               </div>
               <div class="release-report-card">
@@ -1297,6 +1314,7 @@
                 <div>
                   <strong>月报</strong>
                   <p id="releaseMonthlyReport">本月等待记录</p>
+                  <div class="release-mini-chart" id="releaseMonthlyChart"></div>
                 </div>
               </div>
               <div class="release-report-card">
@@ -1304,6 +1322,7 @@
                 <div>
                   <strong>年报</strong>
                   <p id="releaseYearlyReport">本年等待记录</p>
+                  <div class="release-mini-chart" id="releaseYearlyChart"></div>
                 </div>
               </div>
             </div>
@@ -1311,9 +1330,9 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-select-merge"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-select-merge"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-select-merge"></script>
-    <script src="./app.js?v=20260709-release-select-merge"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-report-charts"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-report-charts"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-report-charts"></script>
+    <script src="./app.js?v=20260709-release-report-charts"></script>
   </body>
 </html>
