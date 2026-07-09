@@ -1431,6 +1431,110 @@ h1 {
   margin-top: 14px;
 }
 
+.release-trend-card {
+  margin-top: 14px;
+  padding: 18px;
+  border: 1px solid #dce8f7;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.release-trend-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.release-trend-head h4 {
+  margin: 0;
+  color: var(--text);
+  font-size: 17px;
+}
+
+.release-trend-head p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.release-trend-tabs {
+  display: flex;
+  flex: 0 0 auto;
+  padding: 4px;
+  border-radius: 12px;
+  background: #edf4ff;
+}
+
+.release-trend-tabs button {
+  min-width: 48px;
+  height: 30px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.release-trend-tabs button.active {
+  color: var(--blue);
+  background: #fff;
+  box-shadow: 0 6px 14px rgba(25, 118, 255, 0.12);
+}
+
+.release-trend-chart {
+  height: 250px;
+  padding: 18px 20px 12px;
+  border: 1px solid #dce8f7;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #fbfdff 0%, #ffffff 100%);
+  overflow: hidden;
+}
+
+.release-trend-chart svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.release-trend-grid line {
+  stroke: #e7eef8;
+  stroke-width: 0.6;
+}
+
+.release-trend-area {
+  fill: var(--trend-color);
+  opacity: 0.18;
+}
+
+.release-trend-line {
+  fill: none;
+  stroke: var(--trend-color);
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.release-trend-dots circle {
+  fill: #fff;
+  stroke: var(--trend-color);
+  stroke-width: 2;
+}
+
+.release-trend-values text {
+  fill: var(--text);
+  font-size: 6px;
+  font-weight: 900;
+}
+
+.release-trend-labels text {
+  fill: #7b8da6;
+  font-size: 6px;
+  font-weight: 800;
+}
+
 .release-report-card {
   display: flex;
   align-items: flex-start;
