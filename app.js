@@ -339,10 +339,13 @@ function initReleaseModule() {
   const releaseChecks = [...document.querySelectorAll("[data-release-check]")];
   const selectedList = document.querySelector("#releaseSelectedList");
   const batchState = document.querySelector("#releaseBatchState");
+  const filterButtons = [...document.querySelectorAll("[data-release-filter]")];
+  const selectAllButton = document.querySelector("#selectAllRelease");
   const selectPendingButton = document.querySelector("#selectPendingRelease");
   const clearSelectionButton = document.querySelector("#clearReleaseSelection");
   const publishButton = document.querySelector("#publishSelectedRelease");
   const rollbackButton = document.querySelector("#rollbackRelease");
+  let activeReleaseFilter = "all";
 
   if (!approveButton || !stateEl || !textEl) return;
 
@@ -384,11 +387,30 @@ function initReleaseModule() {
   function setItemStatus(item, status) {
     const state = item.querySelector(".release-state");
     if (!state) return;
+    item.dataset.releaseCurrentStatus = status;
     item.classList.toggle("released", status === "ok");
     item.classList.toggle("rolled-back", status === "rollback");
     state.classList.toggle("ok", status === "ok");
     state.classList.toggle("wait", status !== "ok");
     state.textContent = status === "ok" ? "已发布" : status === "rollback" ? "已撤回" : "准备发布";
+  }
+
+  function applyReleaseFilter() {
+    releaseItems.forEach((item) => {
+      const status = item.dataset.releaseCurrentStatus || item.dataset.releaseStatus || "wait";
+      const visible = activeReleaseFilter === "all" || status === activeReleaseFilter;
+      item.hidden = !visible;
+      if (!visible) {
+        const check = item.querySelector("[data-release-check]");
+        if (check) {
+          check.checked = false;
+          item.classList.remove("selected");
+        }
+      }
+    });
+    filterButtons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.releaseFilter === activeReleaseFilter);
+    });
   }
 
   function selectedReleaseIds() {
@@ -425,6 +447,7 @@ function initReleaseModule() {
     releaseChecks.forEach((check) => {
       check.closest("article")?.classList.toggle("selected", check.checked);
     });
+    applyReleaseFilter();
     renderSelectedList(selectedReleaseIds(), releaseState.lastPublished);
   }
 
@@ -440,6 +463,20 @@ function initReleaseModule() {
 
   releaseChecks.forEach((check) => {
     check.addEventListener("change", () => renderReleaseState());
+  });
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeReleaseFilter = button.dataset.releaseFilter || "all";
+      renderReleaseState();
+    });
+  });
+
+  selectAllButton?.addEventListener("click", () => {
+    releaseChecks.forEach((check) => {
+      check.checked = !check.closest("article")?.hidden;
+    });
+    renderReleaseState();
   });
 
   selectPendingButton?.addEventListener("click", () => {
