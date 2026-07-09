@@ -362,9 +362,8 @@ function initReleaseModule() {
   const batchState = document.querySelector("#releaseBatchState");
   const filterButtons = [...document.querySelectorAll("[data-release-filter]")];
   const moduleFilterButtons = [...document.querySelectorAll("[data-release-module-filter]")];
-  const selectAllButton = document.querySelector("#selectAllRelease");
+  const toggleAllCheckbox = document.querySelector("#toggleAllRelease");
   const selectPendingButton = document.querySelector("#selectPendingRelease");
-  const clearSelectionButton = document.querySelector("#clearReleaseSelection");
   const publishButton = document.querySelector("#publishSelectedRelease");
   const rollbackButton = document.querySelector("#rollbackRelease");
   const versionTotalEl = document.querySelector("#releaseVersionTotal");
@@ -463,6 +462,18 @@ function initReleaseModule() {
     return releaseChecks.filter((check) => check.checked).map((check) => check.value);
   }
 
+  function visibleReleaseChecks() {
+    return releaseChecks.filter((check) => !check.closest("article")?.hidden);
+  }
+
+  function syncToggleAllCheckbox() {
+    if (!toggleAllCheckbox) return;
+    const visibleChecks = visibleReleaseChecks();
+    const selectedCount = visibleChecks.filter((check) => check.checked).length;
+    toggleAllCheckbox.checked = visibleChecks.length > 0 && selectedCount === visibleChecks.length;
+    toggleAllCheckbox.indeterminate = selectedCount > 0 && selectedCount < visibleChecks.length;
+  }
+
   function renderSelectedList(ids, fallbackIds = []) {
     const activeIds = ids.length ? ids : fallbackIds;
     const selected = releaseItems.filter((item) => activeIds.includes(item.dataset.releaseId)).map(getReleaseInfo);
@@ -496,6 +507,7 @@ function initReleaseModule() {
     applyReleaseFilter();
     renderVersionModuleData();
     renderSelectedList(selectedReleaseIds(), releaseState.lastPublished);
+    syncToggleAllCheckbox();
   }
 
   approveButton.addEventListener("click", () => {
@@ -526,9 +538,10 @@ function initReleaseModule() {
     });
   });
 
-  selectAllButton?.addEventListener("click", () => {
-    releaseChecks.forEach((check) => {
-      check.checked = !check.closest("article")?.hidden;
+  toggleAllCheckbox?.addEventListener("change", () => {
+    const shouldSelect = toggleAllCheckbox.checked;
+    visibleReleaseChecks().forEach((check) => {
+      check.checked = shouldSelect;
     });
     renderReleaseState();
   });
@@ -537,13 +550,6 @@ function initReleaseModule() {
     const releaseState = readReleaseState();
     releaseChecks.forEach((check) => {
       check.checked = (releaseState.statuses[check.value] || "wait") === "wait";
-    });
-    renderReleaseState();
-  });
-
-  clearSelectionButton?.addEventListener("click", () => {
-    releaseChecks.forEach((check) => {
-      check.checked = false;
     });
     renderReleaseState();
   });
@@ -1415,8 +1421,6 @@ function initKnowledgeModule() {
         iconClass: fileClassFor(format, targetCategory),
         name: file.name,
         description,
-        segment: "自动分段",
-        segmentClass: "auto",
         time: formatTime(),
       };
       try {
