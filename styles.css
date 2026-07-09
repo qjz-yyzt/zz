@@ -1189,6 +1189,29 @@ h1 {
   margin-top: 10px;
 }
 
+.release-filter-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  margin-top: 10px;
+}
+
+.release-filter-stack .release-filter {
+  margin-top: 0;
+}
+
+.release-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.release-filter-group > span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
 .release-pill {
   display: inline-flex;
   align-items: center;
@@ -1270,6 +1293,44 @@ h1 {
 .release-timeline article.rolled-back {
   opacity: 0.78;
   background: #f8fafc;
+}
+
+.release-data-panel {
+  margin-top: 16px;
+}
+
+.release-data-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.release-data-grid div {
+  min-height: 122px;
+  padding: 16px;
+  border: 1px solid #dce8f7;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 62%, #f0f8ff 100%);
+}
+
+.release-data-grid span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.release-data-grid strong {
+  display: block;
+  margin-top: 9px;
+  color: var(--text);
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.release-data-grid p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
 }
 
 .release-select {
@@ -2885,6 +2946,18 @@ th {
   box-shadow: 0 6px 14px rgba(255, 92, 108, 0.12);
 }
 
+.kb-file-note {
+  display: block;
+  max-width: 260px;
+  margin-top: 5px;
+  color: #7a8da6;
+  font-size: 11px;
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .kb-modal[hidden] {
   display: none;
 }
@@ -2959,9 +3032,9 @@ th {
 }
 
 .kb-modal-form select,
-.kb-modal-form input {
+.kb-modal-form input,
+.kb-modal-form textarea {
   width: 100%;
-  height: 38px;
   border: 1px solid #dbe9f8;
   border-radius: 9px;
   padding: 0 12px;
@@ -2971,8 +3044,21 @@ th {
   font-weight: 700;
 }
 
+.kb-modal-form select,
+.kb-modal-form input {
+  height: 38px;
+}
+
+.kb-modal-form textarea {
+  min-height: 76px;
+  padding: 10px 12px;
+  line-height: 1.55;
+  resize: vertical;
+}
+
 .kb-modal-form select:focus,
-.kb-modal-form input:focus {
+.kb-modal-form input:focus,
+.kb-modal-form textarea:focus {
   outline: 0;
   border-color: #9fcbff;
   box-shadow: 0 0 0 3px rgba(25, 118, 255, 0.09);
@@ -4064,6 +4150,7 @@ th {
   .file-action-grid,
   .data-controls,
   .dashboard-grid,
+  .release-data-grid,
   .section-grid.two,
   .operations-row,
   .finance-grid,
