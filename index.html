@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-data-pill-remove" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-report-icons" />
   </head>
   <body>
     <div class="app-shell">
@@ -922,6 +922,13 @@
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.49" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.49" /><span></span></label>
+                <time>2026-07-09 15:48:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.49 版本数据报表图标</h4>
+                <p>版本发布数据新增本机每日快照记录，并以日报、周报、月报、年报图标卡展示版本模块统计。</p>
+              </article>
               <article data-release-id="v0.48" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.48" /><span></span></label>
                 <time>2026-07-09 15:42:00</time>
@@ -1264,13 +1271,43 @@
                 <p id="releaseVersionLatestDesc">等待版本模块更新</p>
               </div>
             </div>
+            <div class="release-report-grid" aria-label="版本发布报表">
+              <div class="release-report-card">
+                <span class="release-report-icon blue">日</span>
+                <div>
+                  <strong>日报</strong>
+                  <p id="releaseDailyReport">今日等待记录</p>
+                </div>
+              </div>
+              <div class="release-report-card">
+                <span class="release-report-icon green">周</span>
+                <div>
+                  <strong>周报</strong>
+                  <p id="releaseWeeklyReport">本周等待记录</p>
+                </div>
+              </div>
+              <div class="release-report-card">
+                <span class="release-report-icon orange">月</span>
+                <div>
+                  <strong>月报</strong>
+                  <p id="releaseMonthlyReport">本月等待记录</p>
+                </div>
+              </div>
+              <div class="release-report-card">
+                <span class="release-report-icon purple">年</span>
+                <div>
+                  <strong>年报</strong>
+                  <p id="releaseYearlyReport">本年等待记录</p>
+                </div>
+              </div>
+            </div>
           </section>
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-data-pill-remove"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-data-pill-remove"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-data-pill-remove"></script>
-    <script src="./app.js?v=20260709-release-data-pill-remove"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-report-icons"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-report-icons"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-report-icons"></script>
+    <script src="./app.js?v=20260709-release-report-icons"></script>
   </body>
 </html>
