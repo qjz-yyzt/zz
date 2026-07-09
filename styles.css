@@ -1140,6 +1140,13 @@ h1 {
   word-break: break-all;
 }
 
+.release-link-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
 .release-status-card p {
   margin: 0;
   color: var(--muted);
@@ -1173,7 +1180,14 @@ h1 {
 .release-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
+}
+
+.release-actions span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .release-toolbar {
