@@ -1182,7 +1182,7 @@ h1 {
   justify-content: flex-start;
   align-items: center;
   gap: 8px;
-  margin: 0 0 14px 28px;
+  margin: 0 0 14px;
 }
 
 .release-master-select {
@@ -2922,12 +2922,19 @@ th {
   width: 108px;
 }
 
-.kb-file-table th:nth-child(7),
-.kb-file-table td:nth-child(7),
+.kb-file-table th:nth-child(6),
+.kb-file-table td:nth-child(6),
 .kb-file-table th:nth-child(8),
-.kb-file-table td:nth-child(8) {
+.kb-file-table td:nth-child(8),
+.kb-file-table th:nth-child(9),
+.kb-file-table td:nth-child(9) {
   width: 92px;
   text-align: center;
+}
+
+.kb-file-table th:nth-child(6),
+.kb-file-table td:nth-child(6) {
+  width: 64px;
 }
 
 .file-icon {
@@ -3052,7 +3059,8 @@ th {
   gap: 6px;
 }
 
-.kb-icon-action {
+.kb-icon-action,
+.kb-preview-action {
   width: 30px;
   height: 30px;
   display: inline-grid;
@@ -3065,7 +3073,8 @@ th {
   transition: 0.16s ease;
 }
 
-.kb-icon-action svg {
+.kb-icon-action svg,
+.kb-preview-action svg {
   width: 15px;
   height: 15px;
   display: block;
@@ -3076,7 +3085,8 @@ th {
   stroke-linejoin: round;
 }
 
-.kb-icon-action:hover {
+.kb-icon-action:hover,
+.kb-preview-action:hover {
   border-color: #b9d8ff;
   color: var(--blue);
   background: #eaf4ff;
