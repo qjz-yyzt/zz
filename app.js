@@ -364,7 +364,6 @@ function initReleaseModule() {
   const filterButtons = [...document.querySelectorAll("[data-release-filter]")];
   const moduleFilterButtons = [...document.querySelectorAll("[data-release-module-filter]")];
   const toggleAllCheckbox = document.querySelector("#toggleAllRelease");
-  const selectPendingButton = document.querySelector("#selectPendingRelease");
   const publishButton = document.querySelector("#publishSelectedRelease");
   const rollbackButton = document.querySelector("#rollbackRelease");
   const versionTotalEl = document.querySelector("#releaseVersionTotal");
@@ -608,14 +607,6 @@ function initReleaseModule() {
     const shouldSelect = toggleAllCheckbox.checked;
     visibleReleaseChecks().forEach((check) => {
       check.checked = shouldSelect;
-    });
-    renderReleaseState();
-  });
-
-  selectPendingButton?.addEventListener("click", () => {
-    const releaseState = readReleaseState();
-    releaseChecks.forEach((check) => {
-      check.checked = (releaseState.statuses[check.value] || "wait") === "wait";
     });
     renderReleaseState();
   });
