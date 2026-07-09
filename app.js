@@ -1258,14 +1258,6 @@ function initKnowledgeModule() {
   subcategoryTabs.forEach((button) => {
     button.addEventListener("click", () => {
       activeSubcategory = button.dataset.kbSubcategory || "all";
-      const parent = button.dataset.parent;
-      if (parent && parent !== "all" && activeCategory === "all") {
-        const parentTab = categoryTabs.find((item) => item.dataset.kbCategory === parent);
-        if (parentTab) {
-          activeCategory = parent;
-          syncActiveCategoryButtons();
-        }
-      }
       syncActiveSubcategoryButtons();
       applyFilters();
     });
@@ -1284,11 +1276,6 @@ function initKnowledgeModule() {
   manageSubcategoryTabs.forEach((button) => {
     button.addEventListener("click", () => {
       activeSubcategory = button.dataset.kbManageSubcategory || "all";
-      const parent = button.dataset.parent;
-      if (parent && parent !== "all" && activeCategory === "all") {
-        activeCategory = parent;
-        syncActiveCategoryButtons();
-      }
       syncActiveSubcategoryButtons();
       applyFilters();
     });
