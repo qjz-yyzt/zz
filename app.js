@@ -330,6 +330,7 @@ function initReleaseModule() {
     const state = item.querySelector(".release-state");
     if (!item.dataset.releaseId) item.dataset.releaseId = id;
     if (!item.dataset.releaseStatus) item.dataset.releaseStatus = state?.classList.contains("ok") ? "ok" : "wait";
+    if (!item.dataset.releaseModule) item.dataset.releaseModule = "general";
     if (!item.querySelector("[data-release-check]")) {
       item.insertAdjacentHTML("afterbegin", `<label class="release-select"><input type="checkbox" data-release-check value="${id}" /><span></span></label>`);
     }
@@ -340,12 +341,19 @@ function initReleaseModule() {
   const selectedList = document.querySelector("#releaseSelectedList");
   const batchState = document.querySelector("#releaseBatchState");
   const filterButtons = [...document.querySelectorAll("[data-release-filter]")];
+  const moduleFilterButtons = [...document.querySelectorAll("[data-release-module-filter]")];
   const selectAllButton = document.querySelector("#selectAllRelease");
   const selectPendingButton = document.querySelector("#selectPendingRelease");
   const clearSelectionButton = document.querySelector("#clearReleaseSelection");
   const publishButton = document.querySelector("#publishSelectedRelease");
   const rollbackButton = document.querySelector("#rollbackRelease");
+  const versionTotalEl = document.querySelector("#releaseVersionTotal");
+  const versionWaitEl = document.querySelector("#releaseVersionWait");
+  const versionOkEl = document.querySelector("#releaseVersionOk");
+  const versionLatestEl = document.querySelector("#releaseVersionLatest");
+  const versionLatestDescEl = document.querySelector("#releaseVersionLatestDesc");
   let activeReleaseFilter = "all";
+  let activeReleaseModuleFilter = "all";
 
   if (!approveButton || !stateEl || !textEl) return;
 
@@ -398,7 +406,10 @@ function initReleaseModule() {
   function applyReleaseFilter() {
     releaseItems.forEach((item) => {
       const status = item.dataset.releaseCurrentStatus || item.dataset.releaseStatus || "wait";
-      const visible = activeReleaseFilter === "all" || status === activeReleaseFilter;
+      const module = item.dataset.releaseModule || "general";
+      const visibleByStatus = activeReleaseFilter === "all" || status === activeReleaseFilter;
+      const visibleByModule = activeReleaseModuleFilter === "all" || module === activeReleaseModuleFilter;
+      const visible = visibleByStatus && visibleByModule;
       item.hidden = !visible;
       if (!visible) {
         const check = item.querySelector("[data-release-check]");
@@ -411,6 +422,21 @@ function initReleaseModule() {
     filterButtons.forEach((button) => {
       button.classList.toggle("active", button.dataset.releaseFilter === activeReleaseFilter);
     });
+    moduleFilterButtons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.releaseModuleFilter === activeReleaseModuleFilter);
+    });
+  }
+
+  function renderVersionModuleData() {
+    const versionItems = releaseItems.filter((item) => item.dataset.releaseModule === "version");
+    const waitCount = versionItems.filter((item) => (item.dataset.releaseCurrentStatus || item.dataset.releaseStatus || "wait") !== "ok").length;
+    const okCount = versionItems.filter((item) => (item.dataset.releaseCurrentStatus || item.dataset.releaseStatus || "wait") === "ok").length;
+    const latest = versionItems[0];
+    if (versionTotalEl) versionTotalEl.textContent = String(versionItems.length);
+    if (versionWaitEl) versionWaitEl.textContent = String(waitCount);
+    if (versionOkEl) versionOkEl.textContent = String(okCount);
+    if (versionLatestEl) versionLatestEl.textContent = latest?.dataset.releaseId || "-";
+    if (versionLatestDescEl) versionLatestDescEl.textContent = latest?.querySelector("h4")?.textContent || "等待版本模块更新";
   }
 
   function selectedReleaseIds() {
@@ -448,6 +474,7 @@ function initReleaseModule() {
       check.closest("article")?.classList.toggle("selected", check.checked);
     });
     applyReleaseFilter();
+    renderVersionModuleData();
     renderSelectedList(selectedReleaseIds(), releaseState.lastPublished);
   }
 
@@ -468,6 +495,13 @@ function initReleaseModule() {
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       activeReleaseFilter = button.dataset.releaseFilter || "all";
+      renderReleaseState();
+    });
+  });
+
+  moduleFilterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeReleaseModuleFilter = button.dataset.releaseModuleFilter || "all";
       renderReleaseState();
     });
   });
@@ -607,11 +641,13 @@ function initKnowledgeModule() {
   const uploadModal = document.getElementById("knowledgeUploadModal");
   const uploadCategorySelect = document.getElementById("knowledgeUploadCategory");
   const uploadSubcategorySelect = document.getElementById("knowledgeUploadSubcategory");
+  const uploadDescriptionInput = document.getElementById("knowledgeUploadDescription");
   const chooseFilesButton = document.getElementById("knowledgeChooseFiles");
   const editFileModal = document.getElementById("knowledgeEditFileModal");
   const editFileNameInput = document.getElementById("knowledgeEditFileName");
   const editCategorySelect = document.getElementById("knowledgeEditFileCategory");
   const editSubcategorySelect = document.getElementById("knowledgeEditFileSubcategory");
+  const editDescriptionInput = document.getElementById("knowledgeEditFileDescription");
   const saveFileNameButton = document.getElementById("knowledgeSaveFileName");
   if (!tableBody) return;
 
@@ -821,6 +857,7 @@ function initKnowledgeModule() {
       const matchFormat = selectedFormat === "all" || row.dataset.format === selectedFormat;
       const searchText = [
         row.dataset.fileName,
+        row.dataset.description,
         row.dataset.format,
         row.dataset.status === "enabled" ? "启用" : "禁用",
         categoryLabel[row.dataset.category],
@@ -864,6 +901,7 @@ function initKnowledgeModule() {
     const row = document.createElement("tr");
     row.dataset.fileId = file.id || "";
     row.dataset.fileName = file.name || "";
+    row.dataset.description = file.description || "";
     row.dataset.category = file.category;
     row.dataset.subcategory = file.subcategory;
     row.dataset.format = file.format;
@@ -871,7 +909,7 @@ function initKnowledgeModule() {
     row.innerHTML = `
       <td><input type="checkbox"></td>
       <td></td>
-      <td><span class="file-icon ${safeText(file.iconClass || file.category)}">${safeText(file.icon)}</span>${safeText(file.name)}</td>
+      <td><span class="file-icon ${safeText(file.iconClass || file.category)}">${safeText(file.icon)}</span>${safeText(file.name)}${file.description ? `<span class="kb-file-note" title="${safeText(file.description)}">${safeText(file.description)}</span>` : ""}</td>
       <td>${safeText(categoryLabel[file.category] || file.category)}</td>
       <td><em class="kb-tag">${safeText(subcategoryLabel[file.subcategory] || file.subcategory)}</em></td>
       <td><em class="segment ${safeText(file.segmentClass)}">${safeText(file.segment)}</em></td>
@@ -959,6 +997,7 @@ function initKnowledgeModule() {
     fillSelect(uploadCategorySelect, categoryOrder.filter((key) => key !== "all"), categoryLabel);
     if (uploadCategorySelect) uploadCategorySelect.value = pendingUploadCategory;
     updateUploadSubcategoryOptions(pendingUploadCategory, pendingUploadSubcategory);
+    if (uploadDescriptionInput) uploadDescriptionInput.value = "";
     if (uploadModal) uploadModal.hidden = false;
   }
 
@@ -977,6 +1016,7 @@ function initKnowledgeModule() {
       editFileNameInput.value = row.dataset.fileName || row.children[2]?.textContent.trim() || "";
       window.setTimeout(() => editFileNameInput.focus(), 0);
     }
+    if (editDescriptionInput) editDescriptionInput.value = row.dataset.description || "";
     if (editFileModal) editFileModal.hidden = false;
   }
 
@@ -993,6 +1033,7 @@ function initKnowledgeModule() {
     return rows().map((row) => ({
       id: row.dataset.fileId || "",
       name: row.dataset.fileName || row.children[2]?.textContent.trim() || "",
+      description: row.dataset.description || "",
       category: row.dataset.category || "product",
       subcategory: row.dataset.subcategory || defaultSubcategoryFor(row.dataset.category),
       format: row.dataset.format || "pdf",
@@ -1329,6 +1370,7 @@ function initKnowledgeModule() {
     if (!selectedFiles.length) return;
     const targetCategory = pendingUploadCategory || (activeCategory === "all" ? "product" : activeCategory);
     const targetSubcategory = pendingUploadSubcategory || defaultSubcategoryFor(targetCategory);
+    const description = uploadDescriptionInput?.value.trim() || "";
     let savedCount = 0;
     for (const file of selectedFiles) {
       const format = (file.name.split(".").pop() || "file").toLowerCase();
@@ -1342,6 +1384,7 @@ function initKnowledgeModule() {
         icon: fileIconFor(format, targetCategory),
         iconClass: fileClassFor(format, targetCategory),
         name: file.name,
+        description,
         segment: "自动分段",
         segmentClass: "auto",
         time: formatTime(),
@@ -1355,6 +1398,7 @@ function initKnowledgeModule() {
       }
     }
     fileInput.value = "";
+    if (uploadDescriptionInput) uploadDescriptionInput.value = "";
     renumberRows();
     saveKnowledgeState();
     applyFilters();
@@ -1373,11 +1417,14 @@ function initKnowledgeModule() {
     const oldName = editingFileRow.dataset.fileName || fileNameCell?.textContent.trim() || "当前文件";
     const nextCategory = editCategorySelect?.value || editingFileRow.dataset.category || "product";
     const nextSubcategory = editSubcategorySelect?.value || defaultSubcategoryFor(nextCategory);
+    const nextDescription = editDescriptionInput?.value.trim() || "";
     if (fileNameCell) {
       const icon = fileNameCell.querySelector(".file-icon")?.outerHTML || "";
-      fileNameCell.innerHTML = `${icon}${safeText(cleanName)}`;
+      const note = nextDescription ? `<span class="kb-file-note" title="${safeText(nextDescription)}">${safeText(nextDescription)}</span>` : "";
+      fileNameCell.innerHTML = `${icon}${safeText(cleanName)}${note}`;
       editingFileRow.dataset.fileName = cleanName;
     }
+    editingFileRow.dataset.description = nextDescription;
     editingFileRow.dataset.category = nextCategory;
     editingFileRow.dataset.subcategory = nextSubcategory;
     if (editingFileRow.children[3]) editingFileRow.children[3].textContent = categoryLabel[nextCategory] || nextCategory;
