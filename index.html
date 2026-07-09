@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-actions-under-filter" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-master-checkbox" />
   </head>
   <body>
     <div class="app-shell">
@@ -884,6 +884,11 @@
                 <h3>更新记录</h3>
                 <p>勾选需要对外展示的版本，可批量发布，也可撤回到上一个发布状态。</p>
               </div>
+              <label class="release-master-select">
+                <input id="toggleAllRelease" type="checkbox" />
+                <span></span>
+                <strong>全选</strong>
+              </label>
             </div>
             <div class="release-filter-stack">
               <div class="release-filter-group">
@@ -912,13 +917,18 @@
               </div>
             </div>
             <div class="release-toolbar">
-              <button class="text-button" id="selectAllRelease" type="button">一键全选</button>
               <button class="text-button" id="selectPendingRelease" type="button">选择待发布</button>
-              <button class="text-button" id="clearReleaseSelection" type="button">清空选择</button>
               <button class="primary-button" id="publishSelectedRelease" type="button">发布选中</button>
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.48" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.48" /><span></span></label>
+                <time>2026-07-09 15:42:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.48 全选控件合并</h4>
+                <p>将一键全选和清空选择合并为头部方框控件，勾选代表当前筛选全选，取消勾选代表清空选择。</p>
+              </article>
               <article data-release-id="v0.47" data-release-status="wait" data-release-module="team">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.47" /><span></span></label>
                 <time>2026-07-09 15:36:00</time>
@@ -1259,9 +1269,9 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-actions-under-filter"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-actions-under-filter"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-actions-under-filter"></script>
-    <script src="./app.js?v=20260709-release-actions-under-filter"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-master-checkbox"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-master-checkbox"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-master-checkbox"></script>
+    <script src="./app.js?v=20260709-release-master-checkbox"></script>
   </body>
 </html>
