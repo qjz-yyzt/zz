@@ -386,16 +386,12 @@ function initReleaseModule() {
   const versionOkEl = document.querySelector("#releaseVersionOk");
   const versionLatestEl = document.querySelector("#releaseVersionLatest");
   const versionLatestDescEl = document.querySelector("#releaseVersionLatestDesc");
-  const dailyReportEl = document.querySelector("#releaseDailyReport");
-  const weeklyReportEl = document.querySelector("#releaseWeeklyReport");
-  const monthlyReportEl = document.querySelector("#releaseMonthlyReport");
-  const yearlyReportEl = document.querySelector("#releaseYearlyReport");
-  const dailyChartEl = document.querySelector("#releaseDailyChart");
-  const weeklyChartEl = document.querySelector("#releaseWeeklyChart");
-  const monthlyChartEl = document.querySelector("#releaseMonthlyChart");
-  const yearlyChartEl = document.querySelector("#releaseYearlyChart");
+  const reportTabButtons = [...document.querySelectorAll("[data-release-report-tab]")];
+  const trendSummaryEl = document.querySelector("#releaseTrendSummary");
+  const trendChartEl = document.querySelector("#releaseTrendChart");
   let activeReleaseFilter = "all";
   let activeReleaseModuleFilter = "all";
+  let activeReleaseReportTab = "day";
 
   if (!approveButton || !stateEl || !textEl) return;
 
@@ -604,6 +600,31 @@ function initReleaseModule() {
     target.innerHTML = `<svg viewBox="0 0 100 66" preserveAspectRatio="none" aria-hidden="true"><polyline points="${line}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>${dots}${labels}</svg>`;
   }
 
+  function renderReleaseTrendChart(series, color = "#1976ff") {
+    if (!trendChartEl) return;
+    const max = Math.max(...series.map((item) => item.value), 1);
+    const points = series.map((item, index) => {
+      const x = series.length === 1 ? 50 : (index / (series.length - 1)) * 92 + 4;
+      const y = 76 - (item.value / max) * 52;
+      return { x, y, value: item.value, label: item.label };
+    });
+    const line = points.map((point) => `${point.x},${point.y}`).join(" ");
+    const area = `4,82 ${line} 96,82`;
+    const grid = [24, 42, 60, 78].map((y) => `<line x1="4" y1="${y}" x2="96" y2="${y}"></line>`).join("");
+    const labels = points.map((point) => `<text x="${point.x}" y="96" text-anchor="middle">${point.label}</text>`).join("");
+    const values = points.map((point) => `<text x="${point.x}" y="${Math.max(point.y - 5, 10)}" text-anchor="middle">${point.value}</text>`).join("");
+    const dots = points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.4"></circle>`).join("");
+    trendChartEl.innerHTML = `
+      <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" style="--trend-color:${color}">
+        <g class="release-trend-grid">${grid}</g>
+        <polygon class="release-trend-area" points="${area}"></polygon>
+        <polyline class="release-trend-line" points="${line}"></polyline>
+        <g class="release-trend-dots">${dots}</g>
+        <g class="release-trend-values">${values}</g>
+        <g class="release-trend-labels">${labels}</g>
+      </svg>`;
+  }
+
   function renderReleaseReports(todaySnapshot, versionItems = []) {
     const snapshots = readReleaseSnapshots();
     const today = todaySnapshot || snapshots[snapshots.length - 1];
@@ -620,15 +641,35 @@ function initReleaseModule() {
     const weekly = latestOf(weekItems);
     const monthly = latestOf(monthItems);
     const yearly = latestOf(yearItems);
-    if (dailyReportEl) dailyReportEl.textContent = `${today?.date || dateKey()}：${today?.total || 0}条，待发布${today?.wait || 0}条`;
-    if (weeklyReportEl) weeklyReportEl.textContent = `本周${weekItems.length || 1}天快照，最新待发布${weekly.wait || 0}条`;
-    if (monthlyReportEl) monthlyReportEl.textContent = `本月${monthItems.length || 1}天快照，最新已发布${monthly.ok || 0}条`;
-    if (yearlyReportEl) yearlyReportEl.textContent = `本年${yearItems.length || 1}天快照，最新版本${yearly.latestId || "-"}`;
     const dayCounts = countByDate(versionItems);
-    renderBarChart(dailyChartEl, recentDaySeries(dayCounts, 7), "#1976ff");
-    renderLineChart(weeklyChartEl, recentPeriodSeries(countByPeriod(versionItems, "week"), "week", 8), "#16a874");
-    renderBarChart(monthlyChartEl, recentPeriodSeries(countByPeriod(versionItems, "month"), "month", 6), "#ff9f2d");
-    renderBarChart(yearlyChartEl, recentPeriodSeries(countByPeriod(versionItems, "year"), "year", 4), "#7a5cff");
+    const reportMap = {
+      day: {
+        summary: `${today?.date || dateKey()}：${today?.total || 0}条，待发布${today?.wait || 0}条`,
+        series: recentDaySeries(dayCounts, 7),
+        color: "#1976ff",
+      },
+      week: {
+        summary: `本周${weekItems.length || 1}天快照，最新待发布${weekly.wait || 0}条`,
+        series: recentPeriodSeries(countByPeriod(versionItems, "week"), "week", 8),
+        color: "#16a874",
+      },
+      month: {
+        summary: `本月${monthItems.length || 1}天快照，最新已发布${monthly.ok || 0}条`,
+        series: recentPeriodSeries(countByPeriod(versionItems, "month"), "month", 6),
+        color: "#ff9f2d",
+      },
+      year: {
+        summary: `本年${yearItems.length || 1}天快照，最新版本${yearly.latestId || "-"}`,
+        series: recentPeriodSeries(countByPeriod(versionItems, "year"), "year", 4),
+        color: "#7a5cff",
+      },
+    };
+    const activeReport = reportMap[activeReleaseReportTab] || reportMap.day;
+    reportTabButtons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.releaseReportTab === activeReleaseReportTab);
+    });
+    if (trendSummaryEl) trendSummaryEl.textContent = activeReport.summary;
+    renderReleaseTrendChart(activeReport.series, activeReport.color);
   }
 
   function selectedReleaseIds() {
@@ -707,6 +748,13 @@ function initReleaseModule() {
   moduleFilterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       activeReleaseModuleFilter = button.dataset.releaseModuleFilter || "all";
+      renderReleaseState();
+    });
+  });
+
+  reportTabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeReleaseReportTab = button.dataset.releaseReportTab || "day";
       renderReleaseState();
     });
   });
