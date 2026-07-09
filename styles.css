@@ -1190,8 +1190,7 @@ h1 {
 }
 
 .release-filter-stack {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 10px 14px;
   margin-top: 10px;
 }
@@ -1202,14 +1201,21 @@ h1 {
 
 .release-filter-group {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
 }
 
 .release-filter-group > span {
+  flex: 0 0 auto;
+  padding-top: 9px;
   color: var(--muted);
   font-size: 12px;
   font-weight: 800;
+}
+
+.release-filter-group .segmented {
+  flex-wrap: wrap;
+  gap: 3px;
 }
 
 .release-pill {
@@ -3062,6 +3068,17 @@ th {
   outline: 0;
   border-color: #9fcbff;
   box-shadow: 0 0 0 3px rgba(25, 118, 255, 0.09);
+}
+
+.kb-modal-tip {
+  margin: 0;
+  padding: 9px 11px;
+  border: 1px solid #dbeaff;
+  border-radius: 9px;
+  color: #5272a0;
+  background: #f6fbff;
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .kb-modal-actions {
