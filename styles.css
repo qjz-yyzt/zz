@@ -1254,6 +1254,10 @@ h1 {
   background: #fff;
 }
 
+.release-timeline article[hidden] {
+  display: none !important;
+}
+
 .release-timeline article.selected {
   border-color: #a9d0ff;
   background: #f3f9ff;
