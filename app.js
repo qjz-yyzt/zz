@@ -153,6 +153,10 @@ const reportPeriodCopy = {
     title: "月报数据：月度目标、资源投入和增长结构",
     description: "按月汇总项目目标完成度、渠道贡献、活动效果和关键风险，为下一阶段资源分配提供依据。",
   },
+  yearly: {
+    title: "年报数据：年度累计、项目结构和长期沉淀",
+    description: "按年汇总广告触达、转化成交、项目贡献和素材沉淀，为年度复盘和下一年度规划提供依据。",
+  },
 };
 const analysisAdTypes = {
   normal: { label: "普通广告", channel: "APP", bannerType: 1 },
@@ -324,13 +328,29 @@ function initReleaseModule() {
   const textEl = document.querySelector("#releaseGateText");
   const timeline = document.querySelector(".release-timeline");
 
+  function inferReleaseModule(title = "") {
+    const rules = [
+      ["version", ["版本发布", "版本模块", "发布包", "发布规则", "更新记录", "正式外链", "预览链接", "时间精度"]],
+      ["knowledge", ["知识库", "资料", "文件", "上传", "类目", "分类"]],
+      ["content", ["内容", "社群", "文案", "素材", "转发", "企微素材"]],
+      ["ad", ["广告", "展示", "点击", "转化"]],
+      ["data", ["日报", "周报", "月报", "报表", "数据中心"]],
+      ["risk", ["风控", "异常", "预警"]],
+      ["team", ["权限", "账号", "团队"]],
+      ["activity", ["营销活动", "活动排期", "活动口径", "活动"]],
+      ["project", ["项目", "短线王", "中高端", "猎手", "基金", "新开升级", "选股王", "转介绍", "加企微"]],
+      ["overview", ["数据总览", "首页", "头部", "趋势", "单量", "业绩", "环比", "驾驶舱", "待办"]],
+    ];
+    return rules.find(([, keywords]) => keywords.some((keyword) => title.includes(keyword)))?.[0] || "general";
+  }
+
   timeline?.querySelectorAll("article").forEach((item, index) => {
     const title = item.querySelector("h4")?.textContent || `release-${index + 1}`;
     const id = title.match(/v[\d.]+/)?.[0] || `release-${index + 1}`;
     const state = item.querySelector(".release-state");
     if (!item.dataset.releaseId) item.dataset.releaseId = id;
     if (!item.dataset.releaseStatus) item.dataset.releaseStatus = state?.classList.contains("ok") ? "ok" : "wait";
-    if (!item.dataset.releaseModule) item.dataset.releaseModule = "general";
+    if (!item.dataset.releaseModule) item.dataset.releaseModule = inferReleaseModule(title);
     if (!item.querySelector("[data-release-check]")) {
       item.insertAdjacentHTML("afterbegin", `<label class="release-select"><input type="checkbox" data-release-check value="${id}" /><span></span></label>`);
     }
@@ -2154,7 +2174,22 @@ function loadStoredAnalysisRows() {
   }
 }
 
-let analysisRows = (typeof window !== "undefined" && Array.isArray(window.OPERATION_ADSTAT_SEED?.rows) && window.OPERATION_ADSTAT_SEED.rows.length ? window.OPERATION_ADSTAT_SEED.rows : loadStoredAnalysisRows()) || [
+function analysisRowKey(row) {
+  return [row.date, row.project, row.channel, row.adType || row.adTypeName || row.bannerType || "", row.adId, row.rawId || ""].join("|");
+}
+
+function mergeAnalysisRows(...groups) {
+  const merged = new Map();
+  groups.flat().filter(Boolean).forEach((row) => merged.set(analysisRowKey(row), row));
+  return [...merged.values()];
+}
+
+const seedAnalysisRows = typeof window !== "undefined" && Array.isArray(window.OPERATION_ADSTAT_SEED?.rows) ? window.OPERATION_ADSTAT_SEED.rows : [];
+const backupAnalysisRows = typeof window !== "undefined" && Array.isArray(window.OPERATION_ADSTAT_BACKUP_SEED?.rows) ? window.OPERATION_ADSTAT_BACKUP_SEED.rows : [];
+const storedAnalysisRows = loadStoredAnalysisRows() || [];
+
+let analysisRows = mergeAnalysisRows(seedAnalysisRows, backupAnalysisRows, storedAnalysisRows);
+if (!analysisRows.length) analysisRows = [
   { date: "2026-07-08", project: "短线王新开", channel: "APP", adId: "269301", title: "短线王新开福利", audience: "新注册1-7天", popup: 1480, click: 96, purchaseClick: 34, order: 16, deal: 5, material: "新开福利" },
   { date: "2026-07-08", project: "短线王新开", channel: "PC", adId: "108221", title: "短线工具体验提醒", audience: "新客未体验", popup: 720, click: 22, purchaseClick: 9, order: 5, deal: 1, material: "体验提醒" },
   { date: "2026-07-08", project: "短线王续费", channel: "APP", adId: "261821", title: "小白也能掌握的买点信号", audience: "活跃登录1-180天", popup: 2310, click: 182, purchaseClick: 64, order: 28, deal: 8, material: "买点信号" },
@@ -2322,17 +2357,25 @@ function kpiHtml(label, value, sub, key, current, previous, type = "number") {
 }
 
 function currentAnalysisFilters() {
-  const adType = document.querySelector("#analysisChannel")?.value || "appPopup";
-  const appScope = document.querySelector("#analysisAppScope")?.value || "ALL";
+  const filterValue = document.querySelector("#analysisChannel")?.value || "adType:appPopup";
+  const [filterMode, filterKey] = filterValue.includes(":") ? filterValue.split(":") : ["adType", filterValue];
+  const isScopeFilter = filterMode === "scope";
+  const adType = isScopeFilter ? "ALL" : filterKey;
+  const appScope = isScopeFilter ? filterKey : "ALL";
+  const adTypeLabel = isScopeFilter ? "全部广告类型" : (analysisAdTypes[adType]?.label || adType);
+  const appScopeLabel = analysisAppScopes[appScope]?.label || appScope;
   return {
     project: document.querySelector("#analysisProject")?.value || "短线王续费",
     date: document.querySelector("#analysisDate")?.value || "2026-07-08",
     compareDate: document.querySelector("#analysisCompareDate")?.value || "2026-07-07",
+    filterMode,
+    filterValue,
     adType,
-    adTypeLabel: analysisAdTypes[adType]?.label || adType,
+    adTypeLabel,
     appScope,
-    appScopeLabel: analysisAppScopes[appScope]?.label || appScope,
+    appScopeLabel,
     appScopeBackendLabel: analysisAppScopes[appScope]?.backendLabel || appScope,
+    filterLabel: isScopeFilter ? appScopeLabel : adTypeLabel,
     channel: appScope === "ALL" ? "ALL" : appScope,
     threshold: Number(document.querySelector("#analysisPopupThreshold")?.value || 1000),
   };
@@ -2352,7 +2395,10 @@ function filteredAnalysisRows(date) {
   const period = getStoredReportPeriod();
   const startDate = analysisPeriodStart(date, period);
   const allowedChannels = analysisAppScopes[filters.appScope]?.channels || ["APP", "PC"];
-  return analysisRows.filter((row) => row.date >= startDate && row.date <= date && row.project === filters.project && rowAnalysisAdType(row) === filters.adType && allowedChannels.includes(String(row.channel || "").toUpperCase()));
+  return analysisRows.filter((row) => row.date >= startDate && row.date <= date
+    && row.project === filters.project
+    && (filters.adType === "ALL" || rowAnalysisAdType(row) === filters.adType)
+    && allowedChannels.includes(String(row.channel || "").toUpperCase()));
 }
 
 function addDateDays(date, days) {
@@ -2364,6 +2410,7 @@ function addDateDays(date, days) {
 function analysisPeriodStart(date, period) {
   if (period === "weekly") return addDateDays(date, -6);
   if (period === "monthly") return `${date.slice(0, 8)}01`;
+  if (period === "yearly") return `${date.slice(0, 4)}-01-01`;
   return date;
 }
 
@@ -2371,6 +2418,7 @@ function analysisPeriodLabel(date, period) {
   const start = analysisPeriodStart(date, period);
   if (period === "weekly") return `${start} 至 ${date}`;
   if (period === "monthly") return `${date.slice(0, 7)} 月累计`;
+  if (period === "yearly") return `${date.slice(0, 4)} 年累计`;
   return date;
 }
 
@@ -2426,9 +2474,11 @@ async function updateAnalysisProject(projectName) {
     projectName,
     backendProjectName: project?.backendProjectName || projectName,
     groupId: project?.groupId || "",
-    adType: filters.adType,
+    filterMode: filters.filterMode,
+    filterValue: filters.filterValue,
+    adType: filters.adType === "ALL" ? "" : filters.adType,
     adTypeName: filters.adTypeLabel,
-    bannerType: analysisAdTypes[filters.adType]?.bannerType || 2,
+    bannerType: filters.adType === "ALL" ? "" : (analysisAdTypes[filters.adType]?.bannerType || 2),
     appScope: filters.appScope,
     appScopeName: filters.appScopeLabel,
     backendAppNames: filters.appScopeBackendLabel,
@@ -2459,13 +2509,15 @@ async function updateAnalysisProject(projectName) {
       const allowedChannels = analysisAppScopes[filters.appScope]?.channels || ["APP", "PC"];
       analysisRows = analysisRows.filter((row) => !(row.project === projectName
         && replaceDates.has(row.date)
-        && rowAnalysisAdType(row) === filters.adType
+        && (filters.adType === "ALL" || rowAnalysisAdType(row) === filters.adType)
         && allowedChannels.includes(String(row.channel || "").toUpperCase())));
       analysisRows.push(...normalized);
       saveAnalysisRows();
     }
 
-    setAnalysisUpdateStatus(`「${projectName}」更新完成：${json.status?.message || "已同步后台数据"}`, "ok");
+    const backupDates = json.status?.backup?.files?.map((file) => file.date).join("、");
+    const backupText = backupDates ? `；已备份 ${backupDates}` : "";
+    setAnalysisUpdateStatus(`「${projectName}」更新完成：${json.status?.message || "已同步后台数据"}${backupText}`, "ok");
     document.querySelector("#analysisProject").value = projectName;
     renderDataCenter();
   } catch (error) {
@@ -2491,7 +2543,7 @@ function renderAnalysisOptions() {
   projectEl.innerHTML = projects.map((project) => `<option value="${escapeHtml(project)}">${escapeHtml(project)}</option>`).join("");
   dateEl.value = dates[0] || "2026-07-08";
   compareEl.value = dates[1] || dates[0] || "2026-07-07";
-  [projectEl, dateEl, compareEl, document.querySelector("#analysisChannel"), document.querySelector("#analysisAppScope"), document.querySelector("#analysisPopupThreshold")].forEach((el) => {
+  [projectEl, dateEl, compareEl, document.querySelector("#analysisChannel"), document.querySelector("#analysisPopupThreshold")].forEach((el) => {
     el?.addEventListener("input", renderDataCenter);
   });
   document.querySelector("#copyAnalysisSummary")?.addEventListener("click", () => {
@@ -2521,7 +2573,7 @@ function renderDataCenter() {
   const previous = compareRows.length ? sumAnalysis(compareRows) : null;
   if (!document.querySelector("#analysisMetrics")) return;
   const period = getStoredReportPeriod();
-  document.querySelector("#analysisDateNote").textContent = `${filters.project}｜${analysisPeriodLabel(filters.date, period)} 对比 ${analysisPeriodLabel(filters.compareDate, period)}｜${filters.adTypeLabel}｜${filters.appScopeLabel}`;
+  document.querySelector("#analysisDateNote").textContent = `${filters.project}｜${analysisPeriodLabel(filters.date, period)} 对比 ${analysisPeriodLabel(filters.compareDate, period)}｜${filters.filterLabel}`;
 
   const problems = problemRows(rows);
   const previousWithExtra = previous ? { ...previous, adCount: compareRows.length, problemCount: problemRows(compareRows).length } : null;
@@ -2595,7 +2647,7 @@ function metricDeltaText(current, previous) {
 }
 
 function analysisSummaryText(filters, total, problems, auto) {
-  return `【${filters.project} 日报】\n日期：${filters.date}\n广告类型：${filters.adTypeLabel}\n应用范围：${filters.appScopeLabel}（${filters.appScopeBackendLabel}）\n\n核心指标：弹出 ${fmt(total.popup)}，点击 ${fmt(total.click)}，点击率 ${pct(total.clickRate)}，提交订单 ${fmt(total.order)}，成交 ${fmt(total.deal)}，付款完成率 ${pct(total.paymentFinishRate)}。\n\n系统自动复盘：\n1. 聚焦异常：${auto.focus}\n2. 关联动作：${auto.action}\n3. 驱动闭环：${auto.next}\n\n问题素材：共 ${problems.length} 条，重点关注 ${problems.slice(0, 3).map((row) => row.adId).join("、") || "无"}。\n\n优化建议：\n${problems.slice(0, 4).map((row, index) => `${index + 1}. 广告 ${row.adId}：${analysisAdvice(row)}`).join("\n") || "1. 今日整体表现稳定，继续观察高成交素材的人群和表达方式。"}`;
+  return `【${filters.project} 日报】\n日期：${filters.date}\n筛选口径：${filters.filterLabel}${filters.filterMode === "scope" ? `（${filters.appScopeBackendLabel}）` : ""}\n\n核心指标：弹出 ${fmt(total.popup)}，点击 ${fmt(total.click)}，点击率 ${pct(total.clickRate)}，提交订单 ${fmt(total.order)}，成交 ${fmt(total.deal)}，付款完成率 ${pct(total.paymentFinishRate)}。\n\n系统自动复盘：\n1. 聚焦异常：${auto.focus}\n2. 关联动作：${auto.action}\n3. 驱动闭环：${auto.next}\n\n问题素材：共 ${problems.length} 条，重点关注 ${problems.slice(0, 3).map((row) => row.adId).join("、") || "无"}。\n\n优化建议：\n${problems.slice(0, 4).map((row, index) => `${index + 1}. 广告 ${row.adId}：${analysisAdvice(row)}`).join("\n") || "1. 今日整体表现稳定，继续观察高成交素材的人群和表达方式。"}`;
 }
 
 const miniChartData = {
