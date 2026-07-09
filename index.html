@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-hidden-filter" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-module-data" />
   </head>
   <body>
     <div class="app-shell">
@@ -504,6 +504,7 @@
                 <div class="kb-modal-form">
                   <label>第一层大类<select id="knowledgeUploadCategory"></select></label>
                   <label>第二层小类<select id="knowledgeUploadSubcategory"></select></label>
+                  <label>备注/描述<textarea id="knowledgeUploadDescription" placeholder="非必填，可填写内容说明、适用场景或上传口径"></textarea></label>
                 </div>
                 <div class="kb-modal-actions">
                   <button type="button" class="text-button" data-kb-close-upload>取消</button>
@@ -525,6 +526,7 @@
                   <label>文件名称<input id="knowledgeEditFileName" type="text" placeholder="请输入文件名称"></label>
                   <label>第一层大类<select id="knowledgeEditFileCategory"></select></label>
                   <label>第二层小类<select id="knowledgeEditFileSubcategory"></select></label>
+                  <label>备注/描述<textarea id="knowledgeEditFileDescription" placeholder="非必填，可填写内容说明、适用场景或上传口径"></textarea></label>
                 </div>
                 <div class="kb-modal-actions">
                   <button type="button" class="text-button" data-kb-close-edit>取消</button>
@@ -882,10 +884,22 @@
               <div>
                 <h3>更新记录</h3>
                 <p>勾选需要对外展示的版本，可批量发布，也可撤回到上一个发布状态。</p>
-                <div class="release-filter segmented" aria-label="更新记录筛选">
-                  <button class="active" type="button" data-release-filter="all">全部</button>
-                  <button type="button" data-release-filter="ok">已发布</button>
-                  <button type="button" data-release-filter="wait">待发布</button>
+                <div class="release-filter-stack">
+                  <div class="release-filter-group">
+                    <span>状态</span>
+                    <div class="release-filter segmented" aria-label="更新记录状态筛选">
+                      <button class="active" type="button" data-release-filter="all">全部</button>
+                      <button type="button" data-release-filter="ok">已发布</button>
+                      <button type="button" data-release-filter="wait">待发布</button>
+                    </div>
+                  </div>
+                  <div class="release-filter-group">
+                    <span>模块</span>
+                    <div class="release-filter segmented" aria-label="更新记录模块筛选">
+                      <button class="active" type="button" data-release-module-filter="all">全部模块</button>
+                      <button type="button" data-release-module-filter="version">版本模块</button>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="release-toolbar">
@@ -897,6 +911,41 @@
               </div>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.43" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.43" /><span></span></label>
+                <time>2026-07-09 15:22:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.43 版本发布数据模块</h4>
+                <p>版本发布页面底部新增数据模块，单独汇总版本模块记录、待发布、已发布和最近版本。</p>
+              </article>
+              <article data-release-id="v0.42" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.42" /><span></span></label>
+                <time>2026-07-09 15:18:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.42 版本模块筛选显示修复</h4>
+                <p>修复更新记录状态筛选被卡片布局覆盖的问题，点击待发布时只展示准备发布记录。</p>
+              </article>
+              <article data-release-id="v0.41" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.41" /><span></span></label>
+                <time>2026-07-09 15:15:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.41 版本模块筛选位置优化</h4>
+                <p>将全部、已发布、待发布筛选移动到更新记录左侧标题下方，点击后直接切换对应状态记录。</p>
+              </article>
+              <article data-release-id="v0.40" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.40" /><span></span></label>
+                <time>2026-07-09 15:10:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.40 版本模块筛选与全选</h4>
+                <p>更新记录新增全部、已发布、待发布筛选，并支持按当前筛选结果一键全选。</p>
+              </article>
+              <article data-release-id="v0.39" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.39" /><span></span></label>
+                <time>2026-07-09 15:05:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.39 发布包高度固定</h4>
+                <p>本次发布包区域固定高度，勾选多个版本后内容在区域内部滚动，不再撑高页面布局。</p>
+              </article>
               <article data-release-id="v0.38" data-release-status="wait">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.38" /><span></span></label>
                 <time>2026-07-09 12:38:00</time>
@@ -1083,13 +1132,13 @@
                 <h4>v0.11 首页待办预警区调整</h4>
                 <p>首页中部区域由运营驾驶舱调整为今日待办和异常预警，突出当天必须处理的事项。</p>
               </article>
-              <article>
+              <article data-release-module="version">
                 <time>2026-07-08 21:04:30</time>
                 <span class="release-state wait">准备发布</span>
                 <h4>v0.10 预览链接入口</h4>
                 <p>版本发布模块新增本机预览链接，便于在正式发布前快速查看最新本地页面。</p>
               </article>
-              <article>
+              <article data-release-module="version">
                 <time>2026-07-08 21:00:39</time>
                 <span class="release-state wait">准备发布</span>
                 <h4>v0.9 更新时间精度优化</h4>
@@ -1101,7 +1150,7 @@
                 <h4>v0.8 头部标题顺序优化</h4>
                 <p>左上角标题区调整为工作台首页在上、日期在下，更符合当前页面层级。</p>
               </article>
-              <article>
+              <article data-release-module="version">
                 <time>2026-07-08 20:44:00</time>
                 <span class="release-state wait">准备发布</span>
                 <h4>v0.7 发布规则调整</h4>
@@ -1113,13 +1162,13 @@
                 <h4>v0.6 头部时间位置优化</h4>
                 <p>将日期移动到左上角标题区域，右侧操作区仅保留搜索、消息、提醒和账号。</p>
               </article>
-              <article>
+              <article data-release-module="version">
                 <time>2026-07-08 18:24:00</time>
                 <span class="release-state ok">已发布</span>
                 <h4>v0.5 版本发布模块</h4>
                 <p>新增发布审批、长期链接记录、外部展示确认和更新记录模块。</p>
               </article>
-              <article>
+              <article data-release-module="version">
                 <time>2026-07-08 16:30:00</time>
                 <span class="release-state ok">已发布</span>
                 <h4>v0.4 正式外链上线</h4>
@@ -1139,11 +1188,43 @@
               </article>
             </div>
           </section>
+
+          <section class="panel release-data-panel">
+            <div class="panel-header">
+              <div>
+                <h3>版本发布数据</h3>
+                <p>单独汇总版本模块的更新、发布、待处理和最近记录，方便本机查看。</p>
+              </div>
+              <span class="release-pill" id="releaseVersionDataState">版本模块</span>
+            </div>
+            <div class="release-data-grid">
+              <div>
+                <span>版本模块记录</span>
+                <strong id="releaseVersionTotal">0</strong>
+                <p>当前单独归类的版本发布相关更新</p>
+              </div>
+              <div>
+                <span>待发布记录</span>
+                <strong id="releaseVersionWait">0</strong>
+                <p>可继续勾选进入本次发布包</p>
+              </div>
+              <div>
+                <span>已发布记录</span>
+                <strong id="releaseVersionOk">0</strong>
+                <p>本机已标记为发布完成的记录</p>
+              </div>
+              <div>
+                <span>最近版本记录</span>
+                <strong id="releaseVersionLatest">-</strong>
+                <p id="releaseVersionLatestDesc">等待版本模块更新</p>
+              </div>
+            </div>
+          </section>
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-hidden-filter"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-hidden-filter"></script>
-    <script src="./app.js?v=20260709-release-hidden-filter"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-module-data"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-module-data"></script>
+    <script src="./app.js?v=20260709-release-module-data"></script>
   </body>
 </html>
