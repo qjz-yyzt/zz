@@ -1185,7 +1185,8 @@ h1 {
 }
 
 .release-filter {
-  margin-right: auto;
+  width: fit-content;
+  margin-top: 10px;
 }
 
 .release-pill {
