@@ -1,4 +1,19 @@
 {
-  "updatedAt": "",
-  "fixedItems": []
+  "updatedAt": "2026-07-09T09:04:22.674Z",
+  "fixedItems": [
+    {
+      "key": "2026-07-08|中高端续费|4|PC",
+      "date": "2026-07-08",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        4
+      ],
+      "appScope": "PC",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T09:04:22.674Z",
+      "backupUpdatedAt": "2026-07-09T09:04:22.593Z"
+    }
+  ]
 }
