@@ -188,6 +188,19 @@ const contentTypeCopy = {
   },
 };
 
+function formatHeaderDate(date = new Date()) {
+  const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day} · ${weekdays[date.getDay()]}`;
+}
+
+function updateHeaderDate() {
+  const headerDate = document.querySelector("#headerDate");
+  if (headerDate) headerDate.textContent = formatHeaderDate();
+}
+
 function isLocalPreview() {
   const { protocol, hostname } = window.location;
   return protocol === "file:" || hostname === "127.0.0.1" || hostname === "localhost";
@@ -275,6 +288,7 @@ function activateView(view, shouldPersist = true) {
   if (shouldPersist) localStorage.setItem(ACTIVE_VIEW_STORAGE_KEY, nextView);
 }
 
+updateHeaderDate();
 applyLocalOnlyVisibility();
 
 navButtons.forEach((button) => {
@@ -375,6 +389,10 @@ function initReleaseModule() {
   const weeklyReportEl = document.querySelector("#releaseWeeklyReport");
   const monthlyReportEl = document.querySelector("#releaseMonthlyReport");
   const yearlyReportEl = document.querySelector("#releaseYearlyReport");
+  const dailyChartEl = document.querySelector("#releaseDailyChart");
+  const weeklyChartEl = document.querySelector("#releaseWeeklyChart");
+  const monthlyChartEl = document.querySelector("#releaseMonthlyChart");
+  const yearlyChartEl = document.querySelector("#releaseYearlyChart");
   let activeReleaseFilter = "all";
   let activeReleaseModuleFilter = "all";
 
@@ -481,7 +499,7 @@ function initReleaseModule() {
     if (versionOkEl) versionOkEl.textContent = String(okCount);
     if (versionLatestEl) versionLatestEl.textContent = latest?.dataset.releaseId || "-";
     if (versionLatestDescEl) versionLatestDescEl.textContent = latest?.querySelector("h4")?.textContent || "等待版本模块更新";
-    renderReleaseReports(snapshot);
+    renderReleaseReports(snapshot, versionItems);
   }
 
   function recordReleaseSnapshot(versionItems, waitCount, okCount, latest) {
@@ -501,7 +519,91 @@ function initReleaseModule() {
     return snapshot;
   }
 
-  function renderReleaseReports(todaySnapshot) {
+  function releaseItemDate(item) {
+    const timeText = item.querySelector("time")?.textContent.trim().replace(" ", "T");
+    const date = timeText ? new Date(timeText) : new Date();
+    return Number.isNaN(date.getTime()) ? new Date() : date;
+  }
+
+  function countByDate(items) {
+    return items.reduce((acc, item) => {
+      const key = dateKey(releaseItemDate(item));
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
+  }
+
+  function periodKey(date, type) {
+    const year = date.getFullYear();
+    if (type === "year") return String(year);
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    if (type === "month") return `${year}-${month}`;
+    const weekStart = new Date(date);
+    weekStart.setDate(date.getDate() - ((date.getDay() + 6) % 7));
+    return dateKey(weekStart);
+  }
+
+  function countByPeriod(items, type) {
+    return items.reduce((acc, item) => {
+      const key = periodKey(releaseItemDate(item), type);
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
+  }
+
+  function recentDaySeries(counts, days = 7) {
+    return Array.from({ length: days }, (_, index) => {
+      const date = new Date();
+      date.setDate(date.getDate() - (days - index - 1));
+      const key = dateKey(date);
+      return { label: key.slice(5), value: counts[key] || 0 };
+    });
+  }
+
+  function recentPeriodSeries(counts, type, size) {
+    return Array.from({ length: size }, (_, index) => {
+      const date = new Date();
+      if (type === "week") date.setDate(date.getDate() - (size - index - 1) * 7);
+      if (type === "month") date.setMonth(date.getMonth() - (size - index - 1));
+      if (type === "year") date.setFullYear(date.getFullYear() - (size - index - 1));
+      const key = periodKey(date, type);
+      return { label: key.slice(type === "year" ? 0 : 5), value: counts[key] || 0 };
+    });
+  }
+
+  function renderBarChart(target, series, color = "#1976ff") {
+    if (!target) return;
+    const max = Math.max(...series.map((item) => item.value), 1);
+    const bars = series.map((item, index) => {
+      const width = 100 / series.length;
+      const barWidth = Math.max(width - 3, 5);
+      const height = Math.max((item.value / max) * 42, item.value ? 6 : 2);
+      const x = index * width + 1.5;
+      const y = 48 - height;
+      return `<rect x="${x}" y="${y}" width="${barWidth}" height="${height}" rx="2.5" fill="${color}" opacity="${item.value ? 0.9 : 0.18}"></rect>`;
+    }).join("");
+    const labels = series.map((item, index) => {
+      const width = 100 / series.length;
+      return `<text x="${index * width + width / 2}" y="62" text-anchor="middle">${item.value}</text>`;
+    }).join("");
+    target.innerHTML = `<svg viewBox="0 0 100 66" preserveAspectRatio="none" aria-hidden="true">${bars}${labels}</svg>`;
+  }
+
+  function renderLineChart(target, series, color = "#16a874") {
+    if (!target) return;
+    const max = Math.max(...series.map((item) => item.value), 1);
+    const points = series.map((item, index) => {
+      const x = series.length === 1 ? 50 : (index / (series.length - 1)) * 96 + 2;
+      const y = 48 - (item.value / max) * 40;
+      return { x, y, value: item.value };
+    });
+    const line = points.map((point) => `${point.x},${point.y}`).join(" ");
+    const dots = points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="2.5" fill="${color}"></circle>`).join("");
+    const labels = points.map((point) => `<text x="${point.x}" y="62" text-anchor="middle">${point.value}</text>`).join("");
+    target.innerHTML = `<svg viewBox="0 0 100 66" preserveAspectRatio="none" aria-hidden="true"><polyline points="${line}" fill="none" stroke="${color}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>${dots}${labels}</svg>`;
+  }
+
+  function renderReleaseReports(todaySnapshot, versionItems = []) {
     const snapshots = readReleaseSnapshots();
     const today = todaySnapshot || snapshots[snapshots.length - 1];
     const now = new Date();
@@ -521,6 +623,11 @@ function initReleaseModule() {
     if (weeklyReportEl) weeklyReportEl.textContent = `本周${weekItems.length || 1}天快照，最新待发布${weekly.wait || 0}条`;
     if (monthlyReportEl) monthlyReportEl.textContent = `本月${monthItems.length || 1}天快照，最新已发布${monthly.ok || 0}条`;
     if (yearlyReportEl) yearlyReportEl.textContent = `本年${yearItems.length || 1}天快照，最新版本${yearly.latestId || "-"}`;
+    const dayCounts = countByDate(versionItems);
+    renderBarChart(dailyChartEl, recentDaySeries(dayCounts, 7), "#1976ff");
+    renderLineChart(weeklyChartEl, recentPeriodSeries(countByPeriod(versionItems, "week"), "week", 8), "#16a874");
+    renderBarChart(monthlyChartEl, recentPeriodSeries(countByPeriod(versionItems, "month"), "month", 6), "#ff9f2d");
+    renderBarChart(yearlyChartEl, recentPeriodSeries(countByPeriod(versionItems, "year"), "year", 4), "#7a5cff");
   }
 
   function selectedReleaseIds() {
