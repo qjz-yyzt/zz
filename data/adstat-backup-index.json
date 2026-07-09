@@ -1,41 +1,239 @@
 {
-  "updatedAt": "2026-07-09T11:24:56.666Z",
+  "updatedAt": "2026-07-09T11:43:45.685Z",
   "files": [
+    {
+      "date": "2026-07-09",
+      "file": "adstat-backups/2026-07-09.json",
+      "rowCount": 32,
+      "updatedAt": "2026-07-09T11:35:04.671Z"
+    },
     {
       "date": "2026-07-08",
       "file": "adstat-backups/2026-07-08.json",
-      "rowCount": 10,
-      "updatedAt": "2026-07-09T09:09:58.821Z"
+      "rowCount": 67,
+      "updatedAt": "2026-07-09T11:34:48.684Z"
     },
     {
       "date": "2026-07-07",
       "file": "adstat-backups/2026-07-07.json",
-      "rowCount": 6,
-      "updatedAt": "2026-07-09T07:44:41.438Z"
+      "rowCount": 63,
+      "updatedAt": "2026-07-09T11:34:31.695Z"
+    },
+    {
+      "date": "2026-07-06",
+      "file": "adstat-backups/2026-07-06.json",
+      "rowCount": 57,
+      "updatedAt": "2026-07-09T11:34:13.684Z"
+    },
+    {
+      "date": "2026-07-05",
+      "file": "adstat-backups/2026-07-05.json",
+      "rowCount": 57,
+      "updatedAt": "2026-07-09T11:33:56.689Z"
+    },
+    {
+      "date": "2026-07-04",
+      "file": "adstat-backups/2026-07-04.json",
+      "rowCount": 49,
+      "updatedAt": "2026-07-09T11:33:38.696Z"
+    },
+    {
+      "date": "2026-07-03",
+      "file": "adstat-backups/2026-07-03.json",
+      "rowCount": 49,
+      "updatedAt": "2026-07-09T11:33:20.691Z"
+    },
+    {
+      "date": "2026-07-02",
+      "file": "adstat-backups/2026-07-02.json",
+      "rowCount": 49,
+      "updatedAt": "2026-07-09T11:33:03.670Z"
+    },
+    {
+      "date": "2026-07-01",
+      "file": "adstat-backups/2026-07-01.json",
+      "rowCount": 52,
+      "updatedAt": "2026-07-09T11:32:46.678Z"
+    },
+    {
+      "date": "2026-06-30",
+      "file": "adstat-backups/2026-06-30.json",
+      "rowCount": 52,
+      "updatedAt": "2026-07-09T11:32:28.674Z"
+    },
+    {
+      "date": "2026-06-29",
+      "file": "adstat-backups/2026-06-29.json",
+      "rowCount": 167,
+      "updatedAt": "2026-07-09T11:43:45.685Z"
+    },
+    {
+      "date": "2026-06-28",
+      "file": "adstat-backups/2026-06-28.json",
+      "rowCount": 149,
+      "updatedAt": "2026-07-09T11:43:28.686Z"
+    },
+    {
+      "date": "2026-06-27",
+      "file": "adstat-backups/2026-06-27.json",
+      "rowCount": 167,
+      "updatedAt": "2026-07-09T11:43:11.693Z"
+    },
+    {
+      "date": "2026-06-26",
+      "file": "adstat-backups/2026-06-26.json",
+      "rowCount": 164,
+      "updatedAt": "2026-07-09T11:42:52.681Z"
+    },
+    {
+      "date": "2026-06-25",
+      "file": "adstat-backups/2026-06-25.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:42:35.682Z"
+    },
+    {
+      "date": "2026-06-24",
+      "file": "adstat-backups/2026-06-24.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:42:17.687Z"
+    },
+    {
+      "date": "2026-06-23",
+      "file": "adstat-backups/2026-06-23.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:42:00.689Z"
+    },
+    {
+      "date": "2026-06-22",
+      "file": "adstat-backups/2026-06-22.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:41:43.693Z"
+    },
+    {
+      "date": "2026-06-21",
+      "file": "adstat-backups/2026-06-21.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:41:26.710Z"
+    },
+    {
+      "date": "2026-06-20",
+      "file": "adstat-backups/2026-06-20.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:41:07.692Z"
+    },
+    {
+      "date": "2026-06-19",
+      "file": "adstat-backups/2026-06-19.json",
+      "rowCount": 167,
+      "updatedAt": "2026-07-09T11:40:50.702Z"
+    },
+    {
+      "date": "2026-06-18",
+      "file": "adstat-backups/2026-06-18.json",
+      "rowCount": 167,
+      "updatedAt": "2026-07-09T11:40:33.680Z"
+    },
+    {
+      "date": "2026-06-17",
+      "file": "adstat-backups/2026-06-17.json",
+      "rowCount": 167,
+      "updatedAt": "2026-07-09T11:40:16.680Z"
+    },
+    {
+      "date": "2026-06-16",
+      "file": "adstat-backups/2026-06-16.json",
+      "rowCount": 167,
+      "updatedAt": "2026-07-09T11:39:56.691Z"
+    },
+    {
+      "date": "2026-06-15",
+      "file": "adstat-backups/2026-06-15.json",
+      "rowCount": 167,
+      "updatedAt": "2026-07-09T11:39:32.720Z"
+    },
+    {
+      "date": "2026-06-14",
+      "file": "adstat-backups/2026-06-14.json",
+      "rowCount": 167,
+      "updatedAt": "2026-07-09T11:39:13.692Z"
+    },
+    {
+      "date": "2026-06-13",
+      "file": "adstat-backups/2026-06-13.json",
+      "rowCount": 167,
+      "updatedAt": "2026-07-09T11:38:55.692Z"
+    },
+    {
+      "date": "2026-06-12",
+      "file": "adstat-backups/2026-06-12.json",
+      "rowCount": 164,
+      "updatedAt": "2026-07-09T11:38:37.692Z"
+    },
+    {
+      "date": "2026-06-11",
+      "file": "adstat-backups/2026-06-11.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:38:18.681Z"
+    },
+    {
+      "date": "2026-06-10",
+      "file": "adstat-backups/2026-06-10.json",
+      "rowCount": 155,
+      "updatedAt": "2026-07-09T11:37:59.685Z"
+    },
+    {
+      "date": "2026-06-09",
+      "file": "adstat-backups/2026-06-09.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:37:41.684Z"
+    },
+    {
+      "date": "2026-06-08",
+      "file": "adstat-backups/2026-06-08.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:37:24.682Z"
+    },
+    {
+      "date": "2026-06-07",
+      "file": "adstat-backups/2026-06-07.json",
+      "rowCount": 157,
+      "updatedAt": "2026-07-09T11:37:07.684Z"
+    },
+    {
+      "date": "2026-06-06",
+      "file": "adstat-backups/2026-06-06.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:36:50.848Z"
+    },
+    {
+      "date": "2026-06-05",
+      "file": "adstat-backups/2026-06-05.json",
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:36:32.677Z"
     },
     {
       "date": "2026-06-04",
       "file": "adstat-backups/2026-06-04.json",
-      "rowCount": 49,
-      "updatedAt": "2026-07-09T11:24:56.666Z"
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:36:14.780Z"
     },
     {
       "date": "2026-06-03",
       "file": "adstat-backups/2026-06-03.json",
-      "rowCount": 49,
-      "updatedAt": "2026-07-09T11:24:39.672Z"
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:35:57.690Z"
     },
     {
       "date": "2026-06-02",
       "file": "adstat-backups/2026-06-02.json",
-      "rowCount": 49,
-      "updatedAt": "2026-07-09T11:24:21.997Z"
+      "rowCount": 154,
+      "updatedAt": "2026-07-09T11:35:40.683Z"
     },
     {
       "date": "2026-06-01",
       "file": "adstat-backups/2026-06-01.json",
-      "rowCount": 52,
-      "updatedAt": "2026-07-09T11:23:43.662Z"
+      "rowCount": 166,
+      "updatedAt": "2026-07-09T11:35:22.680Z"
     }
   ]
 }
