@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-09T10:10:30.284Z",
+  "updatedAt": "2026-07-09T11:24:56.666Z",
   "files": [
     {
       "date": "2026-07-08",
@@ -12,6 +12,30 @@
       "file": "adstat-backups/2026-07-07.json",
       "rowCount": 6,
       "updatedAt": "2026-07-09T07:44:41.438Z"
+    },
+    {
+      "date": "2026-06-04",
+      "file": "adstat-backups/2026-06-04.json",
+      "rowCount": 49,
+      "updatedAt": "2026-07-09T11:24:56.666Z"
+    },
+    {
+      "date": "2026-06-03",
+      "file": "adstat-backups/2026-06-03.json",
+      "rowCount": 49,
+      "updatedAt": "2026-07-09T11:24:39.672Z"
+    },
+    {
+      "date": "2026-06-02",
+      "file": "adstat-backups/2026-06-02.json",
+      "rowCount": 49,
+      "updatedAt": "2026-07-09T11:24:21.997Z"
+    },
+    {
+      "date": "2026-06-01",
+      "file": "adstat-backups/2026-06-01.json",
+      "rowCount": 52,
+      "updatedAt": "2026-07-09T11:23:43.662Z"
     }
   ]
 }
