@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>运营工作台</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="./styles.css?v=20260709-release-data-split" />
+    <link rel="stylesheet" href="./styles.css?v=20260709-release-trend-detail" />
   </head>
   <body>
     <div class="app-shell">
@@ -928,6 +928,13 @@
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.57" data-release-status="wait" data-release-module="version">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.57" /><span></span></label>
+                <time>2026-07-09 17:45:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.57 版本趋势图细节优化</h4>
+                <p>缩小趋势图线条、节点、数值和日期标签字号，降低底部标签拥挤感。</p>
+              </article>
               <article data-release-id="v0.56" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.56" /><span></span></label>
                 <time>2026-07-09 17:38:00</time>
@@ -1347,9 +1354,9 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-data-split"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-data-split"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-data-split"></script>
-    <script src="./app.js?v=20260709-release-data-split"></script>
+    <script src="./data/adstat-seed.js?v=20260709-release-trend-detail"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260709-release-trend-detail"></script>
+    <script src="./data/community-material-seed.js?v=20260709-release-trend-detail"></script>
+    <script src="./app.js?v=20260709-release-trend-detail"></script>
   </body>
 </html>
