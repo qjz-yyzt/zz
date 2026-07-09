@@ -339,6 +339,7 @@ function initReleaseModule() {
   const approveButton = document.querySelector("#approveRelease");
   const resetButton = document.querySelector("#resetReleaseApproval");
   const copyButton = document.querySelector("#copyReleaseLink");
+  const copyButtons = [...document.querySelectorAll("[data-copy-url]")];
   const stateEl = document.querySelector("#releaseGateState");
   const textEl = document.querySelector("#releaseGateText");
   const timeline = document.querySelector(".release-timeline");
@@ -755,19 +756,23 @@ function initReleaseModule() {
     renderReleaseState();
   });
 
-  copyButton?.addEventListener("click", async () => {
+  async function copyReleaseUrl(button) {
     try {
-      await navigator.clipboard?.writeText(publicUrl);
-      copyButton.textContent = "已复制";
+      await navigator.clipboard?.writeText(button.dataset.copyUrl || publicUrl);
+      button.textContent = "已复制";
       window.setTimeout(() => {
-        copyButton.textContent = "复制外链";
+        button.textContent = "复制链接";
       }, 1400);
     } catch (error) {
-      copyButton.textContent = "复制失败";
+      button.textContent = "复制失败";
       window.setTimeout(() => {
-        copyButton.textContent = "复制外链";
+        button.textContent = "复制链接";
       }, 1400);
     }
+  }
+
+  copyButtons.forEach((button) => {
+    button.addEventListener("click", () => copyReleaseUrl(button));
   });
 
   renderReleaseState();
