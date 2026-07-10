@@ -3953,6 +3953,186 @@
           "count": 1
         }
       ]
+    },
+    {
+      "updatedAt": "2026-07-09T11:35:04.732Z",
+      "projectName": "短线王新开",
+      "backendProjectName": "短线王新开",
+      "groupId": "",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerType": "",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "appScopeName": "全部",
+      "backendAppNames": "PC+APP",
+      "rowCount": 32,
+      "summary": []
+    },
+    {
+      "updatedAt": "2026-07-09T11:47:10.827Z",
+      "projectName": "短线王续费",
+      "backendProjectName": "短线王续费",
+      "groupId": "",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerType": "",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "appScopeName": "全部",
+      "backendAppNames": "PC+APP",
+      "rowCount": 73,
+      "summary": []
+    },
+    {
+      "updatedAt": "2026-07-09T11:56:01.897Z",
+      "projectName": "选股王",
+      "backendProjectName": "选股王",
+      "groupId": "",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerType": "",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "appScopeName": "全部",
+      "backendAppNames": "PC+APP",
+      "rowCount": 0,
+      "summary": []
+    },
+    {
+      "updatedAt": "2026-07-09T12:06:45.873Z",
+      "projectName": "新开升级",
+      "backendProjectName": "新开升级",
+      "groupId": "",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerType": "",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "appScopeName": "全部",
+      "backendAppNames": "PC+APP",
+      "rowCount": 39,
+      "summary": []
+    },
+    {
+      "updatedAt": "2026-07-09T12:15:41.884Z",
+      "projectName": "猎手活动",
+      "backendProjectName": "猎手活动",
+      "groupId": "",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerType": "",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "appScopeName": "全部",
+      "backendAppNames": "PC+APP",
+      "rowCount": 0,
+      "summary": []
+    },
+    {
+      "updatedAt": "2026-07-09T12:26:44.236Z",
+      "projectName": "中高端续费",
+      "backendProjectName": "中高端续费",
+      "groupId": "",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerType": "",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "appScopeName": "全部",
+      "backendAppNames": "PC+APP",
+      "rowCount": 54,
+      "summary": []
+    },
+    {
+      "updatedAt": "2026-07-09T12:39:28.209Z",
+      "projectName": "基金",
+      "backendProjectName": "基金",
+      "groupId": "",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerType": "",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "appScopeName": "全部",
+      "backendAppNames": "PC+APP",
+      "rowCount": 0,
+      "summary": []
+    },
+    {
+      "updatedAt": "2026-07-09T12:53:41.037Z",
+      "projectName": "加企微活动",
+      "backendProjectName": "加企微活动",
+      "groupId": "",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerType": "",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "appScopeName": "全部",
+      "backendAppNames": "PC+APP",
+      "rowCount": 0,
+      "summary": []
+    },
+    {
+      "updatedAt": "2026-07-09T13:14:39.405Z",
+      "projectName": "转介绍",
+      "backendProjectName": "转介绍",
+      "groupId": "",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerType": "",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "appScopeName": "全部",
+      "backendAppNames": "PC+APP",
+      "rowCount": 0,
+      "summary": []
     }
   ]
 }
