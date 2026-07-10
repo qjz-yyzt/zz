@@ -905,6 +905,9 @@ function initKnowledgeModule() {
   const editSubcategorySelect = document.getElementById("knowledgeEditFileSubcategory");
   const editDescriptionInput = document.getElementById("knowledgeEditFileDescription");
   const saveFileNameButton = document.getElementById("knowledgeSaveFileName");
+  const previewModal = document.getElementById("knowledgePreviewModal");
+  const previewName = document.getElementById("knowledgePreviewName");
+  const previewBody = document.getElementById("knowledgePreviewBody");
   if (!tableBody) return;
 
   const KB_FILES_KEY = "operation-center-knowledge-files";
@@ -943,6 +946,7 @@ function initKnowledgeModule() {
   let pendingUploadCategory = "product";
   let pendingUploadSubcategory = "duanxianwang";
   let editingFileRow = null;
+  let currentPreviewUrl = "";
 
   function rows() {
     return [...tableBody.querySelectorAll("tr")];
@@ -1401,6 +1405,66 @@ function initKnowledgeModule() {
     });
   }
 
+  function closePreviewModal() {
+    if (previewModal) previewModal.hidden = true;
+    if (previewBody) previewBody.innerHTML = "";
+    if (currentPreviewUrl) {
+      URL.revokeObjectURL(currentPreviewUrl);
+      currentPreviewUrl = "";
+    }
+  }
+
+  function previewUnsupported(name, detail = "当前文件类型暂不支持在线预览，可使用下载按钮查看原文件。") {
+    if (!previewBody) return;
+    previewBody.innerHTML = `<div class="kb-preview-empty"><strong>${safeText(name)}</strong><span>${safeText(detail)}</span></div>`;
+  }
+
+  function readBlobAsText(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ""));
+      reader.onerror = () => reject(reader.error);
+      reader.readAsText(blob, "utf-8");
+    });
+  }
+
+  async function openPreviewModal(record, row) {
+    closePreviewModal();
+    if (!previewModal || !previewBody) return;
+    const name = row.dataset.fileName || record.name || "知识库文件";
+    const format = (row.dataset.format || name.split(".").pop() || "").toLowerCase();
+    const blob = record.blob;
+    if (previewName) previewName.textContent = name;
+    previewModal.hidden = false;
+    currentPreviewUrl = URL.createObjectURL(blob);
+    if (blob.type.startsWith("image/") || ["png", "jpg", "jpeg", "gif", "webp", "bmp", "svg"].includes(format)) {
+      previewBody.innerHTML = `<img src="${currentPreviewUrl}" alt="${safeText(name)}">`;
+      return;
+    }
+    if (blob.type.startsWith("video/") || ["mp4", "webm", "mov", "m4v"].includes(format)) {
+      previewBody.innerHTML = `<video src="${currentPreviewUrl}" controls></video>`;
+      return;
+    }
+    if (blob.type.startsWith("audio/") || ["mp3", "wav", "ogg", "m4a"].includes(format)) {
+      previewBody.innerHTML = `<audio src="${currentPreviewUrl}" controls></audio>`;
+      return;
+    }
+    if (blob.type === "application/pdf" || format === "pdf") {
+      previewBody.innerHTML = `<iframe src="${currentPreviewUrl}" title="${safeText(name)}"></iframe>`;
+      return;
+    }
+    if (blob.type.startsWith("text/") || ["txt", "csv", "md", "json", "html", "css", "js"].includes(format)) {
+      try {
+        const text = await readBlobAsText(blob);
+        previewBody.innerHTML = `<pre class="kb-preview-text">${safeText(text)}</pre>`;
+      } catch {
+        previewUnsupported(name, "文本读取失败，可使用下载按钮查看原文件。");
+      }
+      return;
+    }
+    previewUnsupported(name);
+  }
+
   function renameActiveCategory() {
     if (activeCategory === "all") {
       knowledgeFeedback("请选择具体大类", "先选择公司知识库、产品知识库等具体大类，再修改名称。");
@@ -1557,9 +1621,7 @@ function initKnowledgeModule() {
             knowledgeFeedback("预览失败", "没有找到本地保存的源文件。");
             return;
           }
-          const url = URL.createObjectURL(record.blob);
-          window.open(url, "_blank", "noopener,noreferrer");
-          window.setTimeout(() => URL.revokeObjectURL(url), 30000);
+          openPreviewModal(record, row);
         }).catch(() => knowledgeFeedback("预览失败", "浏览器本地数据库读取失败。"));
       } else if (action === "删除") {
         const fileId = row.dataset.fileId;
@@ -1704,8 +1766,16 @@ function initKnowledgeModule() {
     button.addEventListener("click", closeEditFileModal);
   });
 
+  document.querySelectorAll("[data-kb-close-preview]").forEach((button) => {
+    button.addEventListener("click", closePreviewModal);
+  });
+
   editFileModal?.addEventListener("click", (event) => {
     if (event.target === editFileModal) closeEditFileModal();
+  });
+
+  previewModal?.addEventListener("click", (event) => {
+    if (event.target === previewModal) closePreviewModal();
   });
 
   editFileNameInput?.addEventListener("keydown", (event) => {
@@ -1719,6 +1789,7 @@ function initKnowledgeModule() {
     if (event.key !== "Escape") return;
     if (uploadModal && !uploadModal.hidden) closeUploadModal();
     if (editFileModal && !editFileModal.hidden) closeEditFileModal();
+    if (previewModal && !previewModal.hidden) closePreviewModal();
   });
 
   [document.getElementById("knowledgeRefresh")].forEach((button) => {
@@ -2428,11 +2499,50 @@ function mergeAnalysisRows(...groups) {
   return [...merged.values()];
 }
 
+function analysisRowBannerType(row) {
+  const direct = Number(row.bannerType || row._bannerType);
+  if (direct) return direct;
+  const map = { normal: 1, appPopup: 2, appNotice: 3, pcPopup: 4 };
+  return map[rowAnalysisAdType(row)] || (String(row.channel || "").toUpperCase() === "PC" ? 4 : 2);
+}
+
+function analysisCoverageBannerTypes(item) {
+  if (Array.isArray(item.bannerTypes) && item.bannerTypes.length) return item.bannerTypes.map(Number).filter(Boolean);
+  const direct = Number(item.bannerType);
+  if (direct) return [direct];
+  const map = { normal: 1, appPopup: 2, appNotice: 3, pcPopup: 4 };
+  if (map[item.adType]) return [map[item.adType]];
+  if (item.appScope === "PC") return [4];
+  if (item.appScope === "APP") return [1, 2, 3];
+  return [1, 2, 3, 4];
+}
+
+function analysisCoverageMatchesRow(row, item) {
+  if (!item?.date || !item?.projectName) return false;
+  if (row.date !== item.date || row.project !== item.projectName) return false;
+  const rowChannel = String(row.channel || "").toUpperCase();
+  if (item.appScope === "PC" && rowChannel !== "PC") return false;
+  if (item.appScope === "APP" && rowChannel !== "APP") return false;
+  if (item.adType && rowAnalysisAdType(row) !== item.adType) return false;
+  const bannerTypes = analysisCoverageBannerTypes(item);
+  return bannerTypes.includes(analysisRowBannerType(row));
+}
+
+function scrubCoveredAnalysisRows(rows, coverage) {
+  if (!Array.isArray(rows) || !rows.length || !Array.isArray(coverage) || !coverage.length) return rows || [];
+  return rows.filter((row) => !coverage.some((item) => analysisCoverageMatchesRow(row, item)));
+}
+
 const seedAnalysisRows = typeof window !== "undefined" && Array.isArray(window.OPERATION_ADSTAT_SEED?.rows) ? window.OPERATION_ADSTAT_SEED.rows : [];
 const backupAnalysisRows = typeof window !== "undefined" && Array.isArray(window.OPERATION_ADSTAT_BACKUP_SEED?.rows) ? window.OPERATION_ADSTAT_BACKUP_SEED.rows : [];
+const backupAnalysisCoverage = typeof window !== "undefined" && Array.isArray(window.OPERATION_ADSTAT_BACKUP_SEED?.coverage) ? window.OPERATION_ADSTAT_BACKUP_SEED.coverage : [];
 const storedAnalysisRows = loadStoredAnalysisRows() || [];
 
-let analysisRows = mergeAnalysisRows(seedAnalysisRows, backupAnalysisRows, storedAnalysisRows);
+let analysisRows = mergeAnalysisRows(
+  scrubCoveredAnalysisRows(seedAnalysisRows, backupAnalysisCoverage),
+  backupAnalysisRows,
+  scrubCoveredAnalysisRows(storedAnalysisRows, backupAnalysisCoverage),
+);
 if (!analysisRows.length) analysisRows = [
   { date: "2026-07-08", project: "短线王新开", channel: "APP", adId: "269301", title: "短线王新开福利", audience: "新注册1-7天", popup: 1480, click: 96, purchaseClick: 34, order: 16, deal: 5, material: "新开福利" },
   { date: "2026-07-08", project: "短线王新开", channel: "PC", adId: "108221", title: "短线工具体验提醒", audience: "新客未体验", popup: 720, click: 22, purchaseClick: 9, order: 5, deal: 1, material: "体验提醒" },
@@ -2583,6 +2693,51 @@ function analysisAdvice(row) {
   if (row.order > 0 && row.paymentFinishRate < 20) return "付款完成率偏低，建议复核订单到支付完成之间的承接。";
   if (row.popup < 500) return "样本量偏小，先观察一轮，不直接下结论。";
   return "表现稳定，可沉淀素材表达和人群口径。";
+}
+
+function analysisCheckRows(rows) {
+  return [...rows].sort((a, b) => String(b.date).localeCompare(String(a.date))
+    || String(a.project).localeCompare(String(b.project))
+    || String(analysisAdTypes[rowAnalysisAdType(a)]?.label || a.channel).localeCompare(String(analysisAdTypes[rowAnalysisAdType(b)]?.label || b.channel))
+    || Number(b.popup || 0) - Number(a.popup || 0));
+}
+
+function csvCell(value) {
+  const text = String(value ?? "");
+  return /[",\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
+
+function downloadAnalysisCsv() {
+  const filters = currentAnalysisFilters();
+  const rows = analysisCheckRows(filteredAnalysisRows(filters.date));
+  const header = ["日期", "项目", "筛选口径", "广告类型", "渠道", "广告ID", "标题", "命中人群", "弹出数", "点击数", "点击率", "购买点击", "提交订单", "成交数", "付款完成率"];
+  const body = rows.map((row) => [
+    row.date,
+    row.project,
+    filters.filterLabel,
+    analysisAdTypes[rowAnalysisAdType(row)]?.label || "",
+    row.channel,
+    row.adId,
+    row.title,
+    row.audience,
+    row.popup,
+    row.click,
+    pct(row.clickRate),
+    row.purchaseClick,
+    row.order,
+    row.deal,
+    pct(row.paymentFinishRate),
+  ].map(csvCell).join(","));
+  const csv = `\ufeff${header.map(csvCell).join(",")}\n${body.join("\n")}`;
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${filters.project}-${filters.date}-${filters.filterLabel}-数据核对表.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
 }
 
 function metricDelta(current, previous, type = "number") {
@@ -2794,6 +2949,7 @@ function renderAnalysisOptions() {
     const text = document.querySelector("#analysisSummary")?.value || "";
     navigator.clipboard?.writeText(text);
   });
+  document.querySelector("#downloadAnalysisCheckCsv")?.addEventListener("click", downloadAnalysisCsv);
   const updateActions = document.querySelector("#analysisUpdateActions");
   if (updateActions) {
     updateActions.innerHTML = `<button type="button" data-analysis-update-current><span>更新数据</span><b>${escapeHtml(projectEl.value || projects[0])}</b></button>`;
@@ -2834,6 +2990,15 @@ function renderDataCenter() {
     kpiHtml("提交订单", total.order, "订单线索", "order", currentWithExtra, previousWithExtra),
     kpiHtml("问题素材", problems.length, "需复核", "problemCount", currentWithExtra, previousWithExtra),
   ].join("") + alertHtml;
+
+  const checkRows = analysisCheckRows(rows);
+  const visibleCheckRows = checkRows.slice(0, 200);
+  document.querySelector("#analysisCheckCount").textContent = checkRows.length
+    ? `共 ${fmt(checkRows.length)} 条明细，页面显示前 ${fmt(visibleCheckRows.length)} 条`
+    : "当前筛选无明细";
+  document.querySelector("#analysisCheckTable").innerHTML = `<tr><th>日期</th><th>项目</th><th>广告类型</th><th>渠道</th><th>广告ID</th><th>标题</th><th>命中人群</th><th class="num">弹出</th><th class="num">点击</th><th class="num">点击率</th><th class="num">购买点击</th><th class="num">订单</th><th class="num">成交</th><th class="num">付款完成率</th></tr>` +
+    (visibleCheckRows.length ? visibleCheckRows.map((row) => `<tr><td>${escapeHtml(row.date)}</td><td>${escapeHtml(row.project)}</td><td>${escapeHtml(analysisAdTypes[rowAnalysisAdType(row)]?.label || "")}</td><td>${escapeHtml(row.channel)}</td><td>${escapeHtml(row.adId)}</td><td>${escapeHtml(row.title)}</td><td>${escapeHtml(row.audience)}</td><td class="num">${fmt(row.popup)}</td><td class="num">${fmt(row.click)}</td><td class="num">${pct(row.clickRate)}</td><td class="num">${fmt(row.purchaseClick)}</td><td class="num">${fmt(row.order)}</td><td class="num">${fmt(row.deal)}</td><td class="num">${pct(row.paymentFinishRate)}</td></tr>`).join("")
+      : `<tr><td colspan="14"><div class="analysis-empty">当前筛选没有后台明细。若后台确认有数据，请点击“更新数据”重新同步当前项目。</div></td></tr>`);
 
   const funnel = [["弹出", total.popup], ["点击", total.click], ["提交订单", total.order], ["成交", total.deal]];
   const maxFunnel = Math.max(1, ...funnel.map((item) => item[1]));
