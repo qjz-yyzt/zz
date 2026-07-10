@@ -891,6 +891,7 @@
                 <span class="release-pill" id="releaseBatchState">未选择</span>
               </div>
               <div class="release-checklist" id="releaseSelectedList">
+                <div><span class="status-dot blue"></span><strong>社群轻量翻页重抓</strong><p>社群数据改为直接读取素材表并翻页汇总，避开后台筛选控件超时。</p></div>
                 <div><span class="status-dot blue"></span><strong>发布冲突自动重试</strong><p>正式链接同步遇到 GitHub 文件版本冲突时，自动重新读取版本号并重试提交。</p></div>
                 <div><span class="status-dot blue"></span><strong>社群数据凌晨4点自动同步发布</strong><p>社群素材后续每天凌晨4点由本地助手抓取，成功后自动同步本机预览和正式长期链接。</p></div>
                 <div><span class="status-dot blue"></span><strong>头部日期自动同步</strong><p>左上角日期改为按当天自动生成，不再固定停留在旧日期。</p></div>
@@ -951,6 +952,13 @@
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.62" data-release-status="wait" data-release-module="content">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.62" /><span></span></label>
+                <time>2026-07-10 10:42:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.62 社群数据轻量翻页重抓</h4>
+                <p>社群数据改为直接读取企微素材表并翻页汇总 7月9日/7月8日 数据，避免栏目标签筛选控件超时。</p>
+              </article>
               <article data-release-id="v0.61" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.61" /><span></span></label>
                 <time>2026-07-10 09:42:00</time>
