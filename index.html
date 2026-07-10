@@ -533,6 +533,22 @@
                 </div>
               </div>
             </div>
+
+            <div class="kb-modal" id="knowledgePreviewModal" hidden>
+              <div class="kb-modal-card kb-preview-card">
+                <div class="kb-modal-head">
+                  <div>
+                    <h4>预览文件</h4>
+                    <p id="knowledgePreviewName">查看当前知识库文件内容。</p>
+                  </div>
+                  <button type="button" class="kb-modal-close" data-kb-close-preview>×</button>
+                </div>
+                <div class="kb-preview-body" id="knowledgePreviewBody"></div>
+                <div class="kb-modal-actions">
+                  <button type="button" class="text-button" data-kb-close-preview>关闭</button>
+                </div>
+              </div>
+            </div>
           </section>
         </section>
 
@@ -765,6 +781,11 @@
               <section class="analysis-block span-4">
                 <div class="analysis-section-title"><h4>行情简述</h4><span>辅助判断素材承接</span></div>
                 <div class="analysis-market" id="analysisMarket"></div>
+              </section>
+
+              <section class="analysis-block span-12">
+                <div class="analysis-section-title"><h4>数据核对表</h4><span id="analysisCheckCount"></span><button class="text-button" id="downloadAnalysisCheckCsv" type="button">下载CSV</button></div>
+                <div class="analysis-table-wrap"><table id="analysisCheckTable"></table></div>
               </section>
 
               <section class="analysis-block span-5">
@@ -1368,9 +1389,9 @@
         </section>
       </main>
     </div>
-    <script src="./data/adstat-seed.js?v=20260709-release-chart-narrow"></script>
-    <script src="./data/adstat-backup-seed.js?v=20260709-release-chart-narrow"></script>
-    <script src="./data/community-material-seed.js?v=20260709-release-chart-narrow"></script>
-    <script src="./app.js?v=20260709-release-chart-narrow"></script>
+    <script src="./data/adstat-seed.js?v=20260710-check-table"></script>
+    <script src="./data/adstat-backup-seed.js?v=20260710-check-table"></script>
+    <script src="./data/community-material-seed.js?v=20260710-check-table"></script>
+    <script src="./app.js?v=20260710-check-table"></script>
   </body>
 </html>
