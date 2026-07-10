@@ -891,6 +891,7 @@
                 <span class="release-pill" id="releaseBatchState">未选择</span>
               </div>
               <div class="release-checklist" id="releaseSelectedList">
+                <div><span class="status-dot blue"></span><strong>社群数据凌晨4点自动同步发布</strong><p>社群素材后续每天凌晨4点由本地助手抓取，成功后自动同步本机预览和正式长期链接。</p></div>
                 <div><span class="status-dot blue"></span><strong>头部日期自动同步</strong><p>左上角日期改为按当天自动生成，不再固定停留在旧日期。</p></div>
                 <div><span class="status-dot orange"></span><strong>猎手标签补充核对</strong><p>猎手活动口径补充主题猎手标签，重新核对猎手和基金数据。</p></div>
                 <div><span class="status-dot blue"></span><strong>素材抓取重置筛选</strong><p>抓取企微素材前先重置后台筛选，避免残留标签或栏目导致漏数。</p></div>
@@ -949,6 +950,13 @@
               <button class="danger-button" id="rollbackRelease" type="button">撤回/回滚</button>
             </div>
             <div class="release-timeline">
+              <article data-release-id="v0.60" data-release-status="wait" data-release-module="content">
+                <label class="release-select"><input type="checkbox" data-release-check value="v0.60" /><span></span></label>
+                <time>2026-07-10 09:35:00</time>
+                <span class="release-state wait">准备发布</span>
+                <h4>v0.60 社群数据凌晨4点自动同步发布</h4>
+                <p>社群素材抓取计划调整为每天凌晨4点执行，抓取成功后自动更新本机预览和正式长期链接。</p>
+              </article>
               <article data-release-id="v0.59" data-release-status="wait" data-release-module="version">
                 <label class="release-select"><input type="checkbox" data-release-check value="v0.59" /><span></span></label>
                 <time>2026-07-09 17:58:00</time>
