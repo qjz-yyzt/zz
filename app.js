@@ -2658,7 +2658,7 @@ function rowTags(row) {
   if (row.popup >= 500 && row.clickRate < 2) tags.push("高曝光低点击");
   if (row.order > 0 && row.deal === 0) tags.push("有订单无成交");
   if (row.order > 0 && row.paymentFinishRate < 20) tags.push("付款承接弱");
-  if (row.popup < 500) tags.push("样本偏小");
+  if (row.popup > 0 && row.popup < 500) tags.push("样本偏小");
   if (!tags.length) tags.push("素材可复用");
   return tags;
 }
@@ -2677,7 +2677,7 @@ function problemScore(row) {
   if (row.popup >= 500 && row.clickRate < 2) score += 80;
   if (row.order > 0 && row.deal === 0) score += 70;
   if (row.order > 0 && row.paymentFinishRate < 20) score += 50;
-  if (row.popup < 500) score += 15;
+  if (row.popup > 0 && row.popup < 500) score += 15;
   score += Math.min(60, row.popup / 50);
   score += Math.max(0, 5 - row.clickRate) * 8;
   return score;
