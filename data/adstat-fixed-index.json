@@ -1,6 +1,159 @@
 {
-  "updatedAt": "2026-07-09T13:45:50.715Z",
+  "updatedAt": "2026-07-09T14:48:40.881Z",
   "fixedItems": [
+    {
+      "key": "2026-07-09|短线王新开|1,2,3,4|ALL",
+      "date": "2026-07-09",
+      "projectName": "短线王新开",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:35:04.732Z"
+    },
+    {
+      "key": "2026-07-09|短线王续费|1,2,3,4|ALL",
+      "date": "2026-07-09",
+      "projectName": "短线王续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:47:10.827Z"
+    },
+    {
+      "key": "2026-07-09|基金|1,2,3,4|ALL",
+      "date": "2026-07-09",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:39:28.209Z"
+    },
+    {
+      "key": "2026-07-09|加企微活动|1,2,3,4|ALL",
+      "date": "2026-07-09",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:53:41.037Z"
+    },
+    {
+      "key": "2026-07-09|猎手活动|1,2,3,4|ALL",
+      "date": "2026-07-09",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:15:41.884Z"
+    },
+    {
+      "key": "2026-07-09|新开升级|1,2,3,4|ALL",
+      "date": "2026-07-09",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:06:45.873Z"
+    },
+    {
+      "key": "2026-07-09|选股王|1,2,3,4|ALL",
+      "date": "2026-07-09",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:56:01.897Z"
+    },
+    {
+      "key": "2026-07-09|中高端续费|1,2,3,4|ALL",
+      "date": "2026-07-09",
+      "projectName": "中高端续费",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:26:44.236Z"
+    },
+    {
+      "key": "2026-07-09|转介绍|1,2,3,4|ALL",
+      "date": "2026-07-09",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:14:39.405Z"
+    },
     {
       "key": "2026-07-08|短线王新开|1,2,3,4|ALL",
       "date": "2026-07-08",
@@ -17,6 +170,20 @@
       "fixedAt": "2026-07-09",
       "markedAt": "2026-07-09T11:34:48.737Z",
       "backupUpdatedAt": "2026-07-09T11:34:48.684Z"
+    },
+    {
+      "key": "2026-07-08|短线王新开|2|ALL",
+      "date": "2026-07-08",
+      "projectName": "短线王新开",
+      "adType": "appPopup",
+      "adTypeName": "APP弹窗广告",
+      "bannerTypes": [
+        2
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:38:00.544Z",
+      "backupUpdatedAt": "2026-07-09"
     },
     {
       "key": "2026-07-08|短线王续费|1,2,3,4|ALL",
@@ -36,6 +203,71 @@
       "backupUpdatedAt": "2026-07-09T11:46:51.330Z"
     },
     {
+      "key": "2026-07-08|短线王续费|2|ALL",
+      "date": "2026-07-08",
+      "projectName": "短线王续费",
+      "adType": "appPopup",
+      "adTypeName": "APP弹窗广告",
+      "bannerTypes": [
+        2
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:38:20.822Z",
+      "backupUpdatedAt": "2026-07-09"
+    },
+    {
+      "key": "2026-07-08|基金|1,2,3,4|ALL",
+      "date": "2026-07-08",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:39:15.178Z"
+    },
+    {
+      "key": "2026-07-08|加企微活动|1,2,3,4|ALL",
+      "date": "2026-07-08",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:52:24.630Z"
+    },
+    {
+      "key": "2026-07-08|猎手活动|1,2,3,4|ALL",
+      "date": "2026-07-08",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:15:27.884Z"
+    },
+    {
       "key": "2026-07-08|新开升级|1,2,3,4|ALL",
       "date": "2026-07-08",
       "projectName": "新开升级",
@@ -51,6 +283,37 @@
       "fixedAt": "2026-07-09",
       "markedAt": "2026-07-09T12:06:29.967Z",
       "backupUpdatedAt": "2026-07-09T12:06:29.722Z"
+    },
+    {
+      "key": "2026-07-08|新开升级|2|ALL",
+      "date": "2026-07-08",
+      "projectName": "新开升级",
+      "adType": "appPopup",
+      "adTypeName": "APP弹窗广告",
+      "bannerTypes": [
+        2
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:38:27.664Z",
+      "backupUpdatedAt": "2026-07-09"
+    },
+    {
+      "key": "2026-07-08|选股王|1,2,3,4|ALL",
+      "date": "2026-07-08",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:55:42.817Z"
     },
     {
       "key": "2026-07-08|中高端续费|4|PC",
@@ -82,6 +345,37 @@
       "fixedAt": "2026-07-09",
       "markedAt": "2026-07-09T09:23:48.653Z",
       "backupUpdatedAt": "2026-07-09"
+    },
+    {
+      "key": "2026-07-08|中高端续费|2|ALL",
+      "date": "2026-07-08",
+      "projectName": "中高端续费",
+      "adType": "appPopup",
+      "adTypeName": "APP弹窗广告",
+      "bannerTypes": [
+        2
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-09",
+      "markedAt": "2026-07-09T14:39:02.199Z",
+      "backupUpdatedAt": "2026-07-09T14:39:01.901Z"
+    },
+    {
+      "key": "2026-07-08|转介绍|1,2,3,4|ALL",
+      "date": "2026-07-08",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:14:26.212Z"
     },
     {
       "key": "2026-07-07|短线王新开|1,2,3,4|ALL",
@@ -118,6 +412,40 @@
       "backupUpdatedAt": "2026-07-09T11:46:31.750Z"
     },
     {
+      "key": "2026-07-07|加企微活动|1,2,3,4|ALL",
+      "date": "2026-07-07",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-07",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:51:19.156Z"
+    },
+    {
+      "key": "2026-07-07|猎手活动|1,2,3,4|ALL",
+      "date": "2026-07-07",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-07",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:15:14.907Z"
+    },
+    {
       "key": "2026-07-07|新开升级|1,2,3,4|ALL",
       "date": "2026-07-07",
       "projectName": "新开升级",
@@ -135,6 +463,23 @@
       "backupUpdatedAt": "2026-07-09T12:06:12.701Z"
     },
     {
+      "key": "2026-07-07|选股王|1,2,3,4|ALL",
+      "date": "2026-07-07",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-07",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:55:28.821Z"
+    },
+    {
       "key": "2026-07-07|中高端续费|1,2,3,4|ALL",
       "date": "2026-07-07",
       "projectName": "中高端续费",
@@ -150,6 +495,23 @@
       "fixedAt": "2026-07-08",
       "markedAt": "2026-07-09T09:23:48.651Z",
       "backupUpdatedAt": "2026-07-09"
+    },
+    {
+      "key": "2026-07-07|转介绍|1,2,3,4|ALL",
+      "date": "2026-07-07",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-07",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:14:12.121Z"
     },
     {
       "key": "2026-07-06|短线王新开|1,2,3,4|ALL",
@@ -186,6 +548,57 @@
       "backupUpdatedAt": "2026-07-09T11:46:09.818Z"
     },
     {
+      "key": "2026-07-06|基金|1,2,3,4|ALL",
+      "date": "2026-07-06",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:36:33.650Z"
+    },
+    {
+      "key": "2026-07-06|加企微活动|1,2,3,4|ALL",
+      "date": "2026-07-06",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:51:05.365Z"
+    },
+    {
+      "key": "2026-07-06|猎手活动|1,2,3,4|ALL",
+      "date": "2026-07-06",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:15:01.878Z"
+    },
+    {
       "key": "2026-07-06|新开升级|1,2,3,4|ALL",
       "date": "2026-07-06",
       "projectName": "新开升级",
@@ -203,6 +616,23 @@
       "backupUpdatedAt": "2026-07-09T13:45:49.837Z"
     },
     {
+      "key": "2026-07-06|选股王|1,2,3,4|ALL",
+      "date": "2026-07-06",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:55:15.812Z"
+    },
+    {
       "key": "2026-07-06|中高端续费|1,2,3,4|ALL",
       "date": "2026-07-06",
       "projectName": "中高端续费",
@@ -218,6 +648,23 @@
       "fixedAt": "2026-07-07",
       "markedAt": "2026-07-09T12:26:22.390Z",
       "backupUpdatedAt": "2026-07-09T12:26:21.967Z"
+    },
+    {
+      "key": "2026-07-06|转介绍|1,2,3,4|ALL",
+      "date": "2026-07-06",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:13:59.214Z"
     },
     {
       "key": "2026-07-05|短线王新开|1,2,3,4|ALL",
@@ -254,6 +701,57 @@
       "backupUpdatedAt": "2026-07-09T11:45:28.696Z"
     },
     {
+      "key": "2026-07-05|基金|1,2,3,4|ALL",
+      "date": "2026-07-05",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:36:12.258Z"
+    },
+    {
+      "key": "2026-07-05|加企微活动|1,2,3,4|ALL",
+      "date": "2026-07-05",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:50:51.141Z"
+    },
+    {
+      "key": "2026-07-05|猎手活动|1,2,3,4|ALL",
+      "date": "2026-07-05",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:14:48.874Z"
+    },
+    {
       "key": "2026-07-05|新开升级|1,2,3,4|ALL",
       "date": "2026-07-05",
       "projectName": "新开升级",
@@ -271,6 +769,23 @@
       "backupUpdatedAt": "2026-07-09T12:05:38.713Z"
     },
     {
+      "key": "2026-07-05|选股王|1,2,3,4|ALL",
+      "date": "2026-07-05",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:55:02.814Z"
+    },
+    {
       "key": "2026-07-05|中高端续费|1,2,3,4|ALL",
       "date": "2026-07-05",
       "projectName": "中高端续费",
@@ -286,6 +801,23 @@
       "fixedAt": "2026-07-06",
       "markedAt": "2026-07-09T12:25:56.965Z",
       "backupUpdatedAt": "2026-07-09T12:25:56.733Z"
+    },
+    {
+      "key": "2026-07-05|转介绍|1,2,3,4|ALL",
+      "date": "2026-07-05",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:13:42.179Z"
     },
     {
       "key": "2026-07-04|短线王新开|1,2,3,4|ALL",
@@ -322,6 +854,91 @@
       "backupUpdatedAt": "2026-07-09T11:45:11.703Z"
     },
     {
+      "key": "2026-07-04|基金|1,2,3,4|ALL",
+      "date": "2026-07-04",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:35:57.162Z"
+    },
+    {
+      "key": "2026-07-04|加企微活动|1,2,3,4|ALL",
+      "date": "2026-07-04",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:50:38.077Z"
+    },
+    {
+      "key": "2026-07-04|猎手活动|1,2,3,4|ALL",
+      "date": "2026-07-04",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:14:35.877Z"
+    },
+    {
+      "key": "2026-07-04|新开升级|1,2,3,4|ALL",
+      "date": "2026-07-04",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:05:24.842Z"
+    },
+    {
+      "key": "2026-07-04|选股王|1,2,3,4|ALL",
+      "date": "2026-07-04",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:54:49.814Z"
+    },
+    {
       "key": "2026-07-04|中高端续费|1,2,3,4|ALL",
       "date": "2026-07-04",
       "projectName": "中高端续费",
@@ -337,6 +954,23 @@
       "fixedAt": "2026-07-05",
       "markedAt": "2026-07-09T12:25:39.968Z",
       "backupUpdatedAt": "2026-07-09T12:25:39.722Z"
+    },
+    {
+      "key": "2026-07-04|转介绍|1,2,3,4|ALL",
+      "date": "2026-07-04",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:13:29.335Z"
     },
     {
       "key": "2026-07-03|短线王新开|1,2,3,4|ALL",
@@ -371,6 +1005,91 @@
       "fixedAt": "2026-07-04",
       "markedAt": "2026-07-09T11:44:54.808Z",
       "backupUpdatedAt": "2026-07-09T11:44:54.702Z"
+    },
+    {
+      "key": "2026-07-03|基金|1,2,3,4|ALL",
+      "date": "2026-07-03",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:35:43.461Z"
+    },
+    {
+      "key": "2026-07-03|加企微活动|1,2,3,4|ALL",
+      "date": "2026-07-03",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:50:25.134Z"
+    },
+    {
+      "key": "2026-07-03|猎手活动|1,2,3,4|ALL",
+      "date": "2026-07-03",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:14:21.889Z"
+    },
+    {
+      "key": "2026-07-03|新开升级|1,2,3,4|ALL",
+      "date": "2026-07-03",
+      "projectName": "新开升级",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:05:11.874Z"
+    },
+    {
+      "key": "2026-07-03|选股王|1,2,3,4|ALL",
+      "date": "2026-07-03",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:54:36.807Z"
     },
     {
       "key": "2026-07-03|中高端续费|1,2,3,4|ALL",
@@ -424,6 +1143,57 @@
       "backupUpdatedAt": "2026-07-09T11:44:37.682Z"
     },
     {
+      "key": "2026-07-02|基金|1,2,3,4|ALL",
+      "date": "2026-07-02",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:35:28.079Z"
+    },
+    {
+      "key": "2026-07-02|加企微活动|1,2,3,4|ALL",
+      "date": "2026-07-02",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:50:12.105Z"
+    },
+    {
+      "key": "2026-07-02|猎手活动|1,2,3,4|ALL",
+      "date": "2026-07-02",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:14:07.844Z"
+    },
+    {
       "key": "2026-07-02|新开升级|1,2,3,4|ALL",
       "date": "2026-07-02",
       "projectName": "新开升级",
@@ -441,6 +1211,23 @@
       "backupUpdatedAt": "2026-07-09T12:04:58.712Z"
     },
     {
+      "key": "2026-07-02|选股王|1,2,3,4|ALL",
+      "date": "2026-07-02",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:54:23.823Z"
+    },
+    {
       "key": "2026-07-02|中高端续费|1,2,3,4|ALL",
       "date": "2026-07-02",
       "projectName": "中高端续费",
@@ -456,6 +1243,23 @@
       "fixedAt": "2026-07-03",
       "markedAt": "2026-07-09T12:25:06.145Z",
       "backupUpdatedAt": "2026-07-09T12:25:05.717Z"
+    },
+    {
+      "key": "2026-07-02|转介绍|1,2,3,4|ALL",
+      "date": "2026-07-02",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:13:06.390Z"
     },
     {
       "key": "2026-07-01|短线王新开|1,2,3,4|ALL",
@@ -492,6 +1296,57 @@
       "backupUpdatedAt": "2026-07-09T11:44:19.690Z"
     },
     {
+      "key": "2026-07-01|基金|1,2,3,4|ALL",
+      "date": "2026-07-01",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:35:13.102Z"
+    },
+    {
+      "key": "2026-07-01|加企微活动|1,2,3,4|ALL",
+      "date": "2026-07-01",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:49:59.333Z"
+    },
+    {
+      "key": "2026-07-01|猎手活动|1,2,3,4|ALL",
+      "date": "2026-07-01",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:13:53.879Z"
+    },
+    {
       "key": "2026-07-01|新开升级|1,2,3,4|ALL",
       "date": "2026-07-01",
       "projectName": "新开升级",
@@ -509,6 +1364,23 @@
       "backupUpdatedAt": "2026-07-09T12:04:44.708Z"
     },
     {
+      "key": "2026-07-01|选股王|1,2,3,4|ALL",
+      "date": "2026-07-01",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:54:10.824Z"
+    },
+    {
       "key": "2026-07-01|中高端续费|1,2,3,4|ALL",
       "date": "2026-07-01",
       "projectName": "中高端续费",
@@ -524,6 +1396,23 @@
       "fixedAt": "2026-07-02",
       "markedAt": "2026-07-09T12:24:48.956Z",
       "backupUpdatedAt": "2026-07-09T12:24:48.717Z"
+    },
+    {
+      "key": "2026-07-01|转介绍|1,2,3,4|ALL",
+      "date": "2026-07-01",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-07-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:12:53.182Z"
     },
     {
       "key": "2026-06-30|短线王新开|1,2,3,4|ALL",
@@ -560,6 +1449,57 @@
       "backupUpdatedAt": "2026-07-09T11:44:02.731Z"
     },
     {
+      "key": "2026-06-30|基金|1,2,3,4|ALL",
+      "date": "2026-06-30",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-30",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:34:59.074Z"
+    },
+    {
+      "key": "2026-06-30|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-30",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-30",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:49:46.068Z"
+    },
+    {
+      "key": "2026-06-30|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-30",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-30",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:13:40.860Z"
+    },
+    {
       "key": "2026-06-30|新开升级|1,2,3,4|ALL",
       "date": "2026-06-30",
       "projectName": "新开升级",
@@ -577,6 +1517,23 @@
       "backupUpdatedAt": "2026-07-09T12:04:29.698Z"
     },
     {
+      "key": "2026-06-30|选股王|1,2,3,4|ALL",
+      "date": "2026-06-30",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-30",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:53:57.802Z"
+    },
+    {
       "key": "2026-06-30|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-30",
       "projectName": "中高端续费",
@@ -592,6 +1549,23 @@
       "fixedAt": "2026-07-01",
       "markedAt": "2026-07-09T12:24:31.965Z",
       "backupUpdatedAt": "2026-07-09T12:24:31.724Z"
+    },
+    {
+      "key": "2026-06-30|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-30",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-30",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:12:40.083Z"
     },
     {
       "key": "2026-06-29|短线王新开|1,2,3,4|ALL",
@@ -628,6 +1602,57 @@
       "backupUpdatedAt": "2026-07-09T11:43:45.685Z"
     },
     {
+      "key": "2026-06-29|基金|1,2,3,4|ALL",
+      "date": "2026-06-29",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-29",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:34:44.097Z"
+    },
+    {
+      "key": "2026-06-29|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-29",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-29",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:49:33.139Z"
+    },
+    {
+      "key": "2026-06-29|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-29",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-29",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:13:27.871Z"
+    },
+    {
       "key": "2026-06-29|新开升级|1,2,3,4|ALL",
       "date": "2026-06-29",
       "projectName": "新开升级",
@@ -645,6 +1670,23 @@
       "backupUpdatedAt": "2026-07-09T12:04:13.712Z"
     },
     {
+      "key": "2026-06-29|选股王|1,2,3,4|ALL",
+      "date": "2026-06-29",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-29",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:53:44.883Z"
+    },
+    {
       "key": "2026-06-29|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-29",
       "projectName": "中高端续费",
@@ -660,6 +1702,23 @@
       "fixedAt": "2026-06-30",
       "markedAt": "2026-07-09T12:24:14.985Z",
       "backupUpdatedAt": "2026-07-09T12:24:14.732Z"
+    },
+    {
+      "key": "2026-06-29|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-29",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-29",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:12:27.159Z"
     },
     {
       "key": "2026-06-28|短线王新开|1,2,3,4|ALL",
@@ -696,6 +1755,57 @@
       "backupUpdatedAt": "2026-07-09T11:43:28.686Z"
     },
     {
+      "key": "2026-06-28|基金|1,2,3,4|ALL",
+      "date": "2026-06-28",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-28",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:34:29.963Z"
+    },
+    {
+      "key": "2026-06-28|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-28",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-28",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:49:20.124Z"
+    },
+    {
+      "key": "2026-06-28|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-28",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-28",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:13:14.876Z"
+    },
+    {
       "key": "2026-06-28|新开升级|1,2,3,4|ALL",
       "date": "2026-06-28",
       "projectName": "新开升级",
@@ -713,6 +1823,23 @@
       "backupUpdatedAt": "2026-07-09T12:03:58.731Z"
     },
     {
+      "key": "2026-06-28|选股王|1,2,3,4|ALL",
+      "date": "2026-06-28",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-28",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:53:31.801Z"
+    },
+    {
       "key": "2026-06-28|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-28",
       "projectName": "中高端续费",
@@ -728,6 +1855,23 @@
       "fixedAt": "2026-06-29",
       "markedAt": "2026-07-09T12:23:57.993Z",
       "backupUpdatedAt": "2026-07-09T12:23:57.726Z"
+    },
+    {
+      "key": "2026-06-28|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-28",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-28",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:12:10.300Z"
     },
     {
       "key": "2026-06-27|短线王新开|1,2,3,4|ALL",
@@ -764,6 +1908,57 @@
       "backupUpdatedAt": "2026-07-09T11:43:11.693Z"
     },
     {
+      "key": "2026-06-27|基金|1,2,3,4|ALL",
+      "date": "2026-06-27",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-27",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:34:15.287Z"
+    },
+    {
+      "key": "2026-06-27|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-27",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-27",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:49:07.115Z"
+    },
+    {
+      "key": "2026-06-27|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-27",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-27",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:13:01.906Z"
+    },
+    {
       "key": "2026-06-27|新开升级|1,2,3,4|ALL",
       "date": "2026-06-27",
       "projectName": "新开升级",
@@ -781,6 +1976,23 @@
       "backupUpdatedAt": "2026-07-09T12:03:43.750Z"
     },
     {
+      "key": "2026-06-27|选股王|1,2,3,4|ALL",
+      "date": "2026-06-27",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-27",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:53:18.803Z"
+    },
+    {
       "key": "2026-06-27|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-27",
       "projectName": "中高端续费",
@@ -796,6 +2008,23 @@
       "fixedAt": "2026-06-28",
       "markedAt": "2026-07-09T12:23:41.061Z",
       "backupUpdatedAt": "2026-07-09T12:23:40.714Z"
+    },
+    {
+      "key": "2026-06-27|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-27",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-27",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:11:56.120Z"
     },
     {
       "key": "2026-06-26|短线王新开|1,2,3,4|ALL",
@@ -832,6 +2061,57 @@
       "backupUpdatedAt": "2026-07-09T11:42:52.681Z"
     },
     {
+      "key": "2026-06-26|基金|1,2,3,4|ALL",
+      "date": "2026-06-26",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-26",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:33:06.421Z"
+    },
+    {
+      "key": "2026-06-26|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-26",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-26",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:48:54.147Z"
+    },
+    {
+      "key": "2026-06-26|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-26",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-26",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:12:46.908Z"
+    },
+    {
       "key": "2026-06-26|新开升级|1,2,3,4|ALL",
       "date": "2026-06-26",
       "projectName": "新开升级",
@@ -849,6 +2129,23 @@
       "backupUpdatedAt": "2026-07-09T12:03:29.707Z"
     },
     {
+      "key": "2026-06-26|选股王|1,2,3,4|ALL",
+      "date": "2026-06-26",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-26",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:53:05.821Z"
+    },
+    {
       "key": "2026-06-26|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-26",
       "projectName": "中高端续费",
@@ -864,6 +2161,23 @@
       "fixedAt": "2026-06-27",
       "markedAt": "2026-07-09T12:23:22.973Z",
       "backupUpdatedAt": "2026-07-09T12:23:22.723Z"
+    },
+    {
+      "key": "2026-06-26|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-26",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-26",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:11:38.224Z"
     },
     {
       "key": "2026-06-25|短线王新开|1,2,3,4|ALL",
@@ -900,6 +2214,57 @@
       "backupUpdatedAt": "2026-07-09T11:42:35.682Z"
     },
     {
+      "key": "2026-06-25|基金|1,2,3,4|ALL",
+      "date": "2026-06-25",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-25",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:32:52.195Z"
+    },
+    {
+      "key": "2026-06-25|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-25",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-25",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:48:39.988Z"
+    },
+    {
+      "key": "2026-06-25|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-25",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-25",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:12:32.842Z"
+    },
+    {
       "key": "2026-06-25|新开升级|1,2,3,4|ALL",
       "date": "2026-06-25",
       "projectName": "新开升级",
@@ -917,6 +2282,23 @@
       "backupUpdatedAt": "2026-07-09T12:03:13.702Z"
     },
     {
+      "key": "2026-06-25|选股王|1,2,3,4|ALL",
+      "date": "2026-06-25",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-25",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:52:52.837Z"
+    },
+    {
       "key": "2026-06-25|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-25",
       "projectName": "中高端续费",
@@ -932,6 +2314,23 @@
       "fixedAt": "2026-06-26",
       "markedAt": "2026-07-09T12:23:05.932Z",
       "backupUpdatedAt": "2026-07-09T12:23:05.721Z"
+    },
+    {
+      "key": "2026-06-25|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-25",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-25",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:11:05.059Z"
     },
     {
       "key": "2026-06-24|短线王新开|1,2,3,4|ALL",
@@ -968,6 +2367,57 @@
       "backupUpdatedAt": "2026-07-09T11:42:17.687Z"
     },
     {
+      "key": "2026-06-24|基金|1,2,3,4|ALL",
+      "date": "2026-06-24",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-24",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:32:38.515Z"
+    },
+    {
+      "key": "2026-06-24|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-24",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-24",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:48:27.148Z"
+    },
+    {
+      "key": "2026-06-24|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-24",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-24",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:12:20.145Z"
+    },
+    {
       "key": "2026-06-24|新开升级|1,2,3,4|ALL",
       "date": "2026-06-24",
       "projectName": "新开升级",
@@ -985,6 +2435,23 @@
       "backupUpdatedAt": "2026-07-09T12:02:58.730Z"
     },
     {
+      "key": "2026-06-24|选股王|1,2,3,4|ALL",
+      "date": "2026-06-24",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-24",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:52:39.816Z"
+    },
+    {
       "key": "2026-06-24|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-24",
       "projectName": "中高端续费",
@@ -1000,6 +2467,23 @@
       "fixedAt": "2026-06-25",
       "markedAt": "2026-07-09T12:22:49.988Z",
       "backupUpdatedAt": "2026-07-09T12:22:49.726Z"
+    },
+    {
+      "key": "2026-06-24|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-24",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-24",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:10:46.057Z"
     },
     {
       "key": "2026-06-23|短线王新开|1,2,3,4|ALL",
@@ -1036,6 +2520,57 @@
       "backupUpdatedAt": "2026-07-09T11:42:00.689Z"
     },
     {
+      "key": "2026-06-23|基金|1,2,3,4|ALL",
+      "date": "2026-06-23",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-23",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:32:22.794Z"
+    },
+    {
+      "key": "2026-06-23|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-23",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-23",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:48:12.966Z"
+    },
+    {
+      "key": "2026-06-23|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-23",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-23",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:12:06.855Z"
+    },
+    {
       "key": "2026-06-23|新开升级|1,2,3,4|ALL",
       "date": "2026-06-23",
       "projectName": "新开升级",
@@ -1053,6 +2588,23 @@
       "backupUpdatedAt": "2026-07-09T12:02:40.814Z"
     },
     {
+      "key": "2026-06-23|选股王|1,2,3,4|ALL",
+      "date": "2026-06-23",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-23",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:52:26.878Z"
+    },
+    {
       "key": "2026-06-23|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-23",
       "projectName": "中高端续费",
@@ -1068,6 +2620,23 @@
       "fixedAt": "2026-06-24",
       "markedAt": "2026-07-09T12:22:33.017Z",
       "backupUpdatedAt": "2026-07-09T12:22:32.721Z"
+    },
+    {
+      "key": "2026-06-23|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-23",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-23",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:10:33.226Z"
     },
     {
       "key": "2026-06-22|短线王新开|1,2,3,4|ALL",
@@ -1104,6 +2673,57 @@
       "backupUpdatedAt": "2026-07-09T11:41:43.693Z"
     },
     {
+      "key": "2026-06-22|基金|1,2,3,4|ALL",
+      "date": "2026-06-22",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-22",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:32:07.355Z"
+    },
+    {
+      "key": "2026-06-22|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-22",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-22",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:48:00.012Z"
+    },
+    {
+      "key": "2026-06-22|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-22",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-22",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:11:54.096Z"
+    },
+    {
       "key": "2026-06-22|新开升级|1,2,3,4|ALL",
       "date": "2026-06-22",
       "projectName": "新开升级",
@@ -1121,6 +2741,23 @@
       "backupUpdatedAt": "2026-07-09T12:02:22.703Z"
     },
     {
+      "key": "2026-06-22|选股王|1,2,3,4|ALL",
+      "date": "2026-06-22",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-22",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:52:13.876Z"
+    },
+    {
       "key": "2026-06-22|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-22",
       "projectName": "中高端续费",
@@ -1136,6 +2773,23 @@
       "fixedAt": "2026-06-23",
       "markedAt": "2026-07-09T12:22:17.040Z",
       "backupUpdatedAt": "2026-07-09T12:22:16.722Z"
+    },
+    {
+      "key": "2026-06-22|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-22",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-22",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:10:04.102Z"
     },
     {
       "key": "2026-06-21|短线王新开|1,2,3,4|ALL",
@@ -1172,6 +2826,57 @@
       "backupUpdatedAt": "2026-07-09T11:41:26.710Z"
     },
     {
+      "key": "2026-06-21|基金|1,2,3,4|ALL",
+      "date": "2026-06-21",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-21",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:31:46.307Z"
+    },
+    {
+      "key": "2026-06-21|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-21",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-21",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:47:46.996Z"
+    },
+    {
+      "key": "2026-06-21|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-21",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-21",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:11:40.913Z"
+    },
+    {
       "key": "2026-06-21|新开升级|1,2,3,4|ALL",
       "date": "2026-06-21",
       "projectName": "新开升级",
@@ -1189,6 +2894,23 @@
       "backupUpdatedAt": "2026-07-09T12:02:06.706Z"
     },
     {
+      "key": "2026-06-21|选股王|1,2,3,4|ALL",
+      "date": "2026-06-21",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-21",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:52:00.870Z"
+    },
+    {
       "key": "2026-06-21|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-21",
       "projectName": "中高端续费",
@@ -1204,6 +2926,23 @@
       "fixedAt": "2026-06-22",
       "markedAt": "2026-07-09T12:22:01.137Z",
       "backupUpdatedAt": "2026-07-09T12:22:00.741Z"
+    },
+    {
+      "key": "2026-06-21|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-21",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-21",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T13:09:45.240Z"
     },
     {
       "key": "2026-06-20|短线王新开|1,2,3,4|ALL",
@@ -1240,6 +2979,57 @@
       "backupUpdatedAt": "2026-07-09T11:41:07.692Z"
     },
     {
+      "key": "2026-06-20|基金|1,2,3,4|ALL",
+      "date": "2026-06-20",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-20",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:31:18.531Z"
+    },
+    {
+      "key": "2026-06-20|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-20",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-20",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:47:31.984Z"
+    },
+    {
+      "key": "2026-06-20|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-20",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-20",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:11:27.897Z"
+    },
+    {
       "key": "2026-06-20|新开升级|1,2,3,4|ALL",
       "date": "2026-06-20",
       "projectName": "新开升级",
@@ -1255,6 +3045,23 @@
       "fixedAt": "2026-06-21",
       "markedAt": "2026-07-09T12:01:50.967Z",
       "backupUpdatedAt": "2026-07-09T12:01:50.715Z"
+    },
+    {
+      "key": "2026-06-20|选股王|1,2,3,4|ALL",
+      "date": "2026-06-20",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-20",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:51:47.866Z"
     },
     {
       "key": "2026-06-20|中高端续费|1,2,3,4|ALL",
@@ -1308,6 +3115,57 @@
       "backupUpdatedAt": "2026-07-09T11:40:50.702Z"
     },
     {
+      "key": "2026-06-19|基金|1,2,3,4|ALL",
+      "date": "2026-06-19",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-19",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:31:04.266Z"
+    },
+    {
+      "key": "2026-06-19|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-19",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-19",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:47:18.984Z"
+    },
+    {
+      "key": "2026-06-19|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-19",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-19",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:11:14.909Z"
+    },
+    {
       "key": "2026-06-19|新开升级|1,2,3,4|ALL",
       "date": "2026-06-19",
       "projectName": "新开升级",
@@ -1323,6 +3181,23 @@
       "fixedAt": "2026-06-20",
       "markedAt": "2026-07-09T12:01:32.981Z",
       "backupUpdatedAt": "2026-07-09T12:01:32.712Z"
+    },
+    {
+      "key": "2026-06-19|选股王|1,2,3,4|ALL",
+      "date": "2026-06-19",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-19",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:51:35.026Z"
     },
     {
       "key": "2026-06-19|中高端续费|1,2,3,4|ALL",
@@ -1376,6 +3251,57 @@
       "backupUpdatedAt": "2026-07-09T11:40:33.680Z"
     },
     {
+      "key": "2026-06-18|基金|1,2,3,4|ALL",
+      "date": "2026-06-18",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-18",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:30:49.980Z"
+    },
+    {
+      "key": "2026-06-18|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-18",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-18",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:47:06.307Z"
+    },
+    {
+      "key": "2026-06-18|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-18",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-18",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:10:58.977Z"
+    },
+    {
       "key": "2026-06-18|新开升级|1,2,3,4|ALL",
       "date": "2026-06-18",
       "projectName": "新开升级",
@@ -1391,6 +3317,23 @@
       "fixedAt": "2026-06-19",
       "markedAt": "2026-07-09T12:01:17.027Z",
       "backupUpdatedAt": "2026-07-09T12:01:16.770Z"
+    },
+    {
+      "key": "2026-06-18|选股王|1,2,3,4|ALL",
+      "date": "2026-06-18",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-18",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:51:21.855Z"
     },
     {
       "key": "2026-06-18|中高端续费|1,2,3,4|ALL",
@@ -1444,6 +3387,57 @@
       "backupUpdatedAt": "2026-07-09T11:40:16.680Z"
     },
     {
+      "key": "2026-06-17|基金|1,2,3,4|ALL",
+      "date": "2026-06-17",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-17",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:30:36.963Z"
+    },
+    {
+      "key": "2026-06-17|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-17",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-17",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:46:48.135Z"
+    },
+    {
+      "key": "2026-06-17|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-17",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-17",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:10:39.909Z"
+    },
+    {
       "key": "2026-06-17|新开升级|1,2,3,4|ALL",
       "date": "2026-06-17",
       "projectName": "新开升级",
@@ -1459,6 +3453,23 @@
       "fixedAt": "2026-06-18",
       "markedAt": "2026-07-09T12:00:50.886Z",
       "backupUpdatedAt": "2026-07-09T12:00:50.701Z"
+    },
+    {
+      "key": "2026-06-17|选股王|1,2,3,4|ALL",
+      "date": "2026-06-17",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-17",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:51:04.879Z"
     },
     {
       "key": "2026-06-17|中高端续费|1,2,3,4|ALL",
@@ -1512,6 +3523,57 @@
       "backupUpdatedAt": "2026-07-09T11:39:56.691Z"
     },
     {
+      "key": "2026-06-16|基金|1,2,3,4|ALL",
+      "date": "2026-06-16",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-16",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:30:23.963Z"
+    },
+    {
+      "key": "2026-06-16|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-16",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-16",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:46:32.471Z"
+    },
+    {
+      "key": "2026-06-16|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-16",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-16",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:10:25.857Z"
+    },
+    {
       "key": "2026-06-16|新开升级|1,2,3,4|ALL",
       "date": "2026-06-16",
       "projectName": "新开升级",
@@ -1527,6 +3589,23 @@
       "fixedAt": "2026-06-17",
       "markedAt": "2026-07-09T12:00:33.958Z",
       "backupUpdatedAt": "2026-07-09T12:00:33.725Z"
+    },
+    {
+      "key": "2026-06-16|选股王|1,2,3,4|ALL",
+      "date": "2026-06-16",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-16",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:50:47.827Z"
     },
     {
       "key": "2026-06-16|中高端续费|1,2,3,4|ALL",
@@ -1580,6 +3659,57 @@
       "backupUpdatedAt": "2026-07-09T11:39:32.720Z"
     },
     {
+      "key": "2026-06-15|基金|1,2,3,4|ALL",
+      "date": "2026-06-15",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-15",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:30:11.002Z"
+    },
+    {
+      "key": "2026-06-15|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-15",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-15",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:46:15.287Z"
+    },
+    {
+      "key": "2026-06-15|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-15",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-15",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:10:12.839Z"
+    },
+    {
       "key": "2026-06-15|新开升级|1,2,3,4|ALL",
       "date": "2026-06-15",
       "projectName": "新开升级",
@@ -1597,6 +3727,23 @@
       "backupUpdatedAt": "2026-07-09T12:00:16.724Z"
     },
     {
+      "key": "2026-06-15|选股王|1,2,3,4|ALL",
+      "date": "2026-06-15",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-15",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:50:34.831Z"
+    },
+    {
       "key": "2026-06-15|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-15",
       "projectName": "中高端续费",
@@ -1612,6 +3759,23 @@
       "fixedAt": "2026-06-16",
       "markedAt": "2026-07-09T12:20:10.020Z",
       "backupUpdatedAt": "2026-07-09T12:20:09.734Z"
+    },
+    {
+      "key": "2026-06-15|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-15",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-15",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:57:09.269Z"
     },
     {
       "key": "2026-06-14|短线王新开|1,2,3,4|ALL",
@@ -1648,6 +3812,57 @@
       "backupUpdatedAt": "2026-07-09T11:39:13.692Z"
     },
     {
+      "key": "2026-06-14|基金|1,2,3,4|ALL",
+      "date": "2026-06-14",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-14",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:29:57.963Z"
+    },
+    {
+      "key": "2026-06-14|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-14",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-14",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:46:01.102Z"
+    },
+    {
+      "key": "2026-06-14|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-14",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-14",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:09:59.905Z"
+    },
+    {
       "key": "2026-06-14|新开升级|1,2,3,4|ALL",
       "date": "2026-06-14",
       "projectName": "新开升级",
@@ -1665,6 +3880,23 @@
       "backupUpdatedAt": "2026-07-09T12:00:00.735Z"
     },
     {
+      "key": "2026-06-14|选股王|1,2,3,4|ALL",
+      "date": "2026-06-14",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-14",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:50:19.813Z"
+    },
+    {
       "key": "2026-06-14|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-14",
       "projectName": "中高端续费",
@@ -1680,6 +3912,23 @@
       "fixedAt": "2026-06-15",
       "markedAt": "2026-07-09T12:19:54.033Z",
       "backupUpdatedAt": "2026-07-09T12:19:53.766Z"
+    },
+    {
+      "key": "2026-06-14|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-14",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-14",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:56:47.145Z"
     },
     {
       "key": "2026-06-13|短线王新开|1,2,3,4|ALL",
@@ -1716,6 +3965,57 @@
       "backupUpdatedAt": "2026-07-09T11:38:55.692Z"
     },
     {
+      "key": "2026-06-13|基金|1,2,3,4|ALL",
+      "date": "2026-06-13",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-13",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:29:45.017Z"
+    },
+    {
+      "key": "2026-06-13|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-13",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-13",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:45:46.048Z"
+    },
+    {
+      "key": "2026-06-13|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-13",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-13",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:09:45.877Z"
+    },
+    {
       "key": "2026-06-13|新开升级|1,2,3,4|ALL",
       "date": "2026-06-13",
       "projectName": "新开升级",
@@ -1733,6 +4033,23 @@
       "backupUpdatedAt": "2026-07-09T11:59:43.699Z"
     },
     {
+      "key": "2026-06-13|选股王|1,2,3,4|ALL",
+      "date": "2026-06-13",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-13",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:50:06.788Z"
+    },
+    {
       "key": "2026-06-13|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-13",
       "projectName": "中高端续费",
@@ -1748,6 +4065,23 @@
       "fixedAt": "2026-06-14",
       "markedAt": "2026-07-09T12:19:37.984Z",
       "backupUpdatedAt": "2026-07-09T12:19:37.740Z"
+    },
+    {
+      "key": "2026-06-13|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-13",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-13",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:56:34.052Z"
     },
     {
       "key": "2026-06-12|短线王新开|1,2,3,4|ALL",
@@ -1784,6 +4118,57 @@
       "backupUpdatedAt": "2026-07-09T11:38:37.692Z"
     },
     {
+      "key": "2026-06-12|基金|1,2,3,4|ALL",
+      "date": "2026-06-12",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-12",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:29:31.013Z"
+    },
+    {
+      "key": "2026-06-12|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-12",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-12",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:45:32.143Z"
+    },
+    {
+      "key": "2026-06-12|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-12",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-12",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:09:32.847Z"
+    },
+    {
       "key": "2026-06-12|新开升级|1,2,3,4|ALL",
       "date": "2026-06-12",
       "projectName": "新开升级",
@@ -1801,6 +4186,23 @@
       "backupUpdatedAt": "2026-07-09T11:59:25.709Z"
     },
     {
+      "key": "2026-06-12|选股王|1,2,3,4|ALL",
+      "date": "2026-06-12",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-12",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:49:52.799Z"
+    },
+    {
       "key": "2026-06-12|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-12",
       "projectName": "中高端续费",
@@ -1816,6 +4218,23 @@
       "fixedAt": "2026-06-13",
       "markedAt": "2026-07-09T12:19:22.002Z",
       "backupUpdatedAt": "2026-07-09T12:19:21.754Z"
+    },
+    {
+      "key": "2026-06-12|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-12",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-12",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:56:20.132Z"
     },
     {
       "key": "2026-06-11|短线王新开|1,2,3,4|ALL",
@@ -1852,6 +4271,57 @@
       "backupUpdatedAt": "2026-07-09T11:38:18.681Z"
     },
     {
+      "key": "2026-06-11|基金|1,2,3,4|ALL",
+      "date": "2026-06-11",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-11",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:29:17.974Z"
+    },
+    {
+      "key": "2026-06-11|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-11",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-11",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:45:17.103Z"
+    },
+    {
+      "key": "2026-06-11|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-11",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-11",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:09:18.875Z"
+    },
+    {
       "key": "2026-06-11|新开升级|1,2,3,4|ALL",
       "date": "2026-06-11",
       "projectName": "新开升级",
@@ -1869,6 +4339,23 @@
       "backupUpdatedAt": "2026-07-09T11:59:08.710Z"
     },
     {
+      "key": "2026-06-11|选股王|1,2,3,4|ALL",
+      "date": "2026-06-11",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-11",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:49:39.773Z"
+    },
+    {
       "key": "2026-06-11|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-11",
       "projectName": "中高端续费",
@@ -1884,6 +4371,23 @@
       "fixedAt": "2026-06-12",
       "markedAt": "2026-07-09T12:19:06.011Z",
       "backupUpdatedAt": "2026-07-09T12:19:05.737Z"
+    },
+    {
+      "key": "2026-06-11|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-11",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-11",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:56:07.243Z"
     },
     {
       "key": "2026-06-10|短线王新开|1,2,3,4|ALL",
@@ -1920,6 +4424,57 @@
       "backupUpdatedAt": "2026-07-09T11:37:59.685Z"
     },
     {
+      "key": "2026-06-10|基金|1,2,3,4|ALL",
+      "date": "2026-06-10",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-10",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:29:04.963Z"
+    },
+    {
+      "key": "2026-06-10|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-10",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-10",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:45:03.176Z"
+    },
+    {
+      "key": "2026-06-10|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-10",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-10",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:09:04.848Z"
+    },
+    {
       "key": "2026-06-10|新开升级|1,2,3,4|ALL",
       "date": "2026-06-10",
       "projectName": "新开升级",
@@ -1937,6 +4492,23 @@
       "backupUpdatedAt": "2026-07-09T11:58:51.706Z"
     },
     {
+      "key": "2026-06-10|选股王|1,2,3,4|ALL",
+      "date": "2026-06-10",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-10",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:49:25.785Z"
+    },
+    {
       "key": "2026-06-10|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-10",
       "projectName": "中高端续费",
@@ -1952,6 +4524,23 @@
       "fixedAt": "2026-06-11",
       "markedAt": "2026-07-09T12:18:47.976Z",
       "backupUpdatedAt": "2026-07-09T12:18:47.728Z"
+    },
+    {
+      "key": "2026-06-10|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-10",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-10",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:55:54.012Z"
     },
     {
       "key": "2026-06-09|短线王新开|1,2,3,4|ALL",
@@ -1988,6 +4577,57 @@
       "backupUpdatedAt": "2026-07-09T11:37:41.684Z"
     },
     {
+      "key": "2026-06-09|基金|1,2,3,4|ALL",
+      "date": "2026-06-09",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:28:51.970Z"
+    },
+    {
+      "key": "2026-06-09|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-09",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:44:49.985Z"
+    },
+    {
+      "key": "2026-06-09|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-09",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:08:51.845Z"
+    },
+    {
       "key": "2026-06-09|新开升级|1,2,3,4|ALL",
       "date": "2026-06-09",
       "projectName": "新开升级",
@@ -2005,6 +4645,23 @@
       "backupUpdatedAt": "2026-07-09T11:58:34.704Z"
     },
     {
+      "key": "2026-06-09|选股王|1,2,3,4|ALL",
+      "date": "2026-06-09",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:49:12.774Z"
+    },
+    {
       "key": "2026-06-09|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-09",
       "projectName": "中高端续费",
@@ -2020,6 +4677,23 @@
       "fixedAt": "2026-06-10",
       "markedAt": "2026-07-09T12:18:29.981Z",
       "backupUpdatedAt": "2026-07-09T12:18:29.743Z"
+    },
+    {
+      "key": "2026-06-09|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-09",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-09",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:55:40.098Z"
     },
     {
       "key": "2026-06-08|短线王新开|1,2,3,4|ALL",
@@ -2056,6 +4730,57 @@
       "backupUpdatedAt": "2026-07-09T11:37:24.682Z"
     },
     {
+      "key": "2026-06-08|基金|1,2,3,4|ALL",
+      "date": "2026-06-08",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:28:38.956Z"
+    },
+    {
+      "key": "2026-06-08|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-08",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:44:37.260Z"
+    },
+    {
+      "key": "2026-06-08|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-08",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:08:38.893Z"
+    },
+    {
       "key": "2026-06-08|新开升级|1,2,3,4|ALL",
       "date": "2026-06-08",
       "projectName": "新开升级",
@@ -2073,6 +4798,23 @@
       "backupUpdatedAt": "2026-07-09T11:58:18.711Z"
     },
     {
+      "key": "2026-06-08|选股王|1,2,3,4|ALL",
+      "date": "2026-06-08",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:48:59.779Z"
+    },
+    {
       "key": "2026-06-08|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-08",
       "projectName": "中高端续费",
@@ -2088,6 +4830,23 @@
       "fixedAt": "2026-06-09",
       "markedAt": "2026-07-09T12:18:12.941Z",
       "backupUpdatedAt": "2026-07-09T12:18:12.730Z"
+    },
+    {
+      "key": "2026-06-08|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-08",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-08",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:55:27.018Z"
     },
     {
       "key": "2026-06-07|短线王新开|1,2,3,4|ALL",
@@ -2124,6 +4883,57 @@
       "backupUpdatedAt": "2026-07-09T11:37:07.684Z"
     },
     {
+      "key": "2026-06-07|基金|1,2,3,4|ALL",
+      "date": "2026-06-07",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-07",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:28:26.021Z"
+    },
+    {
+      "key": "2026-06-07|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-07",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-07",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:44:24.154Z"
+    },
+    {
+      "key": "2026-06-07|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-07",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-07",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:08:25.885Z"
+    },
+    {
       "key": "2026-06-07|新开升级|1,2,3,4|ALL",
       "date": "2026-06-07",
       "projectName": "新开升级",
@@ -2141,6 +4951,23 @@
       "backupUpdatedAt": "2026-07-09T11:58:01.693Z"
     },
     {
+      "key": "2026-06-07|选股王|1,2,3,4|ALL",
+      "date": "2026-06-07",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-07",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:48:45.774Z"
+    },
+    {
       "key": "2026-06-07|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-07",
       "projectName": "中高端续费",
@@ -2156,6 +4983,23 @@
       "fixedAt": "2026-06-08",
       "markedAt": "2026-07-09T12:17:55.977Z",
       "backupUpdatedAt": "2026-07-09T12:17:55.742Z"
+    },
+    {
+      "key": "2026-06-07|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-07",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-07",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:55:14.048Z"
     },
     {
       "key": "2026-06-06|短线王新开|1,2,3,4|ALL",
@@ -2192,6 +5036,57 @@
       "backupUpdatedAt": "2026-07-09T11:36:50.848Z"
     },
     {
+      "key": "2026-06-06|基金|1,2,3,4|ALL",
+      "date": "2026-06-06",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:28:13.197Z"
+    },
+    {
+      "key": "2026-06-06|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-06",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:44:11.115Z"
+    },
+    {
+      "key": "2026-06-06|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-06",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:08:12.853Z"
+    },
+    {
       "key": "2026-06-06|新开升级|1,2,3,4|ALL",
       "date": "2026-06-06",
       "projectName": "新开升级",
@@ -2209,6 +5104,23 @@
       "backupUpdatedAt": "2026-07-09T11:57:45.695Z"
     },
     {
+      "key": "2026-06-06|选股王|1,2,3,4|ALL",
+      "date": "2026-06-06",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:48:32.803Z"
+    },
+    {
       "key": "2026-06-06|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-06",
       "projectName": "中高端续费",
@@ -2224,6 +5136,23 @@
       "fixedAt": "2026-06-07",
       "markedAt": "2026-07-09T12:17:37.045Z",
       "backupUpdatedAt": "2026-07-09T12:17:36.751Z"
+    },
+    {
+      "key": "2026-06-06|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-06",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-06",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:55:01.150Z"
     },
     {
       "key": "2026-06-05|短线王新开|1,2,3,4|ALL",
@@ -2260,6 +5189,57 @@
       "backupUpdatedAt": "2026-07-09T11:36:32.677Z"
     },
     {
+      "key": "2026-06-05|基金|1,2,3,4|ALL",
+      "date": "2026-06-05",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:27:56.696Z"
+    },
+    {
+      "key": "2026-06-05|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-05",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:42:49.088Z"
+    },
+    {
+      "key": "2026-06-05|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-05",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:07:59.882Z"
+    },
+    {
       "key": "2026-06-05|新开升级|1,2,3,4|ALL",
       "date": "2026-06-05",
       "projectName": "新开升级",
@@ -2277,6 +5257,23 @@
       "backupUpdatedAt": "2026-07-09T11:57:28.710Z"
     },
     {
+      "key": "2026-06-05|选股王|1,2,3,4|ALL",
+      "date": "2026-06-05",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:48:19.768Z"
+    },
+    {
       "key": "2026-06-05|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-05",
       "projectName": "中高端续费",
@@ -2292,6 +5289,23 @@
       "fixedAt": "2026-06-06",
       "markedAt": "2026-07-09T12:17:19.932Z",
       "backupUpdatedAt": "2026-07-09T12:17:19.727Z"
+    },
+    {
+      "key": "2026-06-05|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-05",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-05",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:54:48.090Z"
     },
     {
       "key": "2026-06-04|短线王新开|1,2,3,4|ALL",
@@ -2328,6 +5342,57 @@
       "backupUpdatedAt": "2026-07-09T11:36:14.780Z"
     },
     {
+      "key": "2026-06-04|基金|1,2,3,4|ALL",
+      "date": "2026-06-04",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:27:41.097Z"
+    },
+    {
+      "key": "2026-06-04|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-04",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:41:02.103Z"
+    },
+    {
+      "key": "2026-06-04|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-04",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:07:45.922Z"
+    },
+    {
       "key": "2026-06-04|新开升级|1,2,3,4|ALL",
       "date": "2026-06-04",
       "projectName": "新开升级",
@@ -2345,6 +5410,23 @@
       "backupUpdatedAt": "2026-07-09T11:57:12.703Z"
     },
     {
+      "key": "2026-06-04|选股王|1,2,3,4|ALL",
+      "date": "2026-06-04",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:48:05.772Z"
+    },
+    {
       "key": "2026-06-04|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-04",
       "projectName": "中高端续费",
@@ -2360,6 +5442,23 @@
       "fixedAt": "2026-06-05",
       "markedAt": "2026-07-09T12:17:02.932Z",
       "backupUpdatedAt": "2026-07-09T12:17:02.734Z"
+    },
+    {
+      "key": "2026-06-04|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-04",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-04",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:54:34.058Z"
     },
     {
       "key": "2026-06-03|短线王新开|1,2,3,4|ALL",
@@ -2396,6 +5495,57 @@
       "backupUpdatedAt": "2026-07-09T11:35:57.690Z"
     },
     {
+      "key": "2026-06-03|基金|1,2,3,4|ALL",
+      "date": "2026-06-03",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:27:27.478Z"
+    },
+    {
+      "key": "2026-06-03|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-03",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:40:48.212Z"
+    },
+    {
+      "key": "2026-06-03|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-03",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:07:30.263Z"
+    },
+    {
       "key": "2026-06-03|新开升级|1,2,3,4|ALL",
       "date": "2026-06-03",
       "projectName": "新开升级",
@@ -2413,6 +5563,23 @@
       "backupUpdatedAt": "2026-07-09T11:56:55.707Z"
     },
     {
+      "key": "2026-06-03|选股王|1,2,3,4|ALL",
+      "date": "2026-06-03",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:47:50.869Z"
+    },
+    {
       "key": "2026-06-03|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-03",
       "projectName": "中高端续费",
@@ -2428,6 +5595,23 @@
       "fixedAt": "2026-06-04",
       "markedAt": "2026-07-09T12:16:44.908Z",
       "backupUpdatedAt": "2026-07-09T12:16:44.724Z"
+    },
+    {
+      "key": "2026-06-03|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-03",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-03",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:54:21.058Z"
     },
     {
       "key": "2026-06-02|短线王新开|1,2,3,4|ALL",
@@ -2464,6 +5648,57 @@
       "backupUpdatedAt": "2026-07-09T11:35:40.683Z"
     },
     {
+      "key": "2026-06-02|基金|1,2,3,4|ALL",
+      "date": "2026-06-02",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:27:13.088Z"
+    },
+    {
+      "key": "2026-06-02|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-02",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:40:00.253Z"
+    },
+    {
+      "key": "2026-06-02|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-02",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:07:12.026Z"
+    },
+    {
       "key": "2026-06-02|新开升级|1,2,3,4|ALL",
       "date": "2026-06-02",
       "projectName": "新开升级",
@@ -2481,6 +5716,23 @@
       "backupUpdatedAt": "2026-07-09T11:56:39.756Z"
     },
     {
+      "key": "2026-06-02|选股王|1,2,3,4|ALL",
+      "date": "2026-06-02",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:47:37.798Z"
+    },
+    {
       "key": "2026-06-02|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-02",
       "projectName": "中高端续费",
@@ -2496,6 +5748,23 @@
       "fixedAt": "2026-06-03",
       "markedAt": "2026-07-09T12:16:27.031Z",
       "backupUpdatedAt": "2026-07-09T12:16:26.742Z"
+    },
+    {
+      "key": "2026-06-02|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-02",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-02",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:54:08.127Z"
     },
     {
       "key": "2026-06-01|短线王新开|1,2,3,4|ALL",
@@ -2532,6 +5801,57 @@
       "backupUpdatedAt": "2026-07-09T11:35:22.680Z"
     },
     {
+      "key": "2026-06-01|基金|1,2,3,4|ALL",
+      "date": "2026-06-01",
+      "projectName": "基金",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:26:59.262Z"
+    },
+    {
+      "key": "2026-06-01|加企微活动|1,2,3,4|ALL",
+      "date": "2026-06-01",
+      "projectName": "加企微活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:39:41.177Z"
+    },
+    {
+      "key": "2026-06-01|猎手活动|1,2,3,4|ALL",
+      "date": "2026-06-01",
+      "projectName": "猎手活动",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:06:58.920Z"
+    },
+    {
       "key": "2026-06-01|新开升级|1,2,3,4|ALL",
       "date": "2026-06-01",
       "projectName": "新开升级",
@@ -2549,6 +5869,23 @@
       "backupUpdatedAt": "2026-07-09T11:56:23.075Z"
     },
     {
+      "key": "2026-06-01|选股王|1,2,3,4|ALL",
+      "date": "2026-06-01",
+      "projectName": "选股王",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T11:47:24.818Z"
+    },
+    {
       "key": "2026-06-01|中高端续费|1,2,3,4|ALL",
       "date": "2026-06-01",
       "projectName": "中高端续费",
@@ -2564,6 +5901,23 @@
       "fixedAt": "2026-06-02",
       "markedAt": "2026-07-09T12:16:08.345Z",
       "backupUpdatedAt": "2026-07-09T12:16:08.082Z"
+    },
+    {
+      "key": "2026-06-01|转介绍|1,2,3,4|ALL",
+      "date": "2026-06-01",
+      "projectName": "转介绍",
+      "adType": "",
+      "adTypeName": "全部广告类型",
+      "bannerTypes": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "appScope": "ALL",
+      "fixedAt": "2026-06-01",
+      "markedAt": "2026-07-09T14:48:40.881Z",
+      "backupUpdatedAt": "2026-07-09T12:53:54.195Z"
     }
   ]
 }
