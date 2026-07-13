@@ -659,33 +659,44 @@
             </div>
 
             <div class="campaign-tab-panel active" data-campaign-panel="schedule">
-              <section class="campaign-card schedule-card">
-                <div class="campaign-card-title"><span class="tile-icon icon-blue">▥</span><div><h4>资源排期总览</h4><p>按资源位、项目、日期和素材状态统一看占用与冲突。</p></div></div>
-                <div class="schedule-summary">
-                  <div><span>今日排期</span><strong>18</strong><em>已确认 14</em></div>
-                  <div><span>待校验</span><strong>4</strong><em>素材/人群待复核</em></div>
-                  <div><span>冲突提醒</span><strong>2</strong><em>同资源位重叠</em></div>
-                  <div><span>空闲资源</span><strong>6</strong><em>可补投时段</em></div>
+              <section class="schedule-link-bar" aria-labelledby="campaignScheduleLinkLabel">
+                <div class="schedule-link-copy">
+                  <strong id="campaignScheduleLinkLabel">广告排期表链接</strong>
+                  <span>填写并保存常用排期表地址，之后可从这里直接打开。</span>
                 </div>
+                <div class="schedule-link-control">
+                  <input id="campaignScheduleLinkTitle" type="text" maxlength="40" placeholder="链接标题，如：7月广告排期表" aria-label="链接标题" />
+                  <input id="campaignScheduleLink" type="url" inputmode="url" placeholder="请粘贴 https:// 开头的排期表链接" aria-describedby="campaignScheduleLinkStatus" />
+                  <button id="saveCampaignScheduleLink" type="button">保存链接</button>
+                  <button id="openCampaignScheduleLink" class="primary" type="button" disabled>打开排期表</button>
+                </div>
+                <span id="campaignScheduleLinkStatus" class="schedule-link-status" aria-live="polite"></span>
               </section>
 
-              <section class="campaign-card schedule-card">
-                <div class="campaign-card-title"><span class="tile-icon icon-purple">◷</span><div><h4>资源位占用</h4><p>先看 APP、PC、普通广告的日内排期状态。</p></div></div>
-                <div class="schedule-lanes">
-                  <div class="schedule-lane"><strong>APP 弹窗</strong><span>09:00 短线王续费</span><span>15:01 短线王新开</span><em class="badge ok">正常</em></div>
-                  <div class="schedule-lane"><strong>PC 弹窗</strong><span>10:01 中高端续费</span><span>19:00 加企微活动</span><em class="badge warn">需复核</em></div>
-                  <div class="schedule-lane"><strong>普通广告</strong><span>短线王续费素材 A/B</span><span>新开升级低效素材替换</span><em class="badge wait">待确认</em></div>
+              <section class="project-schedule-toolbar" aria-label="项目与日期筛选">
+                <label>项目<select id="scheduleProjectSelect"><option value="中高端续费">中高端续费</option><option value="短线王续费">短线王续费（待接入）</option><option value="短线王新开">短线王新开（待接入）</option><option value="猎手活动">猎手活动（待接入）</option></select></label>
+                <div class="schedule-date-nav" role="group" aria-label="日期快捷切换">
+                  <button type="button" data-schedule-day="-1">昨天</button><button class="active" type="button" data-schedule-day="0">今天</button><button type="button" data-schedule-day="1">明天</button>
                 </div>
+                <label>选择日期<input id="scheduleDateInput" type="date" /></label>
+                <button id="scheduleRefresh" class="schedule-refresh" type="button">重新回读</button>
+                <span id="scheduleUpdatedAt" class="schedule-updated-at">等待首次回读</span>
               </section>
 
-              <section class="campaign-card schedule-card wide">
-                <div class="campaign-card-title"><span class="tile-icon icon-orange">▤</span><div><h4>排期明细</h4><p>资源、项目、素材、校验状态和后续动作。</p></div></div>
-                <div class="schedule-table">
-                  <div class="schedule-row head"><span>资源位</span><span>项目</span><span>时间</span><span>状态</span><span>动作</span></div>
-                  <div class="schedule-row"><span>APP 弹窗</span><span>短线王续费</span><span>09:00-13:00</span><span><em class="badge ok">已确认</em></span><span>等待执行</span></div>
-                  <div class="schedule-row"><span>PC 弹窗</span><span>中高端续费</span><span>10:01-14:00</span><span><em class="badge warn">人群复核</em></span><span>查看规则</span></div>
-                  <div class="schedule-row"><span>普通广告</span><span>短线王新开</span><span>全天</span><span><em class="badge wait">素材待换</em></span><span>转执行任务</span></div>
+              <section class="campaign-card project-overview-card">
+                <div class="project-overview-head">
+                  <div class="campaign-card-title"><span class="tile-icon icon-blue">▥</span><div><h4 id="projectDailyTitle">中高端续费 · 今日执行</h4><p>自动回读为主，人工状态可修正。</p></div></div>
+                  <strong id="projectCompletionText" class="project-completion-text">0%</strong>
                 </div>
+                <div id="projectDailySummary" class="project-daily-summary"></div>
+                <div class="project-progress"><span id="projectProgressBar"></span></div>
+              </section>
+
+              <section id="projectAlert" class="project-alert" hidden aria-live="polite"></section>
+
+              <section class="project-channel-section">
+                <div class="project-channel-heading"><div><h4>渠道执行情况</h4><p>渠道汇总为主，展开后查看资源、尺寸、排期和人群。</p></div><button id="expandAllChannels" type="button">全部展开</button></div>
+                <div id="projectChannelList" class="project-channel-list"></div>
               </section>
             </div>
 
