@@ -945,6 +945,7 @@ function initProjectDailySchedule() {
   const today = new Date();
   const expandedChannels = new Set(["PC 弹窗"]);
   let expandAll = false;
+  let activeFilter = "all";
 
   const baseTasks = [
     { id: "app-popup-expired", channel: "APP 弹窗", resource: "已过期续费弹窗", size: "900×1200", schedule: "全天（按时段权重展示）", audience: "5951 + 6469", autoStatus: "done", detail: "后台记录已匹配素材与人群" },
@@ -1004,20 +1005,21 @@ function initProjectDailySchedule() {
     const counts = { pending: 0, review: 0, done: 0, exception: 0 };
     tasks.forEach((task) => { counts[task.status] += 1; });
     const percent = Math.round((counts.done / tasks.length) * 100);
-    const summaryItems = [["今日任务", tasks.length, "summary-total"], ["待铺设", counts.pending, "status-pending"], ["待审核", counts.review, "status-review"], ["已完成", counts.done, "status-done"], ["异常", counts.exception, "status-exception"]];
-    summary.innerHTML = summaryItems.map(([label, count, className]) => `<div class="${className}"><span>${label}</span><strong>${count}</strong></div>`).join("");
+    const summaryItems = [["今日任务", tasks.length, "summary-total", "all"], ["待铺设", counts.pending, "status-pending", "pending"], ["待审核", counts.review, "status-review", "review"], ["已完成", counts.done, "status-done", "done"], ["异常", counts.exception, "status-exception", "exception"]];
+    summary.innerHTML = summaryItems.map(([label, count, className, filter]) => `<button type="button" class="${className}${activeFilter === filter ? " active" : ""}" data-summary-filter="${filter}" aria-pressed="${activeFilter === filter}"><span>${label}</span><strong>${count}</strong><em>点击查看明细</em></button>`).join("");
     completionText.textContent = `${percent}%`;
     progressBar.style.width = `${percent}%`;
     alertBox.hidden = counts.exception === 0;
     alertBox.innerHTML = counts.exception ? `<strong>发现 ${counts.exception} 项异常</strong><span>${tasks.filter((task) => task.status === "exception").map((task) => html(`${task.channel}：${task.resource}（${task.detail}）`)).join("；")}</span>` : "";
 
-    const channelOrder = [...new Set(tasks.map((task) => task.channel))].sort((a, b) => {
-      const aException = tasks.some((task) => task.channel === a && task.status === "exception");
-      const bException = tasks.some((task) => task.channel === b && task.status === "exception");
+    const visibleTasks = activeFilter === "all" ? tasks : tasks.filter((task) => task.status === activeFilter);
+    const channelOrder = [...new Set(visibleTasks.map((task) => task.channel))].sort((a, b) => {
+      const aException = visibleTasks.some((task) => task.channel === a && task.status === "exception");
+      const bException = visibleTasks.some((task) => task.channel === b && task.status === "exception");
       return Number(bException) - Number(aException);
     });
     channelList.innerHTML = channelOrder.map((channel) => {
-      const items = tasks.filter((task) => task.channel === channel);
+      const items = visibleTasks.filter((task) => task.channel === channel);
       const channelCounts = { pending: 0, review: 0, done: 0, exception: 0 };
       items.forEach((task) => { channelCounts[task.status] += 1; });
       const isOpen = expandAll || expandedChannels.has(channel);
@@ -1027,6 +1029,10 @@ function initProjectDailySchedule() {
       }).join("");
       return `<article class="project-channel-card${isOpen ? " open" : ""}" data-project-channel="${html(channel)}"><button class="project-channel-toggle" type="button" aria-expanded="${isOpen}"><span><strong>${html(channel)}</strong><em>${items.length} 项任务</em></span><span class="project-channel-counts"><i class="status-done">已完成 ${channelCounts.done}</i><i class="status-review">待审核 ${channelCounts.review}</i>${channelCounts.pending ? `<i class="status-pending">待铺设 ${channelCounts.pending}</i>` : ""}${channelCounts.exception ? `<i class="status-exception">异常 ${channelCounts.exception}</i>` : ""}</span><b>⌄</b></button><div class="project-channel-tasks">${taskRows}</div></article>`;
     }).join("");
+
+    summary.querySelectorAll("[data-summary-filter]").forEach((button) => {
+      button.addEventListener("click", () => { activeFilter = button.dataset.summaryFilter; expandAll = activeFilter !== "all"; expandAllButton.textContent = expandAll ? "全部收起" : "全部展开"; render(); });
+    });
 
     channelList.querySelectorAll(".project-channel-toggle").forEach((button) => {
       button.addEventListener("click", () => {
