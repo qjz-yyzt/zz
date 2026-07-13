@@ -841,6 +841,234 @@ document.querySelectorAll("[data-campaign-tab]").forEach((button) => {
   button.addEventListener("click", () => switchCampaignTab(button.dataset.campaignTab));
 });
 
+function initCampaignScheduleLink() {
+  const storageKey = "operation-center-campaign-schedule-link";
+  const titleStorageKey = "operation-center-campaign-schedule-title";
+  const titleInput = document.getElementById("campaignScheduleLinkTitle");
+  const input = document.getElementById("campaignScheduleLink");
+  const saveButton = document.getElementById("saveCampaignScheduleLink");
+  const openButton = document.getElementById("openCampaignScheduleLink");
+  const status = document.getElementById("campaignScheduleLinkStatus");
+  if (!titleInput || !input || !saveButton || !openButton || !status) return;
+
+  const parseLink = () => {
+    const value = input.value.trim();
+    try {
+      const url = new URL(value);
+      if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+      return url.href;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const updateOpenState = () => {
+    openButton.disabled = !parseLink();
+  };
+
+  const savedLink = localStorage.getItem(storageKey) || "";
+  const savedTitle = localStorage.getItem(titleStorageKey) || "";
+  titleInput.value = savedTitle;
+  input.value = savedLink;
+  if (savedLink) status.textContent = "已载入上次保存的链接。";
+  updateOpenState();
+
+  input.addEventListener("input", () => {
+    status.textContent = "";
+    status.classList.remove("error", "success");
+    updateOpenState();
+  });
+
+  titleInput.addEventListener("input", () => {
+    status.textContent = "";
+    status.classList.remove("error", "success");
+  });
+
+  saveButton.addEventListener("click", () => {
+    const title = titleInput.value.trim();
+    const link = parseLink();
+    if (!title) {
+      status.textContent = "请先填写链接标题。";
+      status.classList.add("error");
+      status.classList.remove("success");
+      titleInput.focus();
+      return;
+    }
+    if (!link) {
+      status.textContent = "请输入有效的 http:// 或 https:// 链接。";
+      status.classList.add("error");
+      status.classList.remove("success");
+      input.focus();
+      return;
+    }
+    titleInput.value = title;
+    input.value = link;
+    localStorage.setItem(titleStorageKey, title);
+    localStorage.setItem(storageKey, link);
+    status.textContent = `“${title}”链接已保存。`;
+    status.classList.add("success");
+    status.classList.remove("error");
+    updateOpenState();
+  });
+
+  openButton.addEventListener("click", () => {
+    const link = parseLink();
+    if (link) window.open(link, "_blank", "noopener,noreferrer");
+  });
+}
+
+initCampaignScheduleLink();
+
+function initProjectDailySchedule() {
+  const projectSelect = document.getElementById("scheduleProjectSelect");
+  const dateInput = document.getElementById("scheduleDateInput");
+  const refreshButton = document.getElementById("scheduleRefresh");
+  const updatedAt = document.getElementById("scheduleUpdatedAt");
+  const summary = document.getElementById("projectDailySummary");
+  const channelList = document.getElementById("projectChannelList");
+  const alertBox = document.getElementById("projectAlert");
+  const title = document.getElementById("projectDailyTitle");
+  const completionText = document.getElementById("projectCompletionText");
+  const progressBar = document.getElementById("projectProgressBar");
+  const expandAllButton = document.getElementById("expandAllChannels");
+  if (!projectSelect || !dateInput || !summary || !channelList) return;
+
+  const overrideKey = "operation-center-project-task-overrides";
+  const statusMeta = {
+    pending: { label: "待铺设", className: "status-pending" },
+    review: { label: "待审核", className: "status-review" },
+    done: { label: "已完成", className: "status-done" },
+    exception: { label: "异常", className: "status-exception" }
+  };
+  const html = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+  const formatDate = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+  const today = new Date();
+  const expandedChannels = new Set(["PC 弹窗"]);
+  let expandAll = false;
+
+  const baseTasks = [
+    { id: "app-popup-expired", channel: "APP 弹窗", resource: "已过期续费弹窗", size: "900×1200", schedule: "全天（按时段权重展示）", audience: "5951 + 6469", autoStatus: "done", detail: "后台记录已匹配素材与人群" },
+    { id: "app-popup-active", channel: "APP 弹窗", resource: "在期续费弹窗", size: "900×1200", schedule: "全天（按时段权重展示）", audience: "按 730/1580/1680/2980/3580 档位", autoStatus: "review", detail: "需复核当日权益档位" },
+    { id: "general-home-scroll", channel: "普通广告", resource: "首页滚动（APP）", size: "690×220", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "分组 51 已回读" },
+    { id: "general-live-top", channel: "普通广告", resource: "直播间互动区顶部（APP）", size: "690×80", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "素材尺寸一致" },
+    { id: "general-live-app", channel: "普通广告", resource: "直播间贴片（APP）", size: "270×360", schedule: "全天", audience: "6370 + 6468", autoStatus: "review", detail: "待确认直播间展示" },
+    { id: "general-live-web", channel: "普通广告", resource: "直播间贴片（WEB）", size: "160×213", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "后台记录已匹配" },
+    { id: "general-pc-detail", channel: "普通广告", resource: "股票特供详情页底部（PC）", size: "800×160", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "后台记录已匹配" },
+    { id: "general-camp", channel: "普通广告", resource: "首页-突击营（PC端）", size: "668×376", schedule: "全天", audience: "6370 + 6468", autoStatus: "exception", detail: "标题与当日倒计时需复核" },
+    { id: "general-box", channel: "普通广告", resource: "PC-决策宝箱顶部 Banner", size: "1400×300", schedule: "全天", audience: "5951 + 6469", autoStatus: "done", detail: "已过期人群记录正常" },
+    { id: "general-mall", channel: "普通广告", resource: "APP-决策商城头部 Banner", size: "718×176", schedule: "全天", audience: "6370 + 6468", autoStatus: "pending", detail: "等待当日铺设记录" },
+    { id: "pc-large-main", channel: "PC 弹窗", resource: "续费大弹窗", size: "650×550", schedule: "按奇偶日排期", audience: "中高端临期及已过期", autoStatus: "done", detail: "继承 7 月 1/2 日源广告" },
+    { id: "pc-large-alt", channel: "PC 弹窗", resource: "续费大弹窗补充尺寸", size: "550×650 / 650×500", schedule: "12:00-15:00", audience: "细分档位", autoStatus: "review", detail: "待审核源广告尺寸" },
+    { id: "pc-small", channel: "PC 弹窗", resource: "续费小弹窗", size: "650×300", schedule: "按奇偶日排期", audience: "中高端临期及已过期", autoStatus: "done", detail: "排期记录已匹配" },
+    { id: "pc-fixed-top", channel: "PC 固定位", resource: "PC 顶部福利 · 位置4", size: "固定位", schedule: "常态铺设", audience: "中高端各版本临期/过期", autoStatus: "done", detail: "权重 123" },
+    { id: "pc-exit", channel: "PC 固定位", resource: "软件退出时弹出", size: "550×300", schedule: "五时段轮播", audience: "按产品版本及有效期", autoStatus: "done", detail: "固定资源，不重复新建" },
+    { id: "push", channel: "PUSH", resource: "中高端续费 PUSH", size: "—", schedule: "奇数日 20:00 / 偶数日 11:00", audience: "2026-12-31 前到期及已过期", autoStatus: "pending", detail: "等待发送回执" }
+  ];
+  const liveDates = {
+    "短线突击营": [1, 2, 6, 9, 12, 16, 20, 23, 26, 30],
+    "炒股进阶": [1, 2, 5, 7, 13, 15, 19, 21, 28, 29],
+    "龙头狙击": [1, 6, 7, 14, 16, 20, 21, 28, 29]
+  };
+
+  const getOverrides = () => {
+    try { return JSON.parse(localStorage.getItem(overrideKey) || "{}"); } catch (error) { return {}; }
+  };
+  const setOverride = (taskId, status) => {
+    const overrides = getOverrides();
+    const key = `${projectSelect.value}|${dateInput.value}|${taskId}`;
+    if (status === "auto") delete overrides[key]; else overrides[key] = status;
+    localStorage.setItem(overrideKey, JSON.stringify(overrides));
+  };
+  const getTasks = () => {
+    if (projectSelect.value !== "中高端续费") return [];
+    const day = Number(dateInput.value.slice(-2));
+    const tasks = baseTasks.map((task) => ({ ...task }));
+    Object.entries(liveDates).forEach(([resource, days]) => {
+      if (days.includes(day)) tasks.push({ id: `live-${resource}`, channel: "直播", resource, size: "—", schedule: `${dateInput.value} 当日直播`, audience: "直播间用户", autoStatus: "review", detail: "待审核直播资源展示" });
+    });
+    const overrides = getOverrides();
+    return tasks.map((task) => ({ ...task, status: overrides[`${projectSelect.value}|${dateInput.value}|${task.id}`] || task.autoStatus }));
+  };
+
+  function render() {
+    const tasks = getTasks();
+    title.textContent = `${projectSelect.value} · ${dateInput.value || "今日"}执行`;
+    if (!tasks.length) {
+      summary.innerHTML = '<div class="project-empty">该项目暂未接入排期数据。</div>';
+      channelList.innerHTML = '<div class="project-empty">请选择“中高端续费”查看样板界面。</div>';
+      alertBox.hidden = true;
+      completionText.textContent = "0%";
+      progressBar.style.width = "0%";
+      return;
+    }
+    const counts = { pending: 0, review: 0, done: 0, exception: 0 };
+    tasks.forEach((task) => { counts[task.status] += 1; });
+    const percent = Math.round((counts.done / tasks.length) * 100);
+    const summaryItems = [["今日任务", tasks.length, "summary-total"], ["待铺设", counts.pending, "status-pending"], ["待审核", counts.review, "status-review"], ["已完成", counts.done, "status-done"], ["异常", counts.exception, "status-exception"]];
+    summary.innerHTML = summaryItems.map(([label, count, className]) => `<div class="${className}"><span>${label}</span><strong>${count}</strong></div>`).join("");
+    completionText.textContent = `${percent}%`;
+    progressBar.style.width = `${percent}%`;
+    alertBox.hidden = counts.exception === 0;
+    alertBox.innerHTML = counts.exception ? `<strong>发现 ${counts.exception} 项异常</strong><span>${tasks.filter((task) => task.status === "exception").map((task) => html(`${task.channel}：${task.resource}（${task.detail}）`)).join("；")}</span>` : "";
+
+    const channelOrder = [...new Set(tasks.map((task) => task.channel))].sort((a, b) => {
+      const aException = tasks.some((task) => task.channel === a && task.status === "exception");
+      const bException = tasks.some((task) => task.channel === b && task.status === "exception");
+      return Number(bException) - Number(aException);
+    });
+    channelList.innerHTML = channelOrder.map((channel) => {
+      const items = tasks.filter((task) => task.channel === channel);
+      const channelCounts = { pending: 0, review: 0, done: 0, exception: 0 };
+      items.forEach((task) => { channelCounts[task.status] += 1; });
+      const isOpen = expandAll || expandedChannels.has(channel);
+      const taskRows = items.map((task) => {
+        const meta = statusMeta[task.status];
+        return `<div class="project-task-row"><div class="project-task-main"><strong>${html(task.resource)}</strong><span>${html(task.size)} · ${html(task.schedule)}</span><em>${html(task.audience)}</em></div><div class="project-task-note">${html(task.detail)}</div><span class="project-task-status ${meta.className}">${meta.label}</span><label class="project-task-override">人工修正<select data-task-status="${html(task.id)}"><option value="auto">跟随自动</option>${Object.entries(statusMeta).map(([value, item]) => `<option value="${value}"${task.status === value && task.status !== task.autoStatus ? " selected" : ""}>${item.label}</option>`).join("")}</select></label></div>`;
+      }).join("");
+      return `<article class="project-channel-card${isOpen ? " open" : ""}" data-project-channel="${html(channel)}"><button class="project-channel-toggle" type="button" aria-expanded="${isOpen}"><span><strong>${html(channel)}</strong><em>${items.length} 项任务</em></span><span class="project-channel-counts"><i class="status-done">已完成 ${channelCounts.done}</i><i class="status-review">待审核 ${channelCounts.review}</i>${channelCounts.pending ? `<i class="status-pending">待铺设 ${channelCounts.pending}</i>` : ""}${channelCounts.exception ? `<i class="status-exception">异常 ${channelCounts.exception}</i>` : ""}</span><b>⌄</b></button><div class="project-channel-tasks">${taskRows}</div></article>`;
+    }).join("");
+
+    channelList.querySelectorAll(".project-channel-toggle").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".project-channel-card");
+        const channel = card.dataset.projectChannel;
+        if (card.classList.toggle("open")) expandedChannels.add(channel); else expandedChannels.delete(channel);
+        button.setAttribute("aria-expanded", card.classList.contains("open"));
+      });
+    });
+    channelList.querySelectorAll("[data-task-status]").forEach((select) => {
+      select.addEventListener("change", () => { setOverride(select.dataset.taskStatus, select.value); render(); });
+    });
+  }
+
+  dateInput.value = formatDate(today);
+  document.querySelectorAll("[data-schedule-day]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const next = new Date();
+      next.setDate(next.getDate() + Number(button.dataset.scheduleDay));
+      dateInput.value = formatDate(next);
+      document.querySelectorAll("[data-schedule-day]").forEach((item) => item.classList.toggle("active", item === button));
+      render();
+    });
+  });
+  dateInput.addEventListener("change", () => { document.querySelectorAll("[data-schedule-day]").forEach((item) => item.classList.remove("active")); render(); });
+  projectSelect.addEventListener("change", render);
+  refreshButton?.addEventListener("click", () => {
+    refreshButton.disabled = true;
+    refreshButton.textContent = "回读中…";
+    window.setTimeout(() => {
+      updatedAt.textContent = `最近回读：${new Date().toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" })}`;
+      refreshButton.disabled = false;
+      refreshButton.textContent = "重新回读";
+      render();
+    }, 650);
+  });
+  expandAllButton?.addEventListener("click", () => { expandAll = !expandAll; expandAllButton.textContent = expandAll ? "全部收起" : "全部展开"; render(); });
+  render();
+}
+
+initProjectDailySchedule();
+
 function switchContentTab(tabName = "copy") {
   document.querySelectorAll("[data-content-tab]").forEach((button) => {
     button.classList.toggle("active", button.dataset.contentTab === tabName);
