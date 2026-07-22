@@ -943,27 +943,28 @@ function initProjectDailySchedule() {
   const html = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
   const formatDate = (date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
   const today = new Date();
-  const expandedChannels = new Set(["PC 弹窗"]);
+  const channelPriority = ["固定位常规", "固定位右上角", "退出及首页大屏", "文字广告", "APP 弹窗", "PC 全屏弹窗", "PC 右下角弹窗", "PUSH 推送", "直播资源"];
+  const expandedChannels = new Set(["PC 全屏弹窗"]);
   let expandAll = false;
   let activeFilter = "all";
 
   const baseTasks = [
     { id: "app-popup-expired", channel: "APP 弹窗", resource: "已过期续费弹窗", size: "900×1200", schedule: "全天（按时段权重展示）", audience: "5951 + 6469", autoStatus: "done", detail: "后台记录已匹配素材与人群" },
     { id: "app-popup-active", channel: "APP 弹窗", resource: "在期续费弹窗", size: "900×1200", schedule: "全天（按时段权重展示）", audience: "按 730/1580/1680/2980/3580 档位", autoStatus: "review", detail: "需复核当日权益档位" },
-    { id: "general-home-scroll", channel: "普通广告", resource: "首页滚动（APP）", size: "690×220", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "分组 51 已回读" },
-    { id: "general-live-top", channel: "普通广告", resource: "直播间互动区顶部（APP）", size: "690×80", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "素材尺寸一致" },
-    { id: "general-live-app", channel: "普通广告", resource: "直播间贴片（APP）", size: "270×360", schedule: "全天", audience: "6370 + 6468", autoStatus: "review", detail: "待确认直播间展示" },
-    { id: "general-live-web", channel: "普通广告", resource: "直播间贴片（WEB）", size: "160×213", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "后台记录已匹配" },
-    { id: "general-pc-detail", channel: "普通广告", resource: "股票特供详情页底部（PC）", size: "800×160", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "后台记录已匹配" },
-    { id: "general-camp", channel: "普通广告", resource: "首页-突击营（PC端）", size: "668×376", schedule: "全天", audience: "6370 + 6468", autoStatus: "exception", detail: "标题与当日倒计时需复核" },
-    { id: "general-box", channel: "普通广告", resource: "PC-决策宝箱顶部 Banner", size: "1400×300", schedule: "全天", audience: "5951 + 6469", autoStatus: "done", detail: "已过期人群记录正常" },
-    { id: "general-mall", channel: "普通广告", resource: "APP-决策商城头部 Banner", size: "718×176", schedule: "全天", audience: "6370 + 6468", autoStatus: "pending", detail: "等待当日铺设记录" },
-    { id: "pc-large-main", channel: "PC 弹窗", resource: "续费大弹窗", size: "650×550", schedule: "按奇偶日排期", audience: "中高端临期及已过期", autoStatus: "done", detail: "继承 7 月 1/2 日源广告" },
-    { id: "pc-large-alt", channel: "PC 弹窗", resource: "续费大弹窗补充尺寸", size: "550×650 / 650×500", schedule: "12:00-15:00", audience: "细分档位", autoStatus: "review", detail: "待审核源广告尺寸" },
-    { id: "pc-small", channel: "PC 弹窗", resource: "续费小弹窗", size: "650×300", schedule: "按奇偶日排期", audience: "中高端临期及已过期", autoStatus: "done", detail: "排期记录已匹配" },
-    { id: "pc-fixed-top", channel: "PC 固定位", resource: "PC 顶部福利 · 位置4", size: "固定位", schedule: "常态铺设", audience: "中高端各版本临期/过期", autoStatus: "done", detail: "权重 123" },
-    { id: "pc-exit", channel: "PC 固定位", resource: "软件退出时弹出", size: "550×300", schedule: "五时段轮播", audience: "按产品版本及有效期", autoStatus: "done", detail: "固定资源，不重复新建" },
-    { id: "push", channel: "PUSH", resource: "中高端续费 PUSH", size: "—", schedule: "奇数日 20:00 / 偶数日 11:00", audience: "2026-12-31 前到期及已过期", autoStatus: "pending", detail: "等待发送回执" }
+    { id: "general-home-scroll", channel: "固定位常规", resource: "首页滚动（APP）", size: "690×220", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "分组 51 已回读" },
+    { id: "general-live-top", channel: "文字广告", resource: "直播间互动区顶部（APP）", size: "690×80", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "素材尺寸一致" },
+    { id: "general-live-app", channel: "文字广告", resource: "直播间贴片（APP）", size: "270×360", schedule: "全天", audience: "6370 + 6468", autoStatus: "review", detail: "待确认直播间展示" },
+    { id: "general-live-web", channel: "文字广告", resource: "直播间贴片（WEB）", size: "160×213", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "后台记录已匹配" },
+    { id: "general-pc-detail", channel: "固定位常规", resource: "股票特供详情页底部（PC）", size: "800×160", schedule: "全天", audience: "6370 + 6468", autoStatus: "done", detail: "后台记录已匹配" },
+    { id: "general-camp", channel: "退出及首页大屏", resource: "首页-突击营（PC端）", size: "668×376", schedule: "全天", audience: "6370 + 6468", autoStatus: "exception", detail: "标题与当日倒计时需复核" },
+    { id: "general-box", channel: "固定位常规", resource: "PC-决策宝箱顶部 Banner", size: "1400×300", schedule: "全天", audience: "5951 + 6469", autoStatus: "done", detail: "已过期人群记录正常" },
+    { id: "general-mall", channel: "固定位常规", resource: "APP-决策商城头部 Banner", size: "718×176", schedule: "全天", audience: "6370 + 6468", autoStatus: "pending", detail: "等待当日铺设记录" },
+    { id: "pc-large-main", channel: "PC 全屏弹窗", resource: "续费大弹窗", size: "650×550", schedule: "按奇偶日排期", audience: "中高端临期及已过期", autoStatus: "done", detail: "继承 7 月 1/2 日源广告" },
+    { id: "pc-large-alt", channel: "PC 全屏弹窗", resource: "续费大弹窗补充尺寸", size: "550×650 / 650×500", schedule: "12:00-15:00", audience: "细分档位", autoStatus: "review", detail: "待审核源广告尺寸" },
+    { id: "pc-small", channel: "PC 右下角弹窗", resource: "续费小弹窗", size: "650×300", schedule: "按奇偶日排期", audience: "中高端临期及已过期", autoStatus: "done", detail: "排期记录已匹配" },
+    { id: "pc-fixed-top", channel: "固定位右上角", resource: "PC 顶部福利 · 位置4", size: "固定位", schedule: "常态铺设", audience: "中高端各版本临期/过期", autoStatus: "done", detail: "权重 123" },
+    { id: "pc-exit", channel: "退出及首页大屏", resource: "软件退出时弹出", size: "550×300", schedule: "五时段轮播", audience: "按产品版本及有效期", autoStatus: "done", detail: "固定资源，不重复新建" },
+    { id: "push", channel: "PUSH 推送", resource: "中高端续费 PUSH", size: "—", schedule: "奇数日 20:00 / 偶数日 11:00", audience: "2026-12-31 前到期及已过期", autoStatus: "pending", detail: "等待发送回执" }
   ];
   const liveDates = {
     "短线突击营": [1, 2, 6, 9, 12, 16, 20, 23, 26, 30],
@@ -985,7 +986,7 @@ function initProjectDailySchedule() {
     const day = Number(dateInput.value.slice(-2));
     const tasks = baseTasks.map((task) => ({ ...task }));
     Object.entries(liveDates).forEach(([resource, days]) => {
-      if (days.includes(day)) tasks.push({ id: `live-${resource}`, channel: "直播", resource, size: "—", schedule: `${dateInput.value} 当日直播`, audience: "直播间用户", autoStatus: "review", detail: "待审核直播资源展示" });
+      if (days.includes(day)) tasks.push({ id: `live-${resource}`, channel: "直播资源", resource, size: "—", schedule: `${dateInput.value} 当日直播`, audience: "直播间用户", autoStatus: "review", detail: "待审核直播资源展示" });
     });
     const overrides = getOverrides();
     return tasks.map((task) => ({ ...task, status: overrides[`${projectSelect.value}|${dateInput.value}|${task.id}`] || task.autoStatus }));
@@ -1014,6 +1015,9 @@ function initProjectDailySchedule() {
 
     const visibleTasks = activeFilter === "all" ? tasks : tasks.filter((task) => task.status === activeFilter);
     const channelOrder = [...new Set(visibleTasks.map((task) => task.channel))].sort((a, b) => {
+      const aRank = channelPriority.indexOf(a);
+      const bRank = channelPriority.indexOf(b);
+      if (aRank !== bRank) return (aRank === -1 ? 999 : aRank) - (bRank === -1 ? 999 : bRank);
       const aException = visibleTasks.some((task) => task.channel === a && task.status === "exception");
       const bException = visibleTasks.some((task) => task.channel === b && task.status === "exception");
       return Number(bException) - Number(aException);
